@@ -5,7 +5,7 @@
   <title>What user is logged in?</title>
 </head>
 <body>
-<h2 th:text="'Hello ' + ${LoggedInUser.username}"></h2>
+<h2 th:text="'Hello ' + ${loggedInUser.username}"></h2>
 <p> Welcome to Think Fast, a super amazing quiz game, now lets play!</p>
 <p>Pick a one or two player game</p>
 <form  th:action="@{/quiz}" method="get">
