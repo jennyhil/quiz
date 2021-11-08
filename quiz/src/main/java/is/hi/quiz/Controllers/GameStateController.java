@@ -27,7 +27,7 @@ public class GameStateController {
         quizService.resetNoOfQuestions();
         List<Category> allCategories = quizService.findAllCategories();
         model.addAttribute("categories" ,allCategories);
-        return "quizPage.html";
+        return "quizPage";
     }
 
     // Todo: Show high scores

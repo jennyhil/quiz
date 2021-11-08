@@ -43,7 +43,7 @@ public class AccountController {
     }
     @RequestMapping(value = "/login", method = RequestMethod.GET)
     public String loginGET(Account account){
-        return "login.html";
+        return "login";
     }
 
     @RequestMapping(value = "/login", method = RequestMethod.POST)
@@ -56,13 +56,13 @@ public class AccountController {
         // Get all questions for admin delete and/or admin add question.
         List<Question> allQuestions = quizService.findAll();
         if(exists != null){
-            session.setAttribute("LoggedInUser", exists);
-            model.addAttribute("LoggedInUser",exists);
+            session.setAttribute("loggedInUser", exists);
+            model.addAttribute("loggedInUser",exists);
             model.addAttribute("questions",allQuestions);
             if(exists.isAdmin()){
                 return "redirect:/admin";
             }
-            else return "LoggedInUser.html";
+            else return "loggedInUser";
         }
         return "redirect:/";
     }
@@ -70,7 +70,7 @@ public class AccountController {
         public String adminPage(Model model, Account account){
         List <Question> questions = quizService.findAll();
         model.addAttribute("questions",questions);
-        return "admin.html";
+        return "admin";
     }
 
     @GetMapping("/")
@@ -79,6 +79,6 @@ public class AccountController {
         // Busniess logic
         // Add some data to the model
         // Call a method in service class
-        return "home.html";
+        return "home";
     }
 }

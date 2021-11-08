@@ -27,7 +27,7 @@ public class QuizController {
         Question nextQuestion;
         nextQuestion = getNextQuestion(id);
         model.addAttribute("questions", nextQuestion);
-        return "displayQuestion.html";
+        return "displayQuestion";
     }
 
 
@@ -50,7 +50,7 @@ public class QuizController {
     // Returns: A template to input a new question and answers.
     @RequestMapping(value="/addquestion",method=RequestMethod.GET)
     public String addQuestion(Question question){
-        return "newQuestion.html";
+        return "newQuestion";
     }
 
     // Admin action - requires admin log in. Adds a question.
@@ -58,7 +58,7 @@ public class QuizController {
     @RequestMapping(value="/addquestion",method=RequestMethod.POST)
         public String addQuestion(Question question, BindingResult result,Model model){
         if(result.hasErrors()){
-            return "newQuestion.html";
+            return "newQuestion";
         }
         quizService.save(question);
         return "redirect:/admin";
