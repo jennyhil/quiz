@@ -1,15 +1,22 @@
 <html xmlns:th="https://thymeleaf.org">
 <head>
     <meta charset="UTF-8">
+    <link rel="stylesheet" type="text/css" href="/css/login.css"/>
     <title>Signup</title>
 </head>
 <body>
-<h2>Signup for an account</h2>
-<form action="#" th:action="@{/signup}" th:object="${account}"  method="post">
-    <input type="text" name="username" id="username" th:field="*{username}"/>
-    <input type="text" name="password" id="password" th:value="*{password}"/>
-    <input type="submit" value="Sign up"/>
-</form>
-<p><a href="/">Back</a></p>
+<header></header>
+<div class="mainContainer">
+    <h2>Signup for an account</h2>
+    <form action="#" th:action="@{/signup}" th:object="${account}"  method="post">
+        <label for="username">Username</label>
+        <input type="text" name="username" id="username" th:field="*{username}"/>
+        <label for="password">Password</label>
+        <input type="text" name="password" id="password" th:value="*{password}"/>
+        <input type="submit" value="Sign up" class="button"/>
+    </form>
+    <a href="/" class="button">Back</a>
+</div>
+<footer></footer>
 </body>
 </html>
