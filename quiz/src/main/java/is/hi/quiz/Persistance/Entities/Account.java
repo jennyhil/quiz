@@ -1,9 +1,15 @@
 package is.hi.quiz.Persistance.Entities;
 
+import javax.persistence.*;
 import java.util.ArrayList;
-
+@Entity
+@Table(name = "accounts")
 public class Account {
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long ID;
+
     public String username;
     public String password;
     public String email;
@@ -18,7 +24,9 @@ public class Account {
         this.name = name;
         this.isAdmin = isAdmin;
     }
+    public Account() {
 
+    }
     public long getID() {
         return ID;
     }

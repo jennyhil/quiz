@@ -8,7 +8,7 @@ import java.util.List;
 
 public interface AccountService {
     List<Account> findAll();
-    Account findById(long ID);
+    //Account findById(long ID);
     Account save(Account account);
     void delete(Account account);
     Account findByUsername(String username);

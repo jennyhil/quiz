@@ -48,7 +48,7 @@ public class AccountController {
 
     @RequestMapping(value = "/login", method = RequestMethod.POST)
     public String loginPOST(Account account, BindingResult result, Model model, HttpSession session){
-        List <Account> acc = accountService.findAll();
+        //List <Account> acc = accountService.findAll();
         if(result.hasErrors()){
             return "login";
         }
@@ -59,10 +59,11 @@ public class AccountController {
             session.setAttribute("loggedInUser", exists);
             model.addAttribute("loggedInUser",exists);
             model.addAttribute("questions",allQuestions);
-            if(exists.isAdmin()){
+            /*if(exists.isAdmin()){
                 return "redirect:/admin";
             }
-            else return "loggedInUser";
+            else return "loggedInUser";*/
+            return "loggedInUser";
         }
         return "redirect:/";
     }
