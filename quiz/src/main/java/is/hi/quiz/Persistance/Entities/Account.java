@@ -2,6 +2,8 @@ package is.hi.quiz.Persistance.Entities;
 
 import javax.persistence.*;
 import java.util.ArrayList;
+import java.util.List;
+
 @Entity
 @Table(name = "accounts")
 public class Account {
@@ -10,12 +12,14 @@ public class Account {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long ID;
 
-    public String username;
-    public String password;
-    public String email;
-    public String name;
-    //private List<Scores> scores = new ArrayList<>();
-    public Boolean isAdmin;
+    private String username;
+    private String password;
+    private String email;
+    private String name;
+    private Boolean isAdmin;
+
+    @OneToMany(mappedBy = "account", cascade = CascadeType.ALL, orphanRemoval = true)
+    List<Scores> scores = new ArrayList<>();
 
     public Account(String username, String password, String email, String name, Boolean isAdmin) {
         this.username = username;

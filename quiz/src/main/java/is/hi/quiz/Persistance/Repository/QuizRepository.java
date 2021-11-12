@@ -12,7 +12,7 @@ public interface QuizRepository extends JpaRepository<Question,Long> {
     List<Question> findByCategoryID(int categoryID);
     List<Question> findAll();
 
-    @Override
-    void deleteAll();
+   /* @Override
+    void deleteAll();*/
 }
 // existsbyQuestionText
