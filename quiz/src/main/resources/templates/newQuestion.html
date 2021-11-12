@@ -2,33 +2,38 @@
 <html xmlns:th="https//thymeleaf.org">
 <head>
     <meta charset="UTF-8">
+    <link rel="stylesheet" type="text/css" href="/css/home.css"/>
     <title>Add a question</title>
 </head>
 <body>
-<form action="#" th:action="@{/addquestion}" th:object="${question}" method="post">
-    <label for="categoryID">CategoryID</label>
-    <input type="text" th:field="*{categoryID}" id="categoryID" placeholder="categoryID">
-    <span th:if="${#fields.hasErrors('categoryID')}" th:errors="*{categoryID}"></span>
-    <label for="questionText">Question Text</label>
-    <input type="text" th:field="*{questionText}" id="questionText" placeholder="Question Text">
-    <span th:if="${#fields.hasErrors('questionText')}" th:errors="*{questionText}"></span>
-    <label for="correctAnswer">Correct Answer </label>
-    <input type="text" th:field="*{correctAnswer}" id="correctAnswer" placeholder="Correct Answer">
-    <span th:if="${#fields.hasErrors('correctAnswer')}" th:errors="*{correctAnswer}"></span>
-    <label for="optionA">Option A </label>
-    <input type="text" th:field="*{optionA}" id="optionA" placeholder="Option A">
-    <span th:if="${#fields.hasErrors('optionA')}" th:errors="*{optionA}"></span>
-    <label for="optionB">Option B </label>
-    <input type="text" th:field="*{optionB}" id="optionB" placeholder="Option B">
-    <span th:if="${#fields.hasErrors('optionB')}" th:errors="*{optionB}"></span>
-    <label for="optionC">Option C </label>
-    <input type="text" th:field="*{optionC}" id="optionC" placeholder="Option C">
-    <span th:if="${#fields.hasErrors('optionC')}" th:errors="*{optionC}"></span>
-    <label for="optionD">Option D </label>
-    <input type="text" th:field="*{optionD}" id="optionD" placeholder="Option D">
-    <span th:if="${#fields.hasErrors('optionD')}" th:errors="*{optionD}"></span>
-    <input type="submit" value="Add Question">
-</form>
-<p><a href="/">Go back</a></p>
+    <header></header>
+    <div class="mainContainer">
+        <form action="#" th:action="@{/addquestion}" th:object="${question}" method="post" class="form">
+            <label for="categoryID">CategoryID</label>
+            <input type="text" th:field="*{categoryID}" id="categoryID" placeholder="categoryID">
+            <span th:if="${#fields.hasErrors('categoryID')}" th:errors="*{categoryID}"></span>
+            <label for="questionText">Question Text</label>
+            <input type="text" th:field="*{questionText}" id="questionText" placeholder="Question Text">
+            <span th:if="${#fields.hasErrors('questionText')}" th:errors="*{questionText}"></span>
+            <label for="correctAnswer">Correct Answer </label>
+            <input type="text" th:field="*{correctAnswer}" id="correctAnswer" placeholder="Correct Answer">
+            <span th:if="${#fields.hasErrors('correctAnswer')}" th:errors="*{correctAnswer}"></span>
+            <label for="optionA">Option A </label>
+            <input type="text" th:field="*{optionA}" id="optionA" placeholder="Option A">
+            <span th:if="${#fields.hasErrors('optionA')}" th:errors="*{optionA}"></span>
+            <label for="optionB">Option B </label>
+            <input type="text" th:field="*{optionB}" id="optionB" placeholder="Option B">
+            <span th:if="${#fields.hasErrors('optionB')}" th:errors="*{optionB}"></span>
+            <label for="optionC">Option C </label>
+            <input type="text" th:field="*{optionC}" id="optionC" placeholder="Option C">
+            <span th:if="${#fields.hasErrors('optionC')}" th:errors="*{optionC}"></span>
+            <label for="optionD">Option D </label>
+            <input type="text" th:field="*{optionD}" id="optionD" placeholder="Option D">
+            <span th:if="${#fields.hasErrors('optionD')}" th:errors="*{optionD}"></span>
+            <input type="submit" value="Add Question">
+        </form>
+        <a href="/">Go back</a>
+    </div>
+    <footer></footer>
 </body>
 </html>
