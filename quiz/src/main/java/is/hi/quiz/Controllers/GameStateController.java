@@ -27,7 +27,7 @@ public class GameStateController {
         quizService.resetNoOfQuestions();
         List<Category> allCategories = quizService.findAllCategories();
         model.addAttribute("categories" ,allCategories);
-        return "quizPage";
+        return "quizPage.html";
     }
     //kallað á þetta inn í loggedInUser
     @RequestMapping("/twoPlayer")
