@@ -15,7 +15,7 @@ header{
 .mainContainer{
     min-height: 100vh;
     width: 100%;
-    background-image: url("/css/img/backgound.jpg");
+    background-image: url("/css/img/background.jpg");
     background-repeat: no-repeat;
     background-position: center;
     background-size: cover;
