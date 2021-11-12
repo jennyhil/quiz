@@ -38,14 +38,7 @@ public class GameStateController {
         model.addAttribute("categories" ,allCategories);
         return "twoPlayer";
     }
-    //kallað á þetta inn í loggedInUser
-    @RequestMapping("/twoPlayer")
-    public String TwoPlayerController(Model model){
-        quizService.resetNoOfQuestions();
-        List<Category> allCategories = quizService.findAllCategories();
-        model.addAttribute("categories" ,allCategories);
-        return "twoPlayer";
-    }
+
     // Todo: Show high scores
     // Todo: Check for 1 or 2 player game
 
