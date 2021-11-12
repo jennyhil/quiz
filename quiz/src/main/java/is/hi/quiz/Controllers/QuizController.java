@@ -29,6 +29,14 @@ public class QuizController {
         model.addAttribute("questions", nextQuestion);
         return "displayQuestion";
     }
+    @GetMapping("/category2/{id}")
+    public String getQuestions2(@PathVariable("id")long id,Model model){
+        Question nextQuestion;
+        nextQuestion = getNextQuestion(id);
+        model.addAttribute("questions", nextQuestion);
+        return "displayQuestionTwoPlayer";
+    }
+
 
 
     // Helper function to get next question when button is clicked and keeps count of questions.
