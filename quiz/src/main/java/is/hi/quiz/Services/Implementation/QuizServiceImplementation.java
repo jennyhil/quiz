@@ -13,7 +13,6 @@ import java.util.List;
 @Service
 public class QuizServiceImplementation implements QuizService {
     // Here would be a Jpa link to QuizRepository
-    private List<Question> questionRepository= new ArrayList<>();
     private List<Category> categories = new ArrayList<>();
     private QuizRepository quizRepository;
 
@@ -26,7 +25,7 @@ public class QuizServiceImplementation implements QuizService {
         this.quizRepository=quizRepository;
         // Inserting questions into db.
         // TODO: Find a better way to insert into database.
-       /* quizRepository.save(new Question(0, "Question 1 - Category 0", "OptionA", "OptionA", "OptionB", "OptionC", "OptionD"));
+      /*  quizRepository.save(new Question(0, "Question 1 - Category 0", "OptionA", "OptionA", "OptionB", "OptionC", "OptionD"));
         quizRepository.save(new Question(0, "Question 2 - Category 0", "OptionA", "OptionA", "OptionB", "OptionC", "OptionD"));
         quizRepository.save(new Question(0, "Question 3 - Category 0", "OptionA", "OptionA", "OptionB", "OptionC", "OptionD"));
         quizRepository.save(new Question(1, "Question 1 - Category 1", "OptionA", "OptionA", "OptionB", "OptionC", "OptionD"));
