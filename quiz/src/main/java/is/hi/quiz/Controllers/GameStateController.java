@@ -13,7 +13,7 @@ import java.util.List;
 @Controller
 public class GameStateController {
     private QuizService quizService;
-    //public int noOfQuestions; í staðinn er quizService og quizImplementationSwrvice að halda utan um noQuestions.
+    //public int noOfQuestions; í staðinn er quizService og quizImplementationService að halda utan um noQuestions.
 
     @Autowired
     public GameStateController(QuizService quizService){
@@ -38,7 +38,14 @@ public class GameStateController {
         model.addAttribute("categories" ,allCategories);
         return "twoPlayer";
     }
-
+    //kallað á þetta inn í loggedInUser
+    @RequestMapping("/twoPlayer")
+    public String TwoPlayerController(Model model){
+        quizService.resetNoOfQuestions();
+        List<Category> allCategories = quizService.findAllCategories();
+        model.addAttribute("categories" ,allCategories);
+        return "twoPlayer";
+    }
     // Todo: Show high scores
     // Todo: Check for 1 or 2 player game
 
