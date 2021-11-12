@@ -9,7 +9,7 @@
     <header></header>
     <div class="mainContainer">
         <p> Yay you're an admin!</p>
-        <p><a href="/addquestion">Add a new question</a></p>
+        <p><a href="/addquestion" class="button">Add a new question</a></p>
         <div th:switch="${questions}">
             <h2 th:case="null">No questions yet!</h2>
             <div th:case="*">
@@ -25,7 +25,7 @@
                     <tr th:each="q : ${questions}">
                         <td th:text="${q.questionText}"></td>
                         <td th:text="${q.ID}"></td>
-                        <td><a th:href="@{/delete/{id}(id=${q.ID})}">Delete</a></td>
+                        <td><a th:href="@{/delete/{id}(id=${q.ID})}" class="button">Delete</a></td>
                     </tr>
                     </tbody>
                 </table>
