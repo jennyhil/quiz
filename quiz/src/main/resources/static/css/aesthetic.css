@@ -35,6 +35,18 @@ footer{
     align-items: center;
 }
 
+.secondContainer{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+h2, p{
+    padding: 12px 20px;
+    margin: 1px 0;
+}
+
 form{
     display: flex;
     flex-direction: column;
@@ -46,11 +58,6 @@ form{
 
 form label, form span{
     width: 100%;
-    padding: 12px 20px;
-    margin: 1px 0;
-}
-
-h2, p{
     padding: 12px 20px;
     margin: 1px 0;
 }
