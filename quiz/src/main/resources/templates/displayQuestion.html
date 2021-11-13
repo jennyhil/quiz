@@ -7,14 +7,13 @@
 </head>
 <body>
     <header></header>
-    <div th:switch="${questions}" class="mainContainer">
-        <div th:case="null">
-        <h2>Quiz over!</h2>
-        <p><a href="/quiz">Play a new game</a></p>
-            <p><a href="/">Quit</a></p>
-
+    <div th:switch="${questions}">
+        <div th:case="null" class="mainContainer">
+            <h2>Quiz over!</h2>
+            <a href="/quiz" class="button">Play a new game</a>
+            <a href="/" class="button">Quit</a>
         </div>
-        <div th:case="*">
+        <div th:case="*" class="mainContainer">
             <h2> Questions </h2>
             <div th:each="q:${questions}">
             <h2 th:text="${q.questionText}"></h2>

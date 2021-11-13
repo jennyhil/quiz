@@ -35,7 +35,7 @@ footer{
     align-items: center;
 }
 
-.form{
+form{
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -44,16 +44,16 @@ footer{
     padding: 5px;
 }
 
-.formLabel{
+form label{
     width: 100%;
     padding: 12px 20px;
-    margin: 2px 0;
+    margin: 1px 0;
 }
 
-.formInput{
+form input{
     width: 100%;
     padding: 12px 20px;
-    margin: 2px 0;
+    margin: 1px 0;
     box-sizing: border-box;
     border: 3px solid #ccc;
     -webkit-transition: 0.5s;
@@ -61,7 +61,7 @@ footer{
     outline: none;
 }
 
-.formInput[type=text]:focus{
+form input[type=text]:focus{
     border: 3px solid #555;
 }
 
