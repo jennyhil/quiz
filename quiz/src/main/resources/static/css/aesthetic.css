@@ -83,18 +83,8 @@ table{
     padding: 2px;
 }
 
-.tableContent{
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    margin: 2px;
-    padding: 2px;
-}
-
 .tableItems{
     display: flex;
-    flex-direction: row;
     justify-content: space-between;
     align-items: center;
     margin: 2px;
@@ -102,12 +92,12 @@ table{
 }
 
 .tableItem{
-    margin: 2px;
-    padding: 2px;
+    margin: 5px;
+    padding: 5px;
 }
 
 .thinButton{
-    height: fit-content;
+    height: 100%;
 }
 
 button, .button {

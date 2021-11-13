@@ -15,13 +15,13 @@
             <div th:case="*" class="secondContainer">
                 <h2>Questions</h2>
                 <table>
-                    <thead class="tableContent">
+                    <thead>
                         <tr class="tableItems">
                             <th class="tableItem">Question</th>
                             <th class="tableItem">Category</th>
                         </tr>
                     </thead>
-                    <tbody class="tableContent">
+                    <tbody>
                         <tr th:each="q : ${questions}" class="tableItems">
                             <td th:text="${q.questionText}" class="tableItem"></td>
                             <td th:text="${q.ID}" class="tableItem"></td>
