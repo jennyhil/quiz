@@ -65,6 +65,24 @@ form input[type=text]:focus{
     border: 3px solid #555;
 }
 
+table{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin: 2px;
+    padding: 2px;
+}
+
+table thead tr, table tbody tr{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    margin: 2px;
+    padding: 2px;
+}
+
 button, .button {
     background-color: darkorange;
     border: 1px solid white;
