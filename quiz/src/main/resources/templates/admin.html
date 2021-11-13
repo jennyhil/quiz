@@ -9,7 +9,7 @@
     <header></header>
     <div class="mainContainer">
         <p> Yay you're an admin!</p>
-        <p><a href="/addquestion" class="button">Add a new question</a></p>
+        <a href="/addquestion" class="button">Add a new question</a>
         <div th:switch="${questions}">
             <h2 th:case="null">No questions yet!</h2>
             <div th:case="*">
