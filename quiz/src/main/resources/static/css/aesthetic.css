@@ -74,7 +74,7 @@ table{
     padding: 2px;
 }
 
-table thead tr, table tbody tr{
+.tableContent{
     display: flex;
     flex-direction: row;
     justify-content: center;
@@ -83,7 +83,7 @@ table thead tr, table tbody tr{
     padding: 2px;
 }
 
-table thead tr th, table thead tr td{
+.tableItems{
     margin: 2px;
     padding: 2px;
 }

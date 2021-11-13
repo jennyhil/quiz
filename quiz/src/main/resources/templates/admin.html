@@ -15,17 +15,19 @@
             <div th:case="*">
                 <h2>Questions</h2>
                 <table>
-                    <thead>
-                        <tr>
+                    <thead class="tableContent">
+                        <tr class="tableItems">
                             <th>Question</th>
                             <th>Category</th>
                         </tr>
                     </thead>
-                    <tbody>
-                        <tr th:each="q : ${questions}">
+                    <tbody class="tableContent">
+                        <tr th:each="q : ${questions}" class="tableItems">
                             <td th:text="${q.questionText}"></td>
                             <td th:text="${q.ID}"></td>
-                            <td><a th:href="@{/delete/{id}(id=${q.ID})}" class="button">Delete</a></td>
+                            <td>
+                                <a th:href="@{/delete/{id}(id=${q.ID})}" class="button">Delete</a>
+                            </td>
                         </tr>
                     </tbody>
                 </table>
