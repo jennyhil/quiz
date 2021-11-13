@@ -65,6 +65,15 @@ form input[type=text]:focus{
     border: 3px solid #555;
 }
 
+.secondContainer{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin: 2px;
+    padding: 5px;
+}
+
 table{
     display: flex;
     flex-direction: column;
@@ -86,7 +95,7 @@ table{
 .tableItems{
     display: flex;
     flex-direction: row;
-    justify-content: center;
+    justify-content: space-between;
     align-items: center;
     margin: 2px;
     padding: 2px;
