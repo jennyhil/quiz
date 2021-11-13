@@ -11,11 +11,11 @@
     <h2 th:text="'Hello ' + ${loggedInUser.username}"></h2>
     <p> Welcome to Think Fast, a super amazing quiz game, now lets play!</p>
     <p>Pick a one or two player game</p>
-    <form  th:action="@{/quiz}" method="get" class="form">
-      <input type="radio" id="one" name="one" value="one" class="formInput">
-      <label for="one" class="formLabel">One player</label>
-      <input type="radio" id="two" name="two" value="two" class="formInput">
-      <label for="two" class="formLabel">Two player</label>
+    <form  th:action="@{/quiz}" method="get">
+      <input type="radio" id="one" name="one" value="one">
+      <label for="one">One player</label>
+      <input type="radio" id="two" name="two" value="two">
+      <label for="two">Two player</label>
       <button>Start quiz</button>
     </form>
     <a href="/" class="button">Back</a>
