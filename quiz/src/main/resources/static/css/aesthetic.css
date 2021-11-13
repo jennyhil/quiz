@@ -83,6 +83,11 @@ table thead tr, table tbody tr{
     padding: 2px;
 }
 
+table thead tr th, table thead tr td{
+    margin: 2px;
+    padding: 2px;
+}
+
 button, .button {
     background-color: darkorange;
     border: 1px solid white;
