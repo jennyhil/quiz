@@ -8,8 +8,8 @@
 <header></header>
 <div class="mainContainer">
     <h2>Signup for an account</h2>
-    <span th:if="${existsInput}">
-        <p th:text="Username is already in use" class="wrong"></p>
+    <span th:if="${alreadyExistsInput}">
+        <p th:text="'Username or password incorrect'"></p>
     </span>
     <form action="#" th:action="@{/signup}" th:object="${account}"  method="post">
         <label for="username">Username</label>

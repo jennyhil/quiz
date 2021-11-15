@@ -33,15 +33,15 @@ public class AccountController {
     @RequestMapping(value = "/signup", method = RequestMethod.POST)
     public String signupPOST(Account account, BindingResult result, Model model){
         if(result.hasErrors()){
-            return "redirect:/signup";
+            return "signup";
         }
         Account exists = accountService.findByUsername(account.getUsername());
         if(exists == null){
             accountService.save(account);
-            return "redirect:/";
+            return "home";
         }
-        model.addAttribute("existsInput", true);
-        return "redirect:/signup";
+        model.addAttribute("alreadyExistsInput", true);
+        return "signup";
     }
     @RequestMapping(value = "/login", method = RequestMethod.GET)
     public String loginGET(Account account){
