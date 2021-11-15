@@ -38,8 +38,10 @@ public class AccountController {
         Account exists = accountService.findByUsername(account.getUsername());
         if(exists == null){
             accountService.save(account);
+            return "redirect:/";
         }
-        return "redirect:/";
+        model.addAttribute("existsInput", true);
+        return "redirect:/signup";
     }
     @RequestMapping(value = "/login", method = RequestMethod.GET)
     public String loginGET(Account account){
@@ -48,7 +50,6 @@ public class AccountController {
 
     @RequestMapping(value = "/login", method = RequestMethod.POST)
     public String loginPOST(Account account, BindingResult result, Model model, HttpSession session){
-        var incorrectInput=false;
         if(result.hasErrors()){
             return "login";
         }
@@ -65,8 +66,7 @@ public class AccountController {
             else return "loggedInUser";*/
             return "loggedInUser";
         }
-        incorrectInput=true;
-        model.addAttribute("incorrectInput",incorrectInput );
+        model.addAttribute("incorrectInput",true);
         return "login";
     }
     @RequestMapping(value = "/admin", method = RequestMethod.GET)

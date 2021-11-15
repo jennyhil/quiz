@@ -9,7 +9,9 @@
     <div class="mainContainer">
         <h2>Login to your account</h2>
         <span th:if="${incorrectInput}">
-            <p th:text="'Username or password incorrect'"></p>
+            <p class="wrong">
+                Username or password incorrect
+            </p>
         </span>
         <form action="#" th:action="@{/login}" th:object="${account}"  method="post">
             <label for="username">Username</label>
