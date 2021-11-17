@@ -9,6 +9,8 @@ import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 
+import javax.servlet.http.HttpSession;
+import java.awt.*;
 import java.util.List;
 
 @Controller
@@ -22,12 +24,31 @@ public class QuizController {
 
     // Gets the id from chosen category and asks helper function getNextQuestion() to get questions from that category
     // Returns: A template with one questions and 4 options to choose from.
-    @GetMapping("/category/{id}")
+  /*  @GetMapping("/category/{id}")
+    public String getQuestions(@PathVariable("id")long id,@RequestParam(value = "option", required = false) String option,Model model){
+        System.out.println(option+" AND: "+quizService.getNoOfQuestions());
+        Question nextQuestion;
+        nextQuestion = getNextQuestion(id);
+        model.addAttribute("questions", nextQuestion);
+        return "displayQuestion";
+    }*/  @GetMapping("/category/{id}")
     public String getQuestions(@PathVariable("id")long id,Model model){
         Question nextQuestion;
         nextQuestion = getNextQuestion(id);
         model.addAttribute("questions", nextQuestion);
         return "displayQuestion";
+    }
+
+    @RequestMapping(value="/category/{id}",method=RequestMethod.POST)
+    public String checkAnswer(@PathVariable("id")long id,@RequestParam(value = "option", required = false) String option,Question question, BindingResult result,Model model){
+        Quiz quiz= quizService.getQuiz((int)id,1);
+        List<Question> allQuestions = quiz.getCategory().getQuestions();
+        String questionAnswer = allQuestions.get(quizService.getNoOfQuestions()-1).getCorrectAnswer();
+        if(questionAnswer.equals(option)){
+
+            System.out.println("CORRECT"+" Scores: ");
+        }
+        return"redirect:/category/{id}";
     }
     @GetMapping("/category2/{id}")
     public String getQuestions2(@PathVariable("id")long id,Model model){
@@ -36,8 +57,6 @@ public class QuizController {
         model.addAttribute("questions", nextQuestion);
         return "displayQuestionTwoPlayer";
     }
-
-
 
     // Helper function to get next question when button is clicked and keeps count of questions.
     // Param is the id of chosen category.

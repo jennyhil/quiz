@@ -15,13 +15,18 @@
     </div>
     <div th:case="*">
         <h2> Questions </h2>
+
         <div th:each="q:${questions}">
+            <form action="#" th:action="@{'/category/'+${q.categoryID}}" method="post">
         <h2 th:text="${q.questionText}"></h2>
-        <button th:onclick="|window.location.href='/category/${q.categoryID}'|" th:text="${q.optionA}"></button>
-        <button th:onclick="|window.location.href='/category/${q.categoryID}'|" th:text="${q.optionB}"></button>
-        <button th:onclick="|window.location.href='/category/${q.categoryID}'|" th:text="${q.optionC}"></button>
-        <button th:onclick="|window.location.href='/category/${q.categoryID}'|" th:text="${q.optionD}"></button>
+        <input type="submit" class="button" th:name="option" th:field="${q.optionA}" th:value="${q.optionA}" ></input>
+        <input type="submit" class="button" th:name="option" th:field="${q.optionB}" th:value="${q.optionB}"></input>
+        <input type="submit" class="button" th:name="option" th:field="${q.optionC}"th:value="${q.optionC}"></input>
+        <input type="submit" class="button" th:name="option" th:field="${q.optionD}"th:value="${q.optionD}"></inputn>
+                </select>
+            </form>
         </div>
+
     </div>
 
 </div>
