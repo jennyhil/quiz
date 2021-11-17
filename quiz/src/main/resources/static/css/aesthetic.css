@@ -1,9 +1,20 @@
+
+
 *{
-    margin: 0;
     padding: 0;
+    margin: 0;
 }
 
 header{
+    min-height: 5vh;
+    width: 100%;
+    background-color: darkorange;
+    background-position: center;
+    background-size: cover;
+    position: relative;
+}
+
+footer{
     min-height: 5vh;
     width: 100%;
     background-color: darkorange;
@@ -26,15 +37,41 @@ header{
     align-items: center;
 }
 
+.secondContainer{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+h2, p{
+    padding: 12px 20px;
+    margin: 1px 0;
+}
+
+.wrong{
+    color: red;
+}
+
 form{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
     margin: 5px;
     padding: 5px;
 }
 
-input{
+form label, form span{
     width: 100%;
     padding: 12px 20px;
-    margin: 8px 0;
+    margin: 1px 0;
+}
+
+form input{
+    width: 100%;
+    padding: 12px 20px;
+    margin: 1px 0;
     box-sizing: border-box;
     border: 3px solid #ccc;
     -webkit-transition: 0.5s;
@@ -42,11 +79,37 @@ input{
     outline: none;
 }
 
-input[type=text]:focus{
+form input[type=text]:focus{
     border: 3px solid #555;
 }
 
-.button{
+table{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin: 2px;
+    padding: 2px;
+}
+
+.tableItems{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: 2px;
+    padding: 2px;
+}
+
+.tableItem{
+    margin: 5px;
+    padding: 5px;
+}
+
+.thinButton{
+    height: 100%;
+}
+
+button, .button {
     background-color: darkorange;
     border: 1px solid white;
     color: white;
@@ -59,16 +122,7 @@ input[type=text]:focus{
     width: 150px;
 }
 
-.button:hover {
+button:hover, .button:hover {
     background-color: gray;
     color: black;
-}
-
-footer{
-    min-height: 5vh;
-    width: 100%;
-    background-color: darkorange;
-    background-position: center;
-    background-size: cover;
-    position: relative;
 }
