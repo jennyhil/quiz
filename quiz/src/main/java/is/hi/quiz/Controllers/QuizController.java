@@ -48,6 +48,7 @@ public class QuizController {
 
             System.out.println("CORRECT"+" Scores: ");
         }
+
         return"redirect:/category/{id}";
     }
     @GetMapping("/category2/{id}")

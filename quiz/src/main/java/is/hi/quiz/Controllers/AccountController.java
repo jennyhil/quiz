@@ -19,10 +19,12 @@ import java.util.List;
 public class AccountController {
     AccountService accountService;
     QuizService quizService;
+    public String currentPlayer;
 
     public AccountController(AccountService accountService, QuizService quizService) {
         this.accountService = accountService;
         this.quizService = quizService;
+
     }
 
     @RequestMapping(value = "/signup", method = RequestMethod.GET)
@@ -53,6 +55,7 @@ public class AccountController {
             return "login";
         }
         Account exists = accountService.login(account);
+        //currentPlayer=exists.getUsername();
         // Get all questions for admin delete and/or admin add question.
         List<Question> allQuestions = quizService.findAll();
         if(exists != null){

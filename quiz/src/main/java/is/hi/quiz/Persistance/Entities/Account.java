@@ -20,17 +20,41 @@ public class Account {
 
     @OneToMany(mappedBy = "account", cascade = CascadeType.ALL, orphanRemoval = true)
     List<Scores> scores = new ArrayList<>();
+    //int gamesWon
+    //int questionsAnswered;
+    //int correctAnswers;
 
-    public Account(String username, String password, String email, String name, Boolean isAdmin) {
+
+    public Account(String username, String password, String email, String name, Boolean isAdmin/*, int questionsAnswered, int correctAnswers*/) {
         this.username = username;
         this.password = password;
         this.email = email;
         this.name = name;
         this.isAdmin = isAdmin;
+      // this.questionsAnswered = questionsAnswered;
+      //  this.correctAnswers = correctAnswers;
+
     }
     public Account() {
 
     }
+/*
+    public int getQuestionsAnswered() {
+        return questionsAnswered;
+    }
+
+    public void setQuestionsAnswered(int questionsAnswered) {
+        this.questionsAnswered = questionsAnswered;
+    }
+
+    public int getCorrectAnswers() {
+        return correctAnswers;
+    }
+
+    public void setCorrectAnswers(int correctAnswers) {
+        this.correctAnswers = correctAnswers;
+    }
+*/
     public long getID() {
         return ID;
     }
