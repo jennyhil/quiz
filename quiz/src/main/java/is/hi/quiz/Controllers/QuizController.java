@@ -14,7 +14,6 @@ import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpSession;
 import java.awt.*;
-import java.util.ArrayList;
 import java.util.List;
 
 @Controller
@@ -34,7 +33,9 @@ public class QuizController {
      @GetMapping("/category/{id}")
     public String getQuestions(@PathVariable("id")long id,Model model){
         Question nextQuestion;
+         int scores=quizService.getScore();
         nextQuestion = getNextQuestion(id);
+         model.addAttribute("scores", scores);
         model.addAttribute("questions", nextQuestion);
         model.addAttribute("answers", answers);
         model.addAttribute("correctanswers", correctAnswers);
@@ -78,7 +79,6 @@ public class QuizController {
             return question;
         }
         quizService.saveScores(score);
-
         return null;
     }
 

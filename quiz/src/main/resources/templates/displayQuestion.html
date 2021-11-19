@@ -10,20 +10,20 @@
 <div th:switch="${questions}" >
     <div th:case="null"  class="mainContainer">
         <h2>Quiz over!</h2>
-            <div th:each="a:${answers}">
-                <p th:text="${a}">
-
-                </p>
-            </div>
-            <div th:each="a:${correctanswer}">
-                <p th:text="${a}">
-
-                </p>
-            </div>
+        <h2 th:text="'You scored ' + ${scores}+' points!'"></h2>
 
         <a href="/quiz" class="button">Play a new game</a>
         <a href="/" class="button">Quit</a>
+        <div th:each="a:${answers}">
+            <p th:text="${a}">
 
+            </p>
+        </div>
+        <div th:each="a:${correctanswer}">
+            <p th:text="${a}">
+
+            </p>
+        </div>
     </div>
     <div th:case="*"  class="mainContainer">
         <h2> Questions </h2>

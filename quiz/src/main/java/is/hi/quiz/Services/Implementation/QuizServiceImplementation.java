@@ -179,5 +179,4 @@ public class QuizServiceImplementation implements QuizService {
         return score;
     }
 
-
 }
