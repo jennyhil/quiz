@@ -25,7 +25,8 @@ public class QuizServiceImplementation implements QuizService {
         this.quizRepository=quizRepository;
         // Inserting questions into db.
         // TODO: Find a better way to insert into database.
-      /*  quizRepository.save(new Question(0, "Question 1 - Category 0", "OptionA", "OptionA", "OptionB", "OptionC", "OptionD"));
+        quizRepository.deleteAll();
+        quizRepository.save(new Question(0, "Question 1 - Category 0", "OptionA", "OptionA", "OptionB", "OptionC", "OptionD"));
         quizRepository.save(new Question(0, "Question 2 - Category 0", "OptionA", "OptionA", "OptionB", "OptionC", "OptionD"));
         quizRepository.save(new Question(0, "Question 3 - Category 0", "OptionA", "OptionA", "OptionB", "OptionC", "OptionD"));
         quizRepository.save(new Question(1, "Question 1 - Category 1", "OptionA", "OptionA", "OptionB", "OptionC", "OptionD"));
@@ -37,8 +38,8 @@ public class QuizServiceImplementation implements QuizService {
         quizRepository.save(new Question(3, "Question 1 - Category 3", "OptionA", "OptionA", "OptionB", "OptionC", "OptionD"));
         quizRepository.save(new Question(3, "Question 2 - Category 3", "OptionA", "OptionA", "OptionB", "OptionC", "OptionD"));
         quizRepository.save(new Question(3, "Question 3 - Category 3", "OptionA", "OptionA", "OptionB", "OptionC", "OptionD"));
-*/
-        //quizRepository.deleteAll();
+
+
         // Mögulega gera category repository til að adda categories ?
         categories.add(new Category(0, "Category 0"));
         categories.add(new Category(1, "Category 1"));

@@ -37,7 +37,13 @@ public class QuizController {
         return "displayQuestionTwoPlayer";
     }
 
-
+    @GetMapping("/questionForTwo/{id}")
+    public String getQuestions3(@PathVariable("id")long id,Model model){
+        Question nextQuestion;
+        nextQuestion = getNextQuestion(id);
+        model.addAttribute("questions", nextQuestion);
+        return "displayForPlayerTwo";
+    }
 
     // Helper function to get next question when button is clicked and keeps count of questions.
     // Param is the id of chosen category.
