@@ -36,7 +36,6 @@ public class QuizController {
         int scores=quizService.getScore();
          model.addAttribute("questions", nextQuestion);
          model.addAttribute("scores", scores);
-       //  model.addAttribute("scores", lisi);
         return "displayQuestion";
     }
 
