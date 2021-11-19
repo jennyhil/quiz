@@ -1,8 +1,6 @@
 package is.hi.quiz.Services;
 
-import is.hi.quiz.Persistance.Entities.Category;
-import is.hi.quiz.Persistance.Entities.Question;
-import is.hi.quiz.Persistance.Entities.Quiz;
+import is.hi.quiz.Persistance.Entities.*;
 
 import java.util.List;
 
@@ -17,4 +15,14 @@ public interface QuizService {
     int getNoOfQuestions();
     int resetNoOfQuestions();
     int incrementNoOfQuestion();
+    int resetScore();
+    int addScore(int score);
+    int getScore();
+
+    // For quizzes
+    List <Scores> findByAccountID(long accountID);
+    Scores saveScores(Scores scores);
+    List <Scores> findAllScores();
+
+
 }

@@ -2,6 +2,7 @@ package is.hi.quiz.Controllers;
 
 import is.hi.quiz.Persistance.Entities.Account;
 import is.hi.quiz.Persistance.Entities.Category;
+import is.hi.quiz.Services.AccountService;
 import is.hi.quiz.Services.QuizService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -13,11 +14,16 @@ import java.util.List;
 @Controller
 public class GameStateController {
     private QuizService quizService;
-    //public int noOfQuestions; í staðinn er quizService og quizImplementationService að halda utan um noQuestions.
+    private AccountController ac;
+    private AccountService as;
+ //   public Account account;
+  //  public int scores=0;
 
     @Autowired
-    public GameStateController(QuizService quizService){
+    public GameStateController(QuizService quizService,AccountService as,AccountController ac){
         this.quizService = quizService;
+        this.ac=ac;
+        this.as=as;
     }
 
     // Lists available categories for the quiz
@@ -25,6 +31,7 @@ public class GameStateController {
     @RequestMapping("/quiz")
     public String AccountController(Model model){
         quizService.resetNoOfQuestions();
+        quizService.resetScore();
         List<Category> allCategories = quizService.findAllCategories();
         model.addAttribute("categories" ,allCategories);
         return "quizPage";

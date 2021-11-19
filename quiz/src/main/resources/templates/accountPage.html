@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html xmlns:th="http://thymeleaf.org">
+<html lang="en">
+<link rel="stylesheet" type="text/css" href="/css/aesthetic.css"/>
+<head>
+    <meta charset="UTF-8">
+    <title>Top scores</title>
+</head>
+<body>
+<div class="mainContainer">
+<table>
+    <thead>
+    <tr class="tableItems">
+        <th class="tableItem">Score</th>
+        <th class="tableItem">Player</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="s : ${scores}" class="tableItems">
+        <td th:text="${s.getScore}" class="tableItem"></td>
+        <td th:text="${s.getAccount().getUsername()}" class="tableItem"></td>
+        <td class="tableItem">
+        </td>
+    </tr>
+    </tbody>
+</table>
+</div>
+</body>
+
+</html>

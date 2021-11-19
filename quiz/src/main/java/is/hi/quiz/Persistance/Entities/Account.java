@@ -20,6 +20,7 @@ public class Account {
 
     @OneToMany(mappedBy = "account", cascade = CascadeType.ALL, orphanRemoval = true)
     List<Scores> scores = new ArrayList<>();
+    //int gamesWon
 
     public Account(String username, String password, String email, String name, Boolean isAdmin) {
         this.username = username;
@@ -31,6 +32,12 @@ public class Account {
     public Account() {
 
     }
+
+
+    public void setScores(List<Scores> scores) {
+        this.scores = scores;
+    }
+
     public long getID() {
         return ID;
     }

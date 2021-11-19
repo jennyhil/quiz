@@ -14,21 +14,13 @@ import java.util.List;
 @Service
 public class AccountServiceImplementation implements AccountService {
     private AccountRepository accountRepository;
-    /*// Here would be a Jpa link to AccountRepository
-    private List<Account> accountRepository= new ArrayList<>();
-    private int id_counter=0;*/
+
 
     @Autowired
     public AccountServiceImplementation(AccountRepository accountRepository){
         this.accountRepository = accountRepository;
-        /*// Dummy data. To be removed when JPA added.
-        accountRepository.add(new Account("user","123","user@email.com","User",false));
-        accountRepository.add(new Account("admin","123","admin@email.com","Admin",true));
-        // jpa gives each question an ID but here we add manually.
-        for(Account a: accountRepository){
-        a.setID(id_counter);
-        id_counter++;
-        }*/
+        //accountRepository.deleteAll();
+        //accountRepository.save(new Account("admin","1234","email@email.com","Admin Adminsson",true));
     }
 
     @Override
