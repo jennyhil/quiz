@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html xmlns:th="http://thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" type="text/css" href="/css/aesthetic.css"/>
+    <title>Núna er nr 2 að gera</title>
+</head>
+<body>
+<header></header>
+<div th:switch="${questions}">
+    <div th:case="null" class="mainContainer">
+        <h2>Quiz over!</h2>
+        <a href="/quiz" class="button">Play a new game</a>
+        <a href="/" class="button">Quit</a>
+    </div>
+    <div th:case="*" class="mainContainer">
+        <h2> Questions for player 2 </h2>
+        <div th:each="q:${questions}">
+            <h2 th:text="${q.questionText}"></h2>
+            <button th:onclick="|window.location.href='/category/${q.categoryID}'|" th:text="${q.optionA}"></button>
+            <button th:onclick="|window.location.href='/category/${q.categoryID}'|" th:text="${q.optionB}"></button>
+            <button th:onclick="|window.location.href='/category/${q.categoryID}'|" th:text="${q.optionC}"></button>
+            <button th:onclick="|window.location.href='/category/${q.categoryID}'|" th:text="${q.optionD}"></button>
+        </div>
+    </div>
+</div>
+<footer></footer>
+</body>
+</html>
