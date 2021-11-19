@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 
 import javax.servlet.http.HttpSession;
 import java.util.List;
+import java.util.Objects;
 
 @Controller
 public class AccountController {
@@ -36,9 +37,13 @@ public class AccountController {
             return "signup";
         }
         Account exists = accountService.findByUsername(account.getUsername());
-        if(exists == null){
-            accountService.save(account);
-            return "home";
+        //Don't let an account be saved without a username or password
+        if(!Objects.equals(account.getPassword(), "") && !Objects.equals(account.getUsername(), "")) {
+            //Check if it already exists
+            if(exists == null){
+                accountService.save(account);
+                return "home";
+            }
         }
         model.addAttribute("alreadyExistsInput", true);
         return "signup";

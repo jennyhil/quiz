@@ -47,10 +47,6 @@ h2, p{
     margin: 1px 0;
 }
 
-.wrong{
-    color: red;
-}
-
 form{
     display: flex;
     flex-direction: column;
