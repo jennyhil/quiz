@@ -62,11 +62,12 @@ public class AccountController {
             return "login";
         }
         Account exists = accountService.login(account);
-        currentPlayer=exists.getUsername();
-        currentID=(int)exists.getID();
+
         // Get all questions for admin delete and/or admin add question.
         List<Question> allQuestions = quizService.findAll();
         if(exists != null){
+            currentPlayer=exists.getUsername();
+            currentID=(int)exists.getID();
             session.setAttribute("loggedInUser", exists);
             model.addAttribute("loggedInUser",exists);
             model.addAttribute("questions",allQuestions);

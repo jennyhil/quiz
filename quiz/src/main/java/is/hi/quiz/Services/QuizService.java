@@ -18,7 +18,10 @@ public interface QuizService {
     int resetScore();
     int addScore(int score);
     int getScore();
-
+    void addAnswer(String answer, String correctAns);
+    void resetAnswers();
+    List<String> getAnswers();
+    List<String> getCorrectAnswers();
     // For quizzes
     List <Scores> findByAccountID(long accountID);
     Scores saveScores(Scores scores);

@@ -19,6 +19,8 @@ public class QuizServiceImplementation implements QuizService {
     private int id_counter2 = 0;
     private int noOfQuestions = 0;
     private int score=0;
+    private List<String> answers = new ArrayList<>();
+    private List<String> correctAnswers= new ArrayList<>();
 
     @Autowired
     public QuizServiceImplementation(QuizRepository quizRepository, ScoreRepository scoreRepository) {
@@ -76,7 +78,21 @@ public class QuizServiceImplementation implements QuizService {
         return noOfQuestions++;
     }
 
+    public void resetAnswers() {
+        answers.clear();
+        correctAnswers.clear();
+    }
+    public void addAnswer(String answer, String correctAns) {
+        answers.add(answer);
+        correctAnswers.add(correctAns);
+    }
 
+    public List<String> getAnswers() {
+        return answers;
+    }
+    public List<String> getCorrectAnswers() {
+        return correctAnswers;
+    }
     /********************************************************************
      * Get questions handlers(save, delete, getby category, ID, etc...)
      ********************************************************************/

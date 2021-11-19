@@ -32,6 +32,7 @@ public class GameStateController {
     public String AccountController(Model model){
         quizService.resetNoOfQuestions();
         quizService.resetScore();
+        quizService.resetAnswers();
         List<Category> allCategories = quizService.findAllCategories();
         model.addAttribute("categories" ,allCategories);
         return "quizPage";
