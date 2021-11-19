@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpSession;
 import java.awt.*;
+import java.util.ArrayList;
 import java.util.List;
 
 @Controller
@@ -32,7 +33,10 @@ public class QuizController {
     public String getQuestions(@PathVariable("id")long id,Model model){
         Question nextQuestion;
         nextQuestion = getNextQuestion(id);
-        model.addAttribute("questions", nextQuestion);
+        int scores=quizService.getScore();
+         model.addAttribute("questions", nextQuestion);
+         model.addAttribute("scores", scores);
+       //  model.addAttribute("scores", lisi);
         return "displayQuestion";
     }
 

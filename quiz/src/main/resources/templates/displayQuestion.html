@@ -10,6 +10,8 @@
 <div th:switch="${questions}" >
     <div th:case="null"  class="mainContainer">
         <h2>Quiz over!</h2>
+        <h2 th:text="'You scored ' + ${scores}+' points!'"></h2>
+
         <a href="/quiz" class="button">Play a new game</a>
         <a href="/" class="button">Quit</a>
 
