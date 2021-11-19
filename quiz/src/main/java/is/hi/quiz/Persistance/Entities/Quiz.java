@@ -8,11 +8,25 @@ public class Quiz {
     Category category;
     //Timer timer;
     int noOfPlayers;
- // List category has a list of questions.
+    String loggedInUser;
+
+    public Quiz(String loggedInUser) {
+        this.loggedInUser = loggedInUser;
+    }
+
+    // List category has a list of questions.
     public Quiz(Category category,  int noOfPlayers) {
         this.category = category;
       //  this.timer = timer;
         this.noOfPlayers = noOfPlayers;
+    }
+
+    /*public String getLoggedInUser() {
+        return loggedInUser;
+    }*/
+
+    public void setLoggedInUser(String loggedInUser) {
+        this.loggedInUser = loggedInUser;
     }
 
     public long getID() {
