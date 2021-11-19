@@ -87,13 +87,6 @@ public class AccountController {
         return "topScores";
     }
 
-    @RequestMapping(value = "/mja", method = RequestMethod.GET)
-    public String mja(Model model, Account account){
-        List <Scores> scores = quizService.findAllScores();
-        model.addAttribute("scores",scores);
-        return "topScores";
-    }
-
     @RequestMapping(value = "/accountPage", method = RequestMethod.GET)
     public String accountPage(Model model, Account account){
         List <Scores> scores = quizService.findByAccountID(currentID);
