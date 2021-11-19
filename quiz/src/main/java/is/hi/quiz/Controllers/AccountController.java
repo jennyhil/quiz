@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 
 import javax.servlet.http.HttpSession;
 import java.util.List;
+import java.util.Objects;
 
 @Controller
 public class AccountController {
@@ -36,13 +37,19 @@ public class AccountController {
     @RequestMapping(value = "/signup", method = RequestMethod.POST)
     public String signupPOST(Account account, BindingResult result, Model model){
         if(result.hasErrors()){
-            return "redirect:/signup";
+            return "signup";
         }
         Account exists = accountService.findByUsername(account.getUsername());
-        if(exists == null){
-            accountService.save(account);
+        //Don't let an account be saved without a username or password
+        if(!Objects.equals(account.getPassword(), "") && !Objects.equals(account.getUsername(), "")) {
+            //Check if it already exists
+            if(exists == null){
+                accountService.save(account);
+                return "home";
+            }
         }
-        return "redirect:/";
+        model.addAttribute("alreadyExistsInput", true);
+        return "signup";
     }
     @RequestMapping(value = "/login", method = RequestMethod.GET)
     public String loginGET(Account account){
@@ -51,7 +58,6 @@ public class AccountController {
 
     @RequestMapping(value = "/login", method = RequestMethod.POST)
     public String loginPOST(Account account, BindingResult result, Model model, HttpSession session){
-        var incorrectInput=false;
         if(result.hasErrors()){
             return "login";
         }
@@ -70,8 +76,7 @@ public class AccountController {
            // else return "loggedInUser";
             return "loggedInUser";
         }
-        incorrectInput=true;
-        model.addAttribute("incorrectInput",incorrectInput );
+        model.addAttribute("incorrectInput",true);
         return "login";
     }
     @RequestMapping(value = "/admin", method = RequestMethod.GET)

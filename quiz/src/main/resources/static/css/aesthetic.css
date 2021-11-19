@@ -1,18 +1,10 @@
 *{
     padding: 0;
     margin: 0;
+    font-family: "Times New Roman", Times, serif;
 }
 
-header{
-    min-height: 5vh;
-    width: 100%;
-    background-color: darkorange;
-    background-position: center;
-    background-size: cover;
-    position: relative;
-}
-
-footer{
+header, footer{
     min-height: 5vh;
     width: 100%;
     background-color: darkorange;
