@@ -14,7 +14,6 @@ import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpSession;
 import java.awt.*;
-import java.util.ArrayList;
 import java.util.List;
 
 @Controller
@@ -22,6 +21,8 @@ public class QuizController {
     private QuizService quizService;
     private AccountService as;
     private AccountController ac;
+    private List<String> answers = new ArrayList<>();
+    private List<String> correctAnswers= new ArrayList<>();
 
     @Autowired
     public QuizController(QuizService quizService, AccountService as,AccountController ac){
@@ -32,10 +33,12 @@ public class QuizController {
      @GetMapping("/category/{id}")
     public String getQuestions(@PathVariable("id")long id,Model model){
         Question nextQuestion;
+         int scores=quizService.getScore();
         nextQuestion = getNextQuestion(id);
-        int scores=quizService.getScore();
-         model.addAttribute("questions", nextQuestion);
          model.addAttribute("scores", scores);
+        model.addAttribute("questions", nextQuestion);
+        model.addAttribute("answers", answers);
+        model.addAttribute("correctanswers", correctAnswers);
         return "displayQuestion";
     }
 
@@ -44,6 +47,8 @@ public class QuizController {
         Quiz quiz= quizService.getQuiz((int)id,1);
         List<Question> allQuestions = quiz.getCategory().getQuestions();
         String questionAnswer = allQuestions.get(quizService.getNoOfQuestions()-1).getCorrectAnswer();
+        answers.add(option);
+        correctAnswers.add(questionAnswer);
         if(questionAnswer.equals(option)){
             quizService.addScore(100);
             System.out.println("CORRECT: "+" scores: "+quizService.getScore());
