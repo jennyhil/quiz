@@ -11,9 +11,9 @@
             <h2 th:text="'Hello ' + ${loggedInUser.username}"></h2>
             <p> Welcome to Think Fast, a super amazing quiz game, now lets play!</p>
             <p>Pick a one or two player game</p>
-            <a href="/quiz" class="button">One Player</a>
-            <a href="/twoPlayer" class="button">Two Players</a>
-            <a href="/" class="button">Back</a>
+            <a href="@{/quiz}" class="button">One Player</a>
+            <a href="@{/twoPlayer}" class="button">Two Players</a>
+            <a href="{@/}" class="button">Back</a>
         </div>
         <footer></footer>
     </body>

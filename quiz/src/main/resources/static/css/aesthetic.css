@@ -16,7 +16,7 @@ header, footer{
 .mainContainer{
     min-height: 100vh;
     width: 100%;
-    background-image: url("/css/img/background.jpg");
+    background-image: url("images/background.jpg");
     background-repeat: no-repeat;
     background-position: center;
     background-size: cover;
@@ -111,4 +111,8 @@ button, .button {
 button:hover, .button:hover {
     background-color: gray;
     color: black;
+}
+
+.test{
+    background-color: deepskyblue;
 }

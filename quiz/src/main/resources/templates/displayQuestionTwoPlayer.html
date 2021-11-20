@@ -6,9 +6,9 @@
         <title>Quiz</title>
     </head>
     <body>
-
+        <header></header>
         <div th:switch="${questions}">
-            <div th:case="null">
+            <div th:case="null" class="mainContainer">
                 <h2>Two player, now it's your turn!</h2>
                 <h2> Questions </h2>
                 <div th:each="q:${questions}">
@@ -19,9 +19,7 @@
                     <button th:onclick="|window.location.href='/category2/${q.categoryID}'|" th:text="${q.optionD}"></button>
                 </div>
             </div>
-
-
-            <div th:case="*">
+            <div th:case="*" class="mainContainer">
                 <h2> Questions </h2>
                 <div th:each="q:${questions}">
                     <h2 th:text="${q.questionText}"></h2>
@@ -32,6 +30,6 @@
                 </div>
             </div>
         </div>
-
+        <footer></footer>
     </body>
 </html>

@@ -32,7 +32,7 @@
                 <span th:if="${#fields.hasErrors('optionD')}" th:errors="*{optionD}"></span>
                 <input type="submit" value="Add Question" class="button">
             </form>
-            <a href="/" class="button">Go back</a>
+            <a th:href="@{/}" class="button">Go back</a>
         </div>
         <footer></footer>
     </body>

@@ -9,7 +9,7 @@
         <header></header>
         <div class="mainContainer">
             <p> Yay you're an admin!</p>
-            <a href="/addquestion" class="button">Add a new question</a>
+            <a th:href="@{/addquestion}" class="button" >Add a new question</a>
             <div th:switch="${questions}">
                 <h2 th:case="null" class="secondContainer">No questions yet!</h2>
                 <div th:case="*" class="secondContainer">
@@ -33,7 +33,7 @@
                     </table>
                 </div>
             </div>
-            <a href="/" class="button">Back</a>
+            <a th:href="@{/}" class="button">Back</a>
         </div>
         <footer></footer>
     </body>
