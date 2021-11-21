@@ -9,8 +9,14 @@
     <div class="mainContainer">
         <h2>Login to your account</h2>
         <span th:if="${incorrectInput}">
+              <span th:if="!${notRegistered}">
             <p th:text="'Username or password incorrect'"></p>
+                </span>
         </span>
+        <span th:if="${notRegistered}">
+             <p th:text="'Username not found. Want to sign up ?'"></p>
+        </span>
+
         <form action="#" th:action="@{/login}" th:object="${account}"  method="post">
             <label for="username">Username</label>
             <input type="text" name="username" id="username" th:field="*{username}"/>

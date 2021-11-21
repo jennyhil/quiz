@@ -61,6 +61,8 @@ public class AccountController {
         if(result.hasErrors()){
             return "login";
         }
+        Account username =accountService.findByUsername(account.getUsername());
+        if(username==null)  model.addAttribute("notRegistered",true);
         Account exists = accountService.login(account);
 
         // Get all questions for admin delete and/or admin add question.
