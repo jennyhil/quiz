@@ -43,6 +43,7 @@ public class GameStateController {
         quizService.resetNoOfQuestions();
         quizService.resetScore();
         quizService.resetAnswers();
+        qc.guestScore=0;
         System.out.println("No of players: "+players);
         if(players.equals("One Player"))quizService.setOnePlayer();
         if(players.equals("Two Player"))quizService.setTwoPlayer();

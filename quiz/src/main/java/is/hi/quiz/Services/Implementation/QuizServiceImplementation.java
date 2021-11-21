@@ -19,9 +19,9 @@ public class QuizServiceImplementation implements QuizService {
     private int id_counter2 = 0;
     private int noOfQuestions = 0;
     private int score=0;
+    private int guestScore=0;
     private List<String> answers = new ArrayList<>();
     private List<String> correctAnswers= new ArrayList<>();
-    private int questionListLength=0;
     private Boolean twoPlayer = false;
     @Autowired
     public QuizServiceImplementation(QuizRepository quizRepository, ScoreRepository scoreRepository) {
@@ -42,7 +42,7 @@ public class QuizServiceImplementation implements QuizService {
         quizRepository.save(new Question(3, "Question 2 - Category 3", "OptionA", "OptionA", "OptionB", "OptionC", "OptionD"));
         quizRepository.save(new Question(3, "Question 3 - Category 3", "OptionA", "OptionA", "OptionB", "OptionC", "OptionD"));
        */
-        // scoreRepository.deleteAll();
+         //scoreRepository.deleteAll();
         //quizRepository.deleteAll();
         // Mögulega gera category repository til að adda categories ?
         categories.add(new Category(0, "Category 0"));
@@ -94,15 +94,7 @@ public class QuizServiceImplementation implements QuizService {
     public List<String> getCorrectAnswers() {
         return correctAnswers;
     }
-/*
-    public void setQuestionListLength(int no){
-        questionListLength=no;
-    }
 
-    public int getQuestionListLength(){
-        return questionListLength;
-    }
-*/
 public Boolean isTwoPlayer(){
         return twoPlayer;
 }

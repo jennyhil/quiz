@@ -73,7 +73,6 @@ public class QuizController {
         quizService.addAnswer(option, questionAnswer);
         if(questionAnswer.equals(option)){
             if(!nextPlayer)quizService.addScore(100);
-            //System.out.println("CORRECT: "+" scores: "+quizService.getScore());
             else guestScore+=100;
         }
         return"redirect:/category/{id}";
@@ -101,11 +100,11 @@ public class QuizController {
             quizService.incrementNoOfQuestion();
             // Change player's turn and save account score
             if(quizService.getNoOfQuestions()>limit && !nextPlayer){
-                quizService.saveScores(score);
                 if(quizService.isTwoPlayer())nextPlayer=true;
             }
             return question;
         }
+        quizService.saveScores(score);
         nextPlayer=false;
         return null;
     }
