@@ -19,14 +19,17 @@ public class QuizServiceImplementation implements QuizService {
     private int id_counter2 = 0;
     private int noOfQuestions = 0;
     private int score=0;
-
+    private int guestScore=0;
+    private List<String> answers = new ArrayList<>();
+    private List<String> correctAnswers= new ArrayList<>();
+    private Boolean twoPlayer = false;
     @Autowired
     public QuizServiceImplementation(QuizRepository quizRepository, ScoreRepository scoreRepository) {
         this.quizRepository = quizRepository;
         this.scoreRepository = scoreRepository;
         // Inserting questions into db.
         // TODO: Find a better way to insert into database.
-      /*  quizRepository.save(new Question(0, "Question 1 - Category 0", "OptionA", "OptionA", "OptionB", "OptionC", "OptionD"));
+    /*    quizRepository.save(new Question(0, "Question 1 - Category 0", "OptionA", "OptionA", "OptionB", "OptionC", "OptionD"));
         quizRepository.save(new Question(0, "Question 2 - Category 0", "OptionA", "OptionA", "OptionB", "OptionC", "OptionD"));
         quizRepository.save(new Question(0, "Question 3 - Category 0", "OptionA", "OptionA", "OptionB", "OptionC", "OptionD"));
         quizRepository.save(new Question(1, "Question 1 - Category 1", "OptionA", "OptionA", "OptionB", "OptionC", "OptionD"));
@@ -39,7 +42,7 @@ public class QuizServiceImplementation implements QuizService {
         quizRepository.save(new Question(3, "Question 2 - Category 3", "OptionA", "OptionA", "OptionB", "OptionC", "OptionD"));
         quizRepository.save(new Question(3, "Question 3 - Category 3", "OptionA", "OptionA", "OptionB", "OptionC", "OptionD"));
        */
-        // scoreRepository.deleteAll();
+         //scoreRepository.deleteAll();
         //quizRepository.deleteAll();
         // Mögulega gera category repository til að adda categories ?
         categories.add(new Category(0, "Category 0"));
@@ -51,7 +54,7 @@ public class QuizServiceImplementation implements QuizService {
             c.setID(id_counter2);
             id_counter2++;
         }
-        helper();
+        helper(id_counter2);
     }
 
     /****************************
@@ -63,17 +66,45 @@ public class QuizServiceImplementation implements QuizService {
     public int resetNoOfQuestions() {
         return noOfQuestions = 0;
     }
+
     // Gets how many questions have been displayed/asked
     @Override
     public int getNoOfQuestions() {
         return noOfQuestions;
     }
+
     // We need to increment after each question to get to next question after answering question w. button click
     @Override
     public int incrementNoOfQuestion() {
         return noOfQuestions++;
     }
 
+    public void resetAnswers() {
+        answers.clear();
+        correctAnswers.clear();
+    }
+    public void addAnswer(String answer, String correctAns) {
+        answers.add(answer);
+        correctAnswers.add(correctAns);
+    }
+
+    public List<String> getAnswers() {
+        return answers;
+    }
+    public List<String> getCorrectAnswers() {
+        return correctAnswers;
+    }
+
+public Boolean isTwoPlayer(){
+        return twoPlayer;
+}
+
+public void setTwoPlayer(){
+        twoPlayer=true;
+}
+    public void setOnePlayer(){
+        twoPlayer=false;
+    }
     /********************************************************************
      * Get questions handlers(save, delete, getby category, ID, etc...)
      ********************************************************************/
@@ -84,36 +115,42 @@ public class QuizServiceImplementation implements QuizService {
     public List<Category> findAllCategories() {
         return categories;
     }
+
     // Get questions by category
     @Override
     public List<Question> findByCategory(int categoryID) {
         return quizRepository.findByCategoryID(categoryID);
     }
+
     // Returns all questions in database
     @Override
     public List<Question> findAll() {
         return quizRepository.findAll();
     }
+
     // Finds a question by it's ID
     @Override
     public Question findById(long ID) {
         return quizRepository.findById(ID);
     }
+
     // Admin required for this action
     @Override
     public Question save(Question question) {
         return quizRepository.save(question);
     }
+
     // Admin required for this action
     @Override
     public void delete(Question question) {
         quizRepository.delete(question);
     }
+
     // Returns quiz by categoryID according to chosen category in template
     // contains a category with a set of questions.
     @Override
     public Quiz getQuiz(int categoryID, int noOfplayers) {
-        helper();
+        helper(categoryID);
         for (Category c : categories) {
             if (categoryID == c.getID()) {
                 quiz = new Quiz(c, noOfplayers);
@@ -122,17 +159,18 @@ public class QuizServiceImplementation implements QuizService {
         }
         return null;
     }
+
     // Helper function
     // Add questions from dummy question db to relevant categories to make a "question package" for each category.
-    public void helper() {
+    public void helper(int categoryID) {
         for (int j = 0; j < categories.size(); j++) {
-            List<Question> allQuestions = quizRepository.findAll();
-            List<Question> questionList = new ArrayList<>();
+           List<Question> questionList = quizRepository.findByCategoryID(categoryID);
+         /*   List<Question> questionList = new ArrayList<>();
             for (int i = 0; i < allQuestions.size(); i++) {
                 if (categories.get(j).getCategoryID() == allQuestions.get(i).getCategoryID()) {
                     questionList.add(allQuestions.get(i));
                 }
-            }
+            }*/
             categories.get(j).setQuestions(questionList);
         }
     }
@@ -151,9 +189,8 @@ public class QuizServiceImplementation implements QuizService {
 
     @Override
     public List<Scores> findAllScores() {
-        //return scoreRepository.findTop10ByOrderByScoreDesc();
-        return scoreRepository.findAll();
-    }
+        return scoreRepository.findTop10ByOrderByScoreDesc();
+     }
 
     // Helper function to keep track of scores when game is being played - could be done another way probably
     // Resets once round is over

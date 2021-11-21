@@ -11,8 +11,12 @@
     <h2 th:text="'Hello ' + ${loggedInUser.username}"></h2>
     <p> Welcome to Think Fast, a super amazing quiz game, now lets play!</p>
     <p>Pick a one or two player game</p>
-    <a href="/quiz" class="button">One Player</a>
-    <a href="/twoPlayer" class="button">Two Players</a>
+    <form th:action="@{/quiz}" method="post" class="form">
+      <input type="submit" class="button" th:name="players" th:field="OnePlayer" th:value="'One Player'"></input>
+      <input type="submit" class="button" th:name="players" th:field="TwoPlayer" th:value="'Two Player'" ></input>
+    </form>
+
+
     <a href="/" class="button">Back</a>
   </div>
   <footer></footer>
