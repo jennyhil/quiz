@@ -42,7 +42,7 @@ public class GameStateController {
     public String startQuiz(@RequestParam(value = "players", required = false) String players,Model model){
         quizService.resetNoOfQuestions();
         quizService.resetScore();
-
+        quizService.resetAnswers();
         System.out.println("No of players: "+players);
         if(players.equals("One Player"))quizService.setOnePlayer();
         if(players.equals("Two Player"))quizService.setTwoPlayer();
