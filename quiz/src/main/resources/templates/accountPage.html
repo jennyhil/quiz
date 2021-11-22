@@ -6,8 +6,20 @@
 <link rel="stylesheet" type="text/css" href="/css/aesthetic.css"/>
     <title>Top scores</title>
 </head>
+<header>
+    <a href="/user" class="button">Home</a>
+    <a href="/accountPage" class="button">Game statistics</a>
+    <a href="/topscores" class="button">Top scores</a>
+</header>
 <body>
+<div th:switch="${statistics}">
 <div class="mainContainer">
+        <div th:case="null">
+          <h2> You haven't played any quizzes.</h2>
+        </div>
+
+<div th:case="*" class="mainContainer">
+
     <h2 th:text="'You have answered ' + ${statistics.getQuestionsAnswered()}+' questions!'"></h2>
     <h2 th:text="'You have answered ' + ${statistics.getAnsweredCorrectly()}+' questions correct!'"></h2>
     <h2 th:text="'You have played ' + ${statistics.getGamesPlayed()}+' games!'"></h2>
@@ -28,6 +40,8 @@
     </tr>
     </tbody>
 </table>
+    </div>
+    </div>
 </div>
 <a href="/user" class="button">Back</a>
 <a href="/" class="button">Quit</a>

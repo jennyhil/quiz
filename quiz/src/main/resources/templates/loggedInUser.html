@@ -6,8 +6,10 @@
   <title>What user is logged in?</title>
 </head>
 <body>
-<header>
+<<header>
+  <a href="/user" class="button">Home</a>
   <a href="/accountPage" class="button">Game statistics</a>
+  <a href="/topscores" class="button">Top scores</a>
 </header>
   <div class="mainContainer">
     <h2 th:text="'Hello ' + ${loggedInUser.username}"></h2>

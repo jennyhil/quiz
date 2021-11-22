@@ -28,7 +28,7 @@ public class QuizServiceImplementation implements QuizService {
         this.scoreRepository = scoreRepository;
         // Inserting questions into db.
         // TODO: Find a better way to insert into database.
-        /*
+/*
         quizRepository.save(new Question(0, "What is the only sport to be played on the moon?", "Golf", "Golf", "Football", "Basketball", "Bowling"));
         quizRepository.save(new Question(0, "Which country won the first ever football world cup?", "Uruguay", "Argentina", "Brazil", "Uruguay", "Columbia"));
         quizRepository.save(new Question(0, "Who did Bobby Fischer defeat to win the World Chess Championship in 1972 in a famous match held in Reykjavik?", "Boris Spassky", "Garry Kasparov", "Boris Spassky", "Anatoly Karpov", "Paul Morphy"));
