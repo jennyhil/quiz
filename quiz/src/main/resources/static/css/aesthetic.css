@@ -1,7 +1,7 @@
 *{
     padding: 0;
     margin: 0;
-    font-family: "Times New Roman", Times, serif;
+    font-family: "Arial", Helvetica, sans-serif;
 }
 
 header, footer{
@@ -113,6 +113,12 @@ button:hover, .button:hover {
     color: black;
 }
 
-.test{
+.wrong {
+    color: red;
+}
+
+
+.test{/*note til að tjekka hvort það se 100% að syna breytingar*/
     background-color: deepskyblue;
+    color: deeppink;
 }

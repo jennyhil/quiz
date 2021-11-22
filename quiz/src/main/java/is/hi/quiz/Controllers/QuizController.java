@@ -19,9 +19,9 @@ import java.util.List;
 
 @Controller
 public class QuizController {
-    private QuizService quizService;
-    private AccountService as;
-    private AccountController ac;
+    private final QuizService quizService;
+    private final AccountService as;
+    private final AccountController ac;
     private Boolean nextPlayer=false;
     public int guestScore=0;
     private Scores score;

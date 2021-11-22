@@ -2,14 +2,14 @@
 <html xmlns:th="http://thymeleaf.org" lang="en">
     <head>
         <meta charset="UTF-8">
-        <link rel="stylesheet" type="text/css" href="/css/aesthetic.css"/>
+        <link rel="stylesheet" type="text/css" th:href="@{/css/aesthetic.css}"/>
         <title>Quiz</title>
     </head>
     <body>
         <header></header>
-        <div th:switch="${categories}" class="mainContainer">
-            <h2 th:case="null">No questions yet!</h2>
-            <div th:case="*">
+        <div th:switch="${categories}">
+            <h2 th:case="null" class="mainContainer">No questions yet!</h2>
+            <div th:case="*" class="mainContainer">
                 <h2> Pick a category! </h2>
                 <form th:each="c:${categories}" th:action="@{'/category/'+${c.ID}}" method="get" class="form">
                     <button th:text="${c.categoryName}" class="test"></button>

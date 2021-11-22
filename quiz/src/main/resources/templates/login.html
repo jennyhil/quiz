@@ -1,7 +1,7 @@
 <html xmlns:th="https://thymeleaf.org">
     <head>
         <meta charset="UTF-8">
-        <link rel="stylesheet" type="text/css" href="/css/aesthetic.css"/>
+        <link rel="stylesheet" type="text/css" th:href="@{/css/aesthetic.css}"/>
         <title>Login</title>
     </head>
     <body>
@@ -24,7 +24,7 @@
                 <input type="password" name="password" id="password" th:value="*{password}"/>
                 <input type="submit" value="Login" class="button"/>
             </form>
-            <a href="/" class="button">Back</a>
+            <a th:href="@{/}" class="button">Back</a>
         </div>
         <footer></footer>
     </body>
