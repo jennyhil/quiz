@@ -1,9 +1,6 @@
 package is.hi.quiz.Controllers;
 
-import is.hi.quiz.Persistance.Entities.Account;
-import is.hi.quiz.Persistance.Entities.Question;
-import is.hi.quiz.Persistance.Entities.Quiz;
-import is.hi.quiz.Persistance.Entities.Scores;
+import is.hi.quiz.Persistance.Entities.*;
 import is.hi.quiz.Services.AccountService;
 import is.hi.quiz.Services.QuizService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -25,6 +22,9 @@ public class QuizController {
     private Boolean nextPlayer=false;
     public int guestScore=0;
     private Scores score;
+    private Statistics statistic;
+    private Account account;
+    private boolean quizOver=false;
 
     @Autowired
     public QuizController(QuizService quizService, AccountService as,AccountController ac){
@@ -62,7 +62,8 @@ public class QuizController {
         model.addAttribute("p2corrAnswers",p2corrAnswers);
         model.addAttribute("p1answers",p1Answers);
         model.addAttribute("p2answers",p2Answers);
-        return "displayQuestion";
+
+         return "displayQuestion";
     }
 
     @RequestMapping(value="/category/{id}",method=RequestMethod.POST)
@@ -72,9 +73,15 @@ public class QuizController {
         String questionAnswer = allQuestions.get(quizService.getNoOfQuestions()-1).getCorrectAnswer();
         quizService.addAnswer(option, questionAnswer);
         if(questionAnswer.equals(option)){
-            if(!nextPlayer)quizService.addScore(100);
+            if(!nextPlayer){
+                quizService.addScore(100);
+                as.addAnsweredCorrectly(1);
+            }
             else guestScore+=100;
+
         }
+        // Count answered questions
+        if(!nextPlayer)as.addQuestionsAnswered(1);
         return"redirect:/category/{id}";
     }
 
@@ -104,14 +111,29 @@ public class QuizController {
             }
             return question;
         }
-        quizService.saveScores(score);
-        nextPlayer=false;
+        setStatisticAndScore();
         return null;
     }
 
+public boolean exists(){
+    Statistics exists = as.findByAccountID((int)account.getID());
+        if(exists!=null)return true;
+        else return false;
+}
+
+public void setStatisticAndScore(){
+    as.addGamesPlayed(1);
+    statistic = new Statistics(account,(int)account.getID(),as.getQuestionsAnswered(),as.getAnsweredCorrectly(),as.getGamesPlayed());
+    quizService.saveScores(score);
+    if(exists()) as.updateStatistics(as.getQuestionsAnswered(),as.getAnsweredCorrectly(),as.getGamesPlayed(),(int)account.getID());
+    else as.saveStatistics(statistic);
+    nextPlayer=false;
+}
+
+
     public void onePlayerSetUp(){
         if(!nextPlayer) {
-            Account account = as.findByUsername(ac.currentPlayer);
+            account = as.findByUsername(ac.currentPlayer);
             score = new Scores(account, quizService.getScore());
         }
     }

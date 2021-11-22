@@ -32,6 +32,7 @@ public interface QuizService {
     void setTwoPlayer();
     void setOnePlayer();
 
+
     // Scores
     List <Scores> findByAccountID(long accountID);
     Scores saveScores(Scores scores);
