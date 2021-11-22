@@ -28,20 +28,20 @@ public class QuizServiceImplementation implements QuizService {
         this.scoreRepository = scoreRepository;
         // Inserting questions into db.
         // TODO: Find a better way to insert into database.
-    /*    quizRepository.save(new Question(0, "Question 1 - Category 0", "OptionA", "OptionA", "OptionB", "OptionC", "OptionD"));
-        quizRepository.save(new Question(0, "Question 2 - Category 0", "OptionA", "OptionA", "OptionB", "OptionC", "OptionD"));
-        quizRepository.save(new Question(0, "Question 3 - Category 0", "OptionA", "OptionA", "OptionB", "OptionC", "OptionD"));
-        quizRepository.save(new Question(1, "Question 1 - Category 1", "OptionA", "OptionA", "OptionB", "OptionC", "OptionD"));
-        quizRepository.save(new Question(1, "Question 2 - Category 1", "OptionA", "OptionA", "OptionB", "OptionC", "OptionD"));
-        quizRepository.save(new Question(1, "Question 3 - Category 1", "OptionA", "OptionA", "OptionB", "OptionC", "OptionD"));
-        quizRepository.save(new Question(2, "Question 1 - Category 2", "OptionA", "OptionA", "OptionB", "OptionC", "OptionD"));
-        quizRepository.save(new Question(2, "Question 2 - Category 2", "OptionA", "OptionA", "OptionB", "OptionC", "OptionD"));
-        quizRepository.save(new Question(2, "Question 3 - Category 2", "OptionA", "OptionA", "OptionB", "OptionC", "OptionD"));
-        quizRepository.save(new Question(3, "Question 1 - Category 3", "OptionA", "OptionA", "OptionB", "OptionC", "OptionD"));
-        quizRepository.save(new Question(3, "Question 2 - Category 3", "OptionA", "OptionA", "OptionB", "OptionC", "OptionD"));
-        quizRepository.save(new Question(3, "Question 3 - Category 3", "OptionA", "OptionA", "OptionB", "OptionC", "OptionD"));
-       */
-         //scoreRepository.deleteAll();
+        /*
+        quizRepository.save(new Question(0, "What is the only sport to be played on the moon?", "Golf", "Golf", "Football", "Basketball", "Bowling"));
+        quizRepository.save(new Question(0, "Which country won the first ever football world cup?", "Uruguay", "Argentina", "Brazil", "Uruguay", "Columbia"));
+        quizRepository.save(new Question(0, "Who did Bobby Fischer defeat to win the World Chess Championship in 1972 in a famous match held in Reykjavik?", "Boris Spassky", "Garry Kasparov", "Boris Spassky", "Anatoly Karpov", "Paul Morphy"));
+        quizRepository.save(new Question(0, "What’s the diameter of a basketball hoop in inches?", "18 inches", "14 inches", "16 inches", "18 inches", "20 inches"));
+        quizRepository.save(new Question(0, "How long is the total distance of a marathon in kilometers?", "42.16 kilometers", "42.16 kilometers", "40.12 kilometers", "45.41 kilometers", "47.82 kilometers"));
+        quizRepository.save(new Question(0, "Who is the Premier League’s all-time top scorer?", "Alan Shearer", "Wayne Rooney", "Andy Cole", "Robbie Fowler", "Alan Shearer"));
+        quizRepository.save(new Question(0, "What was Muhammad Ali’s original name?", "Cassius Clay", "Rubin Carter", "Cassius Clay", "Joe Louis", "Jimmy Wilde"));
+        quizRepository.save(new Question(0, "Which Formula 1 driver has won the most races in the history of the sport?", "Lewis Hamilton", "Michael Schumacher", "Sebastian Vettel", "Ayrton Senna", "Lewis Hamilton"));
+        quizRepository.save(new Question(0, "How many NBA championships did Michael Jordan win with the Chicago Bulls?", "6", "4", "5", "6", "7"));
+        quizRepository.save(new Question(0, "How many medals did China win at the Beijing Olympics?", "100", "37", "51", "67", "100"));
+*/
+
+        //scoreRepository.deleteAll();
         //quizRepository.deleteAll();
         // Mögulega gera category repository til að adda categories ?
         categories.add(new Category(0, "Category 0"));
