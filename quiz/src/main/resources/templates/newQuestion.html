@@ -6,7 +6,10 @@
         <title>Add a question</title>
     </head>
     <body>
-    <th:block th:insert="generalComponents :: header-default"></th:block>
+    <header>
+        <a th:href="@{/user}" class="button">Account</a>
+        <a th:href="@{/}" class="button">Log out</a>
+    </header>
         <div class="mainContainer">
             <form action="#" th:action="@{/addquestion}" th:object="${question}" method="post">
                 <label for="categoryID">CategoryID</label>

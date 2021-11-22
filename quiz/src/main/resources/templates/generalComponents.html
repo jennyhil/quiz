@@ -1,17 +1,27 @@
 <!DOCTYPE HTML>
 <html xmlns:th="http://www.thymeleaf.org" lang="en">
-    <head>
+    <head th:fragment="head (var)">
         <meta charset="UTF-8">
         <link rel="stylesheet" type="text/css" th:href="@{/css/aesthetic.css}"/>
-        <title>Home</title>
+        <title th:text="${var}"></title>
     </head>
     <body>
     <header th:fragment="header-default"></header>
-    <header th:fragment="header-2"></header>
+    <header th:fragment="header-2">
         <ul>
-            <li><a th:href="@{/loggedInUser}">Account</a></li>
-            <li><a th:href="@{/topScores}">Scores</a></li>
+            <a th:href="@{/user}" class="button">Back</a>
+            <a th:href="@{/}" class="button">Quit</a>
         </ul>
+    </header>
+
+    <table>
+
+    </table>
+
+    <form>
+
+    </form>
+
     <footer th:fragment="footer"></footer>
     </body>
 </html>

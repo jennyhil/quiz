@@ -11,7 +11,10 @@
     <a href="/topscores" class="button">Top scores</a>
 </header>
 <body>
-<th:block th:insert="generalComponents :: header-default"></th:block>
+    <header>
+        <a th:href="@{/user}" class="button">Account</a>
+        <a th:href="@{/}" class="button">Log out</a>
+    </header>
     <div th:switch="${categories}" class="mainContainer">
         <h2 th:case="null">No questions yet!</h2>
         <div th:case="*">

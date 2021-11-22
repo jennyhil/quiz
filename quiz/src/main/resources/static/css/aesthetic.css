@@ -114,12 +114,20 @@ button:hover, .button:hover {
     color: black;
 }
 
-.wrong {
-    color: red;
+.bg {
+    background-color: darkorange;
+    border-width: thick;
+    border-color: #cccccc;
+    border-style: solid;
+    border-radius: 16px;
 }
 
-.title{
-    font-size: 3ch;
+.rounded{
+    border-radius: 20px;
+}
+
+.wrong {
+    color: red;
 }
 
 
