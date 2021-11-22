@@ -1,0 +1,19 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <link rel="stylesheet" type="text/css" th:href="@{/css/aesthetic.css}"/>
+        <title>Home</title>
+    </head>
+    <body>
+    <header th:fragment="header-default"></header>
+    <header th:fragment="header-2"></header>
+        <ul>
+            <li><a th:href="@{/loggedInUser}">Account</a></li>
+            <li><a th:href="@{/topScores}">Scores</a></li>
+        </ul>
+    <footer th:fragment="footer">
+
+    </footer>
+    </body>
+</html>

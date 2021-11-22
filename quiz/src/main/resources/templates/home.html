@@ -6,7 +6,7 @@
         <title>Home</title>
     </head>
     <body>
-        <header></header>
+        <th:block th:insert="~{generalComponents :: header-default}"></th:block>
         <div class="mainContainer">
             <a th:href="@{/login}" class="button">Log in</a>
             <a th:href="@{/signup}" class="button">Sign up</a>
