@@ -47,7 +47,7 @@ h2, p{
     margin:  0.5rem 0;
 }
 
-form{
+form, table{
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -77,15 +77,6 @@ form input[type=text]:focus{
     border: 0.25rem solid #555;
 }
 
-table{
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    margin: 1rem;
-    padding: 1rem;
-}
-
 .tableItems{
     display: flex;
     justify-content: space-between;
@@ -99,13 +90,10 @@ table{
     margin: 0.5rem 0;
 }
 
-.thinButton{
-    height: 100%;
-}
-
 button, .button {
     background-color: darkorange;
     border: 0.25rem solid white;
+    border-radius: 1rem;
     color: white;
     padding: 1rem 1.5rem;
     margin: 0.5rem;
@@ -119,16 +107,12 @@ button:hover, .button:hover {
     color: black;
 }
 
-.rounded{
-    border-radius: 1rem;
-}
-
 .wrong {
     color: red;
 }
 
 
-.test{/*note til að tjekka hvort það se 100% að syna breytingar*/
+.test{/*nota til að tjekka hvort það se 100% að syna breytingar*/
     background-color: deepskyblue;
     color: deeppink;
 }

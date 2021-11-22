@@ -48,7 +48,7 @@
                     <a th:href="@{/user}" class="button">Play a new game</a>
                     <a th:href="@{/}" class="button">Quit</a>
                 </div>
-                <div th:case="*"  class="mainContainer">
+                <div th:case="*">
                     <div th:each="q:${questions}">
                         <div th:if="${!nextPlayer}">
                         <h2> Questions </h2>
@@ -78,5 +78,6 @@
                 </div>
             </div>
         </div>
+        <th:block th:insert="generalComponents :: footer"></th:block>
     </body>
 </html>
