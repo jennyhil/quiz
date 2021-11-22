@@ -1,8 +1,8 @@
 <!DOCTYPE html>
-<html xmlns:th="http://thymeleaf.org">
+<html xmlns:th="http://thymeleaf.org" lang="en">
 <head>
     <meta charset="UTF-8">
-    <link rel="stylesheet" type="text/css" href="/css/aesthetic.css"/>
+    <link rel="stylesheet" type="text/css" th:href="@{/css/aesthetic.css}"/>
     <title>Admin page</title>
 </head>
 <body>
@@ -12,7 +12,7 @@
             <h2 th:case="null" class="secondContainer">No questions yet!</h2>
             <div th:case="*" class="secondContainer">
                 <h2>Questions</h2>
-                <a href="/addquestion" class="button">Add a new question</a>
+                <a th:href="@{/addquestion}" class="button">Add a new question</a>
                 <table>
                     <thead>
 
@@ -28,8 +28,8 @@
                 </table>
             </div>
         </div>
-        <a href="/" class="button">Back</a>
+        <a th:href="@{/}" class="button">Back</a>
     </div>
-    <footer></footer>
+    <th:block th:insert="generalComponents :: footer"></th:block>
 </body>
 </html>

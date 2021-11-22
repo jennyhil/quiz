@@ -1,35 +1,34 @@
 <!DOCTYPE html>
-<html xmlns:th="http://thymeleaf.org">
-<link rel="stylesheet" type="text/css" href="/css/aesthetic.css"/>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-</head>
-<header>
-    <a href="/user" class="button">Home</a>
-    <a href="/accountPage" class="button">Game statistics</a>
-    <a href="/topscores" class="button">Top scores</a>
-    <a href="/logout" class="button">Log out</a>
-</header>
-<body>
-<div class="mainContainer">
-<table>
-    <thead>
-    <tr class="tableItems">
-        <th class="tableItem">Score</th>
-        <th class="tableItem">Player</th>
-    </tr>
-    </thead>
-    <tbody>
-    <tr th:each="s : ${scores}" class="tableItems">
-        <td th:text="${s.getScore}" class="tableItem"></td>
-        <td th:text="${s.getAccount().getUsername()}" class="tableItem"></td>
-        <td class="tableItem">
-        </td>
-    </tr>
-    </tbody>
-</table>
-</div>
-</body>
+<html xmlns:th="http://thymeleaf.org" lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <link rel="stylesheet" type="text/css" th:href="@{/css/aesthetic.css}"/>
+        <title>Title</title>
+    </head>
+    <body>
+        <header>
+            <a href="/user" class="button">Home</a>
+            <a href="/accountPage" class="button">Game statistics</a>
+            <a href="/topscores" class="button">Top scores</a>
+            <a href="/logout" class="button">Log out</a>
+        </header>
+        <div class="mainContainer">
+            <table>
+                <thead>
+                    <tr class="tableItems">
+                        <th class="tableItem">Score</th>
+                        <th class="tableItem">Player</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr th:each="s : ${scores}" class="tableItems">
+                        <td th:text="${s.getScore}" class="tableItem"></td>
+                        <td th:text="${s.getAccount().getUsername()}" class="tableItem"></td>
+                        <td class="tableItem"></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    <th:block th:insert="generalComponents :: footer"></th:block>
+    </body>
 </html>

@@ -2,16 +2,16 @@
 <html xmlns:th="http://thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <link rel="stylesheet" type="text/css" href="/css/aesthetic.css"/>
+    <link rel="stylesheet" type="text/css" th:href="@{/css/aesthetic.css}"/>
     <title>Quiz</title>
 </head>
+<body>
 <header>
     <a href="/user" class="button">Home</a>
     <a href="/accountPage" class="button">Game statistics</a>
     <a href="/topscores" class="button">Top scores</a>
     <a href="/logout" class="button">Log out</a>
 </header>
-<body>
 <div th:switch="${questions}" >
     <div th:case="null"  class="mainContainer">
         <h2>Quiz over!</h2>
@@ -47,8 +47,8 @@
             </div>
         </div>
 
-        <a href="/user" class="button">Play a new game</a>
-        <a href="/" class="button">Quit</a>
+        <a th:href="@{/user}" class="button">Play a new game</a>
+        <a th:href="@{/}" class="button">Quit</a>
     </div>
     <div th:case="*"  class="mainContainer">
         <div th:each="q:${questions}">
@@ -56,10 +56,10 @@
         <h2> Questions </h2>
             <form action="#" th:action="@{'/category/'+${q.categoryID}}" method="post">
                 <h2 th:text="${q.questionText}"></h2>
-                <input type="submit" class="button" th:name="option" th:field="${q.optionA}" th:value="${q.optionA}" ></input>
-                <input type="submit" class="button" th:name="option" th:field="${q.optionB}" th:value="${q.optionB}"></input>
-                <input type="submit" class="button" th:name="option" th:field="${q.optionC}"th:value="${q.optionC}"></input>
-                <input type="submit" class="button" th:name="option" th:field="${q.optionD}"th:value="${q.optionD}"></inputn>
+                <input type="submit" class="button" th:name="option" th:field="${q.optionA}" th:value="${q.optionA}"/>
+                <input type="submit" class="button" th:name="option" th:field="${q.optionB}" th:value="${q.optionB}"/>
+                <input type="submit" class="button" th:name="option" th:field="${q.optionC}"th:value="${q.optionC}"/>
+                <input type="submit" class="button" th:name="option" th:field="${q.optionD}"th:value="${q.optionD}"/>
                 </select>
             </form>
         </div>
@@ -70,12 +70,13 @@
 
             <form action="#" th:action="@{'/category/'+${q.categoryID}}" method="post">
                 <h2 th:text="${q.questionText}"></h2>
-                <input type="submit" class="button" th:name="option" th:field="${q.optionA}" th:value="${q.optionA}" ></input>
-                <input type="submit" class="button" th:name="option" th:field="${q.optionB}" th:value="${q.optionB}"></input>
-                <input type="submit" class="button" th:name="option" th:field="${q.optionC}"th:value="${q.optionC}"></input>
-                <input type="submit" class="button" th:name="option" th:field="${q.optionD}"th:value="${q.optionD}"></inputn>
+                <input type="submit" class="button" th:name="option" th:field="${q.optionA}" th:value="${q.optionA}"/>
+                <input type="submit" class="button" th:name="option" th:field="${q.optionB}" th:value="${q.optionB}"/>
+                <input type="submit" class="button" th:name="option" th:field="${q.optionC}"th:value="${q.optionC}"/>
+                <input type="submit" class="button" th:name="option" th:field="${q.optionD}"th:value="${q.optionD}"/>
                 </select>
             </form>
+
         </div>
         </div>
     </div>

@@ -15,8 +15,8 @@ import java.util.List;
 
 @Controller
 public class GameStateController {
-    private QuizService quizService;
-    private QuizController qc;
+    private final QuizService quizService;
+    private final QuizController qc;
 
     @Autowired
     public GameStateController(QuizService quizService,QuizController qc){
