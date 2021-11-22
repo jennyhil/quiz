@@ -5,16 +5,13 @@
     <link rel="stylesheet" type="text/css" href="/css/aesthetic.css"/>
     <title>Quiz</title>
 </head>
+<body>
+
 <header>
     <a href="/user" class="button">Home</a>
     <a href="/accountPage" class="button">Game statistics</a>
     <a href="/topscores" class="button">Top scores</a>
 </header>
-<body>
-    <header>
-        <a th:href="@{/user}" class="button">Account</a>
-        <a th:href="@{/}" class="button">Log out</a>
-    </header>
     <div th:switch="${categories}" class="mainContainer">
         <h2 th:case="null">No questions yet!</h2>
         <div th:case="*">

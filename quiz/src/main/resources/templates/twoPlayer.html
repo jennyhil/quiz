@@ -6,10 +6,12 @@
         <title>This is a two player game :D</title>
     </head>
     <body>
-        <header>
-            <a th:href="@{/user}" class="button">Account</a>
-            <a th:href="@{/}" class="button">Log out</a>
-        </header>
+
+    <header>
+        <a href="/user" class="button">Home</a>
+        <a href="/accountPage" class="button">Game statistics</a>
+        <a href="/topscores" class="button">Top scores</a>
+    </header>
         <div th:switch="${categories}">
             <h2 th:case="null" class="mainContainer">No questions yet!</h2>
             <div th:case="*" class="mainContainer">
