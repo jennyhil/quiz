@@ -1,16 +1,12 @@
 <!DOCTYPE html>
 <html xmlns:th="http://thymeleaf.org" lang="en">
-    <head>
-        <meta charset="UTF-8">
-        <link rel="stylesheet" type="text/css" th:href="@{/css/aesthetic.css}"/>
-        <title>Home</title>
-    </head>
+    <th:block th:insert="generalComponents :: head"> </th:block>
     <body>
-        <th:block th:insert="generalComponents :: header-default"></th:block>
+        <th:block th:insert="generalComponents :: header-default"> </th:block>
         <div class="mainContainer">
             <a th:href="@{/login}" class="button">Log in</a>
             <a th:href="@{/signup}" class="button">Sign up</a>
         </div>
-        <th:block th:insert="generalComponents :: footer"></th:block>
+        <th:block th:insert="generalComponents :: footer"> </th:block>
     </body>
 </html>
