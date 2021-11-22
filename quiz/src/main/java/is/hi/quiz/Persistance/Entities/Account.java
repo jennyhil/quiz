@@ -24,7 +24,7 @@ public class Account {
     @OneToOne(mappedBy = "account", cascade = CascadeType.ALL, orphanRemoval = true)
     Statistics statistics;
 
-    public Account(String username, String password, String email, String name) {
+    public Account(String username, String password, String email, String name,boolean isAdmin) {
         this.username = username;
         this.password = password;
         this.email = email;

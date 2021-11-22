@@ -6,7 +6,11 @@
         <title>Title</title>
     </head>
     <body>
-    <th:block th:insert="generalComponents :: header-default"></th:block>
+        <header>
+            <a href="/user" class="button">Home</a>
+            <a href="/accountPage" class="button">Game statistics</a>
+            <a href="/topscores" class="button">Top scores</a>
+        </header>
         <div class="mainContainer">
             <table>
                 <thead>
@@ -24,6 +28,5 @@
                 </tbody>
             </table>
         </div>
-    <th:block th:insert="generalComponents :: footer"></th:block>
     </body>
 </html>

@@ -33,6 +33,7 @@ public class AccountController {
 
     @RequestMapping(value = "/signup", method = RequestMethod.GET)
     public String signupGET(Account account){
+        account.setAdmin(false);
         return "signup";
     }
 
@@ -43,9 +44,11 @@ public class AccountController {
         }
         Account exists = accountService.findByUsername(account.getUsername());
         //Don't let an account be saved without a username or password
+        System.out.println(account.isAdmin());
         if(!Objects.equals(account.getPassword(), "") && !Objects.equals(account.getUsername(), "")) {
             //Check if it already exists
-            if(exists == null){
+           if(exists == null){
+
                 accountService.save(account);
                 return "home";
             }
@@ -76,7 +79,6 @@ public class AccountController {
           /* if(exists.isAdmin()){
                 return "redirect:/admin";
             }*/
-            // else return "loggedInUser";
             return "redirect:/user";
         }
         model.addAttribute("incorrectInput",true);
@@ -95,7 +97,10 @@ public class AccountController {
 
     @RequestMapping(value = "/admin", method = RequestMethod.GET)
     public String adminPage(Model model, Account account){
+
         List <Question> questions = quizService.findAll();
+        System.out.println("LENGTH"+questions.size());
+        for(Question q: questions)System.out.println("ALL QUESTIONS"+q.getQuestionText());
         model.addAttribute("questions",questions);
         return "admin";
     }
