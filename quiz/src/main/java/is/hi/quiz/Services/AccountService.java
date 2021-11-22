@@ -14,6 +14,7 @@ public interface AccountService {
     void delete(Account account);
     Account findByUsername(String username);
     Account login(Account account);
+    Account logout(Account account);
 
     // Statistics stuff
     Statistics saveStatistics(Statistics statistics);

@@ -61,6 +61,17 @@ public class AccountServiceImplementation implements AccountService {
         return null;
     }
 
+    public  Account logout(Account account){
+        Account doesExist = findByUsername(account.getUsername());
+        if(doesExist != null){
+            if(doesExist.getPassword().equals(account.getPassword())){
+                 doesExist=null;
+                 return doesExist;
+            }
+        }
+        return null;
+    }
+
     // Statistics stuff
     @Override
     public Statistics saveStatistics(Statistics statistics) {

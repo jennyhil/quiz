@@ -5,7 +5,7 @@
 }
 
 header, footer{
-    min-height: 5vh;
+    min-height: 3vh;
     width: 100%;
     background-color: darkorange;
     background-position: center;
@@ -111,4 +111,8 @@ button, .button {
 button:hover, .button:hover {
     background-color: gray;
     color: black;
+}
+
+.a {
+    margin:1vh;
 }

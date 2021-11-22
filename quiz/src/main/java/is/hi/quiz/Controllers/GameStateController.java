@@ -44,10 +44,8 @@ public class GameStateController {
         quizService.resetScore();
         quizService.resetAnswers();
         qc.guestScore=0;
-        System.out.println("No of players: "+players);
         if(players.equals("One Player"))quizService.setOnePlayer();
         if(players.equals("Two Player"))quizService.setTwoPlayer();
-        //else quizService.setQuestionListLength(2);
         System.out.println(quizService.isTwoPlayer());
         List<Category> allCategories = quizService.findAllCategories();
         model.addAttribute("categories" ,allCategories);

@@ -44,7 +44,6 @@ public class AccountController {
         }
         Account exists = accountService.findByUsername(account.getUsername());
         //Don't let an account be saved without a username or password
-        System.out.println(account.isAdmin());
         if(!Objects.equals(account.getPassword(), "") && !Objects.equals(account.getUsername(), "")) {
             //Check if it already exists
            if(exists == null){
@@ -76,14 +75,23 @@ public class AccountController {
             currentID=(int)exists.getID();
             session.setAttribute("loggedInUser", exists);
             model.addAttribute("loggedInUser",exists);
-          /* if(exists.isAdmin()){
+            if(exists.isAdmin()==null)return "redirect:/user";
+            else if(exists.isAdmin()){
                 return "redirect:/admin";
-            }*/
-            return "redirect:/user";
+            }
+
         }
         model.addAttribute("incorrectInput",true);
         return "login";
     }
+    @RequestMapping(value = "/logout", method = RequestMethod.GET)
+    public String logoutGET(Account account){
+        System.out.println("LOG OUT");
+        if(exists!=null)exists=accountService.logout(exists);
+        currentPlayer=null;
+        return "home";}
+
+
 
     @RequestMapping(value = "/user", method = RequestMethod.GET)
     public String userPage(Model model,Account account){
@@ -99,8 +107,6 @@ public class AccountController {
     public String adminPage(Model model, Account account){
 
         List <Question> questions = quizService.findAll();
-        System.out.println("LENGTH"+questions.size());
-        for(Question q: questions)System.out.println("ALL QUESTIONS"+q.getQuestionText());
         model.addAttribute("questions",questions);
         return "admin";
     }
