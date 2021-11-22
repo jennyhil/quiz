@@ -1,23 +1,26 @@
 <!DOCTYPE html>
-<html xmlns:th="https://thymeleaf.org" lang="en">
-  <head>
-    <meta charset="UTF-8">
-    <link rel="stylesheet" type="text/css" th:href="@{/css/aesthetic.css}"/>
-    <title>What user is logged in?</title>
-  </head>
-  <body>
-    <th:block th:insert="generalComponents :: header-default"> </th:block>
-    <div class="mainContainer">
-      <h2 th:text="'Hello ' + ${loggedInUser.username}"></h2>
-      <p> Welcome to Think Fast, a super amazing quiz game, now lets play!</p>
-      <p>Pick a one or two player game</p>
-      <form th:action="@{/quiz}" method="post" class="form">
-        <input type="submit" class="button" th:name="players" th:field="OnePlayer" th:value="'One Player'"/>
-        <input type="submit" class="button" th:name="players" th:field="TwoPlayer" th:value="'Two Player'"/>
-      </form>
+<html xmlns:th="https://thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <link rel="stylesheet" type="text/css" href="/css/aesthetic.css"/>
+  <title>What user is logged in?</title>
+</head>
+<body>
+  <header>
+    <a th:href="@{/accountPage}" class="button">Game statistics</a>
+  </header>
+  <div class="mainContainer">
+    <h2 th:text="'Hello ' + ${loggedInUser.username}"></h2>
+    <p> Welcome to Think Fast, a super amazing quiz game, now lets play!</p>
+    <p>Pick a one or two player game</p>
+    <form th:action="@{/quiz}" method="post" class="form">
+      <input type="submit" class="button" th:name="players" th:field="OnePlayer" th:value="'One Player'"></input>
+      <input type="submit" class="button" th:name="players" th:field="TwoPlayer" th:value="'Two Player'" ></input>
+    </form>
 
-      <a th:href="@{/}" class="button">Back</a>
-    </div>
-    <th:block th:insert="generalComponents :: footer"> </th:block>
-  </body>
+
+    <a th:href="@{/}" class="button">Back</a>
+  </div>
+  <th:block th:insert="generalComponents :: footer"> </th:block>
+</body>
 </html>
