@@ -6,35 +6,34 @@
         <title>Quiz</title>
     </head>
     <body>
-
-    <header>
-        <a href="/user" class="button">Home</a>
-        <a href="/accountPage" class="button">Game statistics</a>
-        <a href="/topscores" class="button">Top scores</a>
-    </header>
-        <div th:switch="${questions}">
-            <div th:case="null" class="mainContainer">
-                <h2>Two player, now it's your turn!</h2>
-                <h2> Questions </h2>
-                <div th:each="q:${questions}">
-                    <h2 th:text="${q.questionText}"></h2>
-                    <button th:onclick="|window.location.href='/category2/${q.categoryID}'|" th:text="${q.optionA}"></button>
-                    <button th:onclick="|window.location.href='/category2/${q.categoryID}'|" th:text="${q.optionB}"></button>
-                    <button th:onclick="|window.location.href='/category2/${q.categoryID}'|" th:text="${q.optionC}"></button>
-                    <button th:onclick="|window.location.href='/category2/${q.categoryID}'|" th:text="${q.optionD}"></button>
+        <header>
+            <div th:include="generalComponents :: headerContent"></div>
+        </header>
+        <div class="mainContainer">
+            <div th:switch="${questions}" class="secondContainer">
+                <div th:case="null">
+                    <h2>Two player, now it's your turn!</h2>
+                    <h2> Questions </h2>
+                    <div th:each="q:${questions}">
+                        <h2 th:text="${q.questionText}"></h2>
+                        <button th:onclick="|window.location.href='/category2/${q.categoryID}'|" th:text="${q.optionA}"></button>
+                        <button th:onclick="|window.location.href='/category2/${q.categoryID}'|" th:text="${q.optionB}"></button>
+                        <button th:onclick="|window.location.href='/category2/${q.categoryID}'|" th:text="${q.optionC}"></button>
+                        <button th:onclick="|window.location.href='/category2/${q.categoryID}'|" th:text="${q.optionD}"></button>
+                    </div>
                 </div>
-            </div>
-            <div th:case="*" class="mainContainer">
-                <h2> Questions </h2>
-                <div th:each="q:${questions}">
-                    <h2 th:text="${q.questionText}"></h2>
-                    <button th:onclick="|window.location.href='/category2/${q.categoryID}'|" th:text="${q.optionA}"></button>
-                    <button th:onclick="|window.location.href='/category2/${q.categoryID}'|" th:text="${q.optionB}"></button>
-                    <button th:onclick="|window.location.href='/category2/${q.categoryID}'|" th:text="${q.optionC}"></button>
-                    <button th:onclick="|window.location.href='/category2/${q.categoryID}'|" th:text="${q.optionD}"></button>
+                <div th:case="*">
+                    <h2> Questions </h2>
+                    <div th:each="q:${questions}">
+                        <h2 th:text="${q.questionText}"></h2>
+                        <button th:onclick="|window.location.href='/category2/${q.categoryID}'|" th:text="${q.optionA}"></button>
+                        <button th:onclick="|window.location.href='/category2/${q.categoryID}'|" th:text="${q.optionB}"></button>
+                        <button th:onclick="|window.location.href='/category2/${q.categoryID}'|" th:text="${q.optionC}"></button>
+                        <button th:onclick="|window.location.href='/category2/${q.categoryID}'|" th:text="${q.optionD}"></button>
+                    </div>
                 </div>
             </div>
         </div>
-    <th:block th:insert="generalComponents :: footer"></th:block>
+        <th:block th:insert="generalComponents :: footer"></th:block>
     </body>
 </html>

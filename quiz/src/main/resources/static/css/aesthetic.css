@@ -35,11 +35,16 @@ header, footer{
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    background-color: darkorange;
+    border: 0.25rem solid #555;
+    border-radius: 1rem;
+    margin: 1rem;
+    padding: 3rem;
 }
 
 h2, p{
-    padding: 12px 20px;
-    margin: 1px 0;
+    padding: 1rem 1.5rem;
+    margin:  0.5rem 0;
 }
 
 form{
@@ -47,29 +52,29 @@ form{
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    margin: 5px;
-    padding: 5px;
+    margin: 1rem;
+    padding: 1rem;
 }
 
 form label, form span{
     width: 100%;
-    padding: 12px 20px;
-    margin: 1px 0;
+    padding: 1rem 1.5rem;
+    margin: 0.5rem 0;
 }
 
 form input{
     width: 100%;
-    padding: 12px 20px;
-    margin: 1px 0;
+    padding: 1rem 1.5rem;
+    margin: 0.5rem 0;
     box-sizing: border-box;
-    border: 3px solid #ccc;
+    border: 0.25rem solid #ccc;
     -webkit-transition: 0.5s;
     transition: 0.5s;
     outline: none;
 }
 
 form input[type=text]:focus{
-    border: 3px solid #555;
+    border: 0.25rem solid #555;
 }
 
 table{
@@ -77,21 +82,21 @@ table{
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    margin: 2px;
-    padding: 2px;
+    margin: 1rem;
+    padding: 1rem;
 }
 
 .tableItems{
     display: flex;
     justify-content: space-between;
     align-items: center;
-    margin: 2px;
-    padding: 2px;
+    padding: 1rem 1.5rem;
+    margin: 0.5rem 0;
 }
 
 .tableItem{
-    margin: 5px;
-    padding: 5px;
+    padding: 1rem 1.5rem;
+    margin: 0.5rem 0;
 }
 
 .thinButton{
@@ -100,15 +105,13 @@ table{
 
 button, .button {
     background-color: darkorange;
-    border: 1px solid white;
+    border: 0.25rem solid white;
     color: white;
-    padding: 15px 32px;
-    margin: 5px;
+    padding: 1rem 1.5rem;
+    margin: 0.5rem;
     text-align: center;
     text-decoration: none;
-    font-size: 16px;
     cursor: pointer;
-    width: 150px;
 }
 
 button:hover, .button:hover {
@@ -116,16 +119,8 @@ button:hover, .button:hover {
     color: black;
 }
 
-.bg {
-    background-color: darkorange;
-    border-width: thick;
-    border-color: #cccccc;
-    border-style: solid;
-    border-radius: 16px;
-}
-
 .rounded{
-    border-radius: 20px;
+    border-radius: 1rem;
 }
 
 .wrong {

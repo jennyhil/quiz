@@ -6,14 +6,11 @@
         <title th:text="${var}"></title>
     </head>
     <body>
-    <header th:fragment="header-default"></header>
-    <header th:fragment="header-2">
-        <ul>
-            <a th:href="@{/user}" class="button">Back</a>
-            <a th:href="@{/}" class="button">Quit</a>
+        <ul th:fragment="headerContent">
+            <a href="/user" class="button">Home</a>
+            <a href="/accountPage" class="button">Game statistics</a>
+            <a href="/topscores" class="button">Top scores</a>
         </ul>
-    </header>
-
     <table>
 
     </table>

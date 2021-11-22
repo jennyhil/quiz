@@ -4,12 +4,10 @@
     <link rel="stylesheet" type="text/css" th:href="@{/css/aesthetic.css}"/>
     <title>Signup</title>
 </head>
-<header>
-
-</header>
 <body>
 <header></header>
 <div class="mainContainer">
+    <div class="secondContainer">
     <h2>Signup for an account</h2>
     <span th:if="${alreadyExistsInput}">
         <p th:text="'Username or password incorrect'"></p>
@@ -22,6 +20,7 @@
         <input type="submit" value="Sign up" class="button"/>
     </form>
     <a th:href="@{/}" class="button">Back</a>
+    </div>
 </div>
 <footer></footer>
 </body>

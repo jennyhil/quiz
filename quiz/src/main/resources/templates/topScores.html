@@ -7,27 +7,27 @@
     </head>
     <body>
         <header>
-            <a href="/user" class="button">Home</a>
-            <a href="/accountPage" class="button">Game statistics</a>
-            <a href="/topscores" class="button">Top scores</a>
+            <div th:include="generalComponents :: headerContent"></div>
         </header>
         <div class="mainContainer">
-            <table>
-                <thead>
-                    <tr class="tableItems">
-                        <th class="tableItem">Score</th>
-                        <th class="tableItem">Player</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr th:each="s : ${scores}" class="tableItems">
-                        <td th:text="${s.getScore}" class="tableItem"></td>
-                        <td th:text="${s.getAccount().getUsername()}" class="tableItem"></td>
-                        <td class="tableItem"></td>
-                    </tr>
-                </tbody>
-            </table>
+            <div class="secondContainer">
+                <table>
+                    <thead>
+                        <tr class="tableItems">
+                            <th class="tableItem">Score</th>
+                            <th class="tableItem">Player</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr th:each="s : ${scores}" class="tableItems">
+                            <td th:text="${s.getScore}" class="tableItem"></td>
+                            <td th:text="${s.getAccount().getUsername()}" class="tableItem"></td>
+                            <td class="tableItem"></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
         </div>
-    <th:block th:insert="generalComponents :: footer"></th:block>
+        <th:block th:insert="generalComponents :: footer"></th:block>
     </body>
 </html>
