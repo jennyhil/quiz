@@ -59,7 +59,7 @@ public class AccountController {
     @RequestMapping(value = "/login", method = RequestMethod.POST)
     public String loginPOST(Account account, BindingResult result, Model model, HttpSession session){
         if(result.hasErrors()){
-            return "login";
+            return "redirect:/login";
         }
         Account exists = accountService.login(account);
 
@@ -75,7 +75,7 @@ public class AccountController {
                 return "redirect:/admin";
             }*/
            // else return "loggedInUser";
-            return "loggedInUser";
+            return "redirect:/loggedInUser";
         }
         model.addAttribute("incorrectInput",true);
         return "login";
