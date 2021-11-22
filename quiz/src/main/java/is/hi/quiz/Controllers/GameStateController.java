@@ -8,22 +8,20 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import java.util.List;
 
 @Controller
 public class GameStateController {
     private QuizService quizService;
-    private AccountController ac;
-    private AccountService as;
- //   public Account account;
-  //  public int scores=0;
+    private QuizController qc;
 
     @Autowired
-    public GameStateController(QuizService quizService,AccountService as,AccountController ac){
+    public GameStateController(QuizService quizService,QuizController qc){
         this.quizService = quizService;
-        this.ac=ac;
-        this.as=as;
+        this.qc=qc;
     }
 
     // Lists available categories for the quiz
@@ -33,6 +31,24 @@ public class GameStateController {
         quizService.resetNoOfQuestions();
         quizService.resetScore();
         quizService.resetAnswers();
+        qc.guestScore=0;
+        List<Category> allCategories = quizService.findAllCategories();
+        model.addAttribute("categories" ,allCategories);
+        return "quizPage";
+    }
+
+    // Check number of players and adjust size of question list accordingly
+    @RequestMapping(value="/quiz",method= RequestMethod.POST)
+    public String startQuiz(@RequestParam(value = "players", required = false) String players,Model model){
+        quizService.resetNoOfQuestions();
+        quizService.resetScore();
+        quizService.resetAnswers();
+        qc.guestScore=0;
+        System.out.println("No of players: "+players);
+        if(players.equals("One Player"))quizService.setOnePlayer();
+        if(players.equals("Two Player"))quizService.setTwoPlayer();
+        //else quizService.setQuestionListLength(2);
+        System.out.println(quizService.isTwoPlayer());
         List<Category> allCategories = quizService.findAllCategories();
         model.addAttribute("categories" ,allCategories);
         return "quizPage";
@@ -46,8 +62,4 @@ public class GameStateController {
         model.addAttribute("categories" ,allCategories);
         return "twoPlayer";
     }
-
-    // Todo: Show high scores
-    // Todo: Check for 1 or 2 player game
-
 }
