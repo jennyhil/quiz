@@ -8,23 +8,18 @@
 <body>
     <header></header>
     <div class="mainContainer">
-        <p> Yay you're an admin!</p>
-        <a href="/addquestion" class="button">Add a new question</a>
         <div th:switch="${questions}">
             <h2 th:case="null" class="secondContainer">No questions yet!</h2>
             <div th:case="*" class="secondContainer">
                 <h2>Questions</h2>
+                <a href="/addquestion" class="button">Add a new question</a>
                 <table>
                     <thead>
-                        <tr class="tableItems">
-                            <th class="tableItem">Question</th>
-                            <th class="tableItem">Category</th>
-                        </tr>
+
                     </thead>
                     <tbody>
                         <tr th:each="q : ${questions}" class="tableItems">
                             <td th:text="${q.questionText}" class="tableItem"></td>
-                            <td th:text="${q.ID}" class="tableItem"></td>
                             <td class="tableItem">
                                 <a th:href="@{/delete/{id}(id=${q.ID})}" class="button thinButton">Delete</a>
                             </td>

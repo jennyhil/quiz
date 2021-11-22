@@ -5,6 +5,11 @@
     <link rel="stylesheet" type="text/css" href="/css/aesthetic.css"/>
     <title>Quiz</title>
 </head>
+<header>
+    <a href="/user" class="button">Home</a>
+    <a href="/accountPage" class="button">Game statistics</a>
+    <a href="/topscores" class="button">Top scores</a>
+</header>
 <body>
 
 <div th:switch="${questions}" >
@@ -42,7 +47,7 @@
             </div>
         </div>
 
-        <a href="/quiz" class="button">Play a new game</a>
+        <a href="/user" class="button">Play a new game</a>
         <a href="/" class="button">Quit</a>
     </div>
     <div th:case="*"  class="mainContainer">

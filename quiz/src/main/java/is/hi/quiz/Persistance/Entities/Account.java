@@ -20,9 +20,11 @@ public class Account {
 
     @OneToMany(mappedBy = "account", cascade = CascadeType.ALL, orphanRemoval = true)
     List<Scores> scores = new ArrayList<>();
-    //int gamesWon
 
-    public Account(String username, String password, String email, String name, Boolean isAdmin) {
+    @OneToOne(mappedBy = "account", cascade = CascadeType.ALL, orphanRemoval = true)
+    Statistics statistics;
+
+    public Account(String username, String password, String email, String name,boolean isAdmin) {
         this.username = username;
         this.password = password;
         this.email = email;
@@ -85,4 +87,6 @@ public class Account {
     public void setAdmin(boolean admin) {
         isAdmin = isAdmin;
     }
+
+
 }
