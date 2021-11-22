@@ -5,7 +5,7 @@
         <title>Signup</title>
     </head>
     <body>
-    <header></header>
+    <th:block th:insert="generalComponents :: header-default"></th:block>
     <div class="mainContainer">
         <h2>Signup for an account</h2>
         <span th:if="${alreadyExistsInput}">
@@ -20,6 +20,6 @@
         </form>
         <a th:href="@{/}" class="button">Back</a>
     </div>
-    <footer></footer>
+    <th:block th:insert="generalComponents :: footer"></th:block>
     </body>
 </html>

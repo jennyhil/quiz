@@ -6,7 +6,7 @@
         <title>Quiz</title>
     </head>
     <body>
-        <header></header>
+    <th:block th:insert="generalComponents :: header-default"></th:block>
         <div th:switch="${categories}">
             <h2 th:case="null" class="mainContainer">No questions yet!</h2>
             <div th:case="*" class="mainContainer">
@@ -17,6 +17,6 @@
             </div>
             <a th:href="@{/}" class="button">Quit</a>
         </div>
-        <footer></footer>
+    <th:block th:insert="generalComponents :: footer"></th:block>
     </body>
 </html>

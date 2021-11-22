@@ -6,11 +6,11 @@
         <title>Home</title>
     </head>
     <body>
-        <th:block th:insert="~{generalComponents :: header-default}"></th:block>
+        <th:block th:insert="generalComponents :: header-default"></th:block>
         <div class="mainContainer">
             <a th:href="@{/login}" class="button">Log in</a>
             <a th:href="@{/signup}" class="button">Sign up</a>
         </div>
-        <footer></footer>
+        <th:block th:insert="generalComponents :: footer"></th:block>
     </body>
 </html>

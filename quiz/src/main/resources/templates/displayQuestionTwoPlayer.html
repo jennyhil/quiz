@@ -6,7 +6,7 @@
         <title>Quiz</title>
     </head>
     <body>
-        <header></header>
+    <th:block th:insert="generalComponents :: header-default"></th:block>
         <div th:switch="${questions}">
             <div th:case="null" class="mainContainer">
                 <h2>Two player, now it's your turn!</h2>
@@ -30,6 +30,6 @@
                 </div>
             </div>
         </div>
-        <footer></footer>
+    <th:block th:insert="generalComponents :: footer"></th:block>
     </body>
 </html>

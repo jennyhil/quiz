@@ -1,13 +1,12 @@
+<!--suppress ALL -->
 <html xmlns:th="https://thymeleaf.org">
     <head>
-        <!--suppress CheckTagEmptyBody -->
         <th:block th:insert="~{generalComponents :: meta}"></th:block>
-        <!--suppress CheckTagEmptyBody -->
         <th:block th:insert="~{generalComponents :: link}"></th:block>
         <title>Login</title>
     </head>
     <body>
-        <th:block th:insert="~{generalComponents :: header-default}"></th:block>
+    <th:block th:insert="generalComponents :: header-default"></th:block>
         <div class="mainContainer">
             <h2>Login to your account</h2>
             <span th:if="${incorrectInput}">
@@ -28,7 +27,7 @@
             </form>
             <a th:href="@{/}" class="button">Back</a>
         </div>
-        <footer></footer>
+    <th:block th:insert="generalComponents :: footer"></th:block>
     </body>
 </html>
 

@@ -6,7 +6,7 @@
         <title>Admin page</title>
     </head>
     <body>
-        <header></header>
+    <th:block th:insert="generalComponents :: header-default"></th:block>
         <div class="mainContainer">
             <p> Yay you're an admin!</p>
             <a th:href="@{/addquestion}" class="button" >Add a new question</a>
@@ -35,6 +35,6 @@
             </div>
             <a th:href="@{/}" class="button">Back</a>
         </div>
-        <footer></footer>
+    <th:block th:insert="generalComponents :: footer"></th:block>
     </body>
 </html>

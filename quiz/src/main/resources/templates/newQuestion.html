@@ -6,7 +6,7 @@
         <title>Add a question</title>
     </head>
     <body>
-        <header></header>
+    <th:block th:insert="generalComponents :: header-default"></th:block>
         <div class="mainContainer">
             <form action="#" th:action="@{/addquestion}" th:object="${question}" method="post">
                 <label for="categoryID">CategoryID</label>
@@ -34,6 +34,6 @@
             </form>
             <a th:href="@{/}" class="button">Go back</a>
         </div>
-        <footer></footer>
+    <th:block th:insert="generalComponents :: footer"></th:block>
     </body>
 </html>
