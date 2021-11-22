@@ -3,6 +3,7 @@ package is.hi.quiz.Controllers;
 import is.hi.quiz.Persistance.Entities.Account;
 import is.hi.quiz.Persistance.Entities.Question;
 import is.hi.quiz.Persistance.Entities.Scores;
+import is.hi.quiz.Persistance.Entities.Statistics;
 import is.hi.quiz.Services.AccountService;
 import is.hi.quiz.Services.QuizService;
 import org.springframework.stereotype.Controller;
@@ -22,6 +23,7 @@ public class AccountController {
     QuizService quizService;
     public String currentPlayer;
     private long currentID;
+    private Account exists;
 
     public AccountController(AccountService accountService, QuizService quizService) {
         this.accountService = accountService;
@@ -63,25 +65,34 @@ public class AccountController {
         }
         Account username =accountService.findByUsername(account.getUsername());
         if(username==null)  model.addAttribute("notRegistered",true);
-        Account exists = accountService.login(account);
+         exists = accountService.login(account);
 
         // Get all questions for admin delete and/or admin add question.
-        List<Question> allQuestions = quizService.findAll();
         if(exists != null){
             currentPlayer=exists.getUsername();
             currentID=(int)exists.getID();
             session.setAttribute("loggedInUser", exists);
             model.addAttribute("loggedInUser",exists);
-            model.addAttribute("questions",allQuestions);
           /* if(exists.isAdmin()){
                 return "redirect:/admin";
             }*/
-           // else return "loggedInUser";
-            return "loggedInUser";
+            // else return "loggedInUser";
+            return "redirect:/user";
         }
         model.addAttribute("incorrectInput",true);
         return "login";
     }
+
+    @RequestMapping(value = "/user", method = RequestMethod.GET)
+    public String userPage(Model model,Account account){
+
+        List<Question> allQuestions = quizService.findAll();
+        model.addAttribute("loggedInUser",exists);
+        model.addAttribute("questions",allQuestions);
+        if(currentPlayer!=null) return "loggedInUser";
+        else return "login";
+    }
+
     @RequestMapping(value = "/admin", method = RequestMethod.GET)
     public String adminPage(Model model, Account account){
         List <Question> questions = quizService.findAll();
@@ -98,8 +109,11 @@ public class AccountController {
     @RequestMapping(value = "/accountPage", method = RequestMethod.GET)
     public String accountPage(Model model, Account account){
         List <Scores> scores = quizService.findByAccountID(currentID);
+        Statistics statistics = accountService.findByAccountID((int)currentID);
         model.addAttribute("scores",scores);
-        return "accountPage";
+        model.addAttribute("statistics",statistics);
+        if(currentPlayer!=null)return "accountPage";
+        else return "login";
     }
 
     @GetMapping("/")

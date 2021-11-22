@@ -9,6 +9,8 @@ public class Scores {
    @ManyToOne(fetch = FetchType.LAZY)
     private Account account;
     private int score;
+
+
     public Scores() {
     }
 
@@ -40,5 +42,6 @@ public class Scores {
     public void setAccount(Account account) {
         this.account = account;
     }
+
 }
 

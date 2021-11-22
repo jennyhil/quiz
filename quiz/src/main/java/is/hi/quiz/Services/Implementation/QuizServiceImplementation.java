@@ -19,7 +19,6 @@ public class QuizServiceImplementation implements QuizService {
     private int id_counter2 = 0;
     private int noOfQuestions = 0;
     private int score=0;
-    private int guestScore=0;
     private List<String> answers = new ArrayList<>();
     private List<String> correctAnswers= new ArrayList<>();
     private Boolean twoPlayer = false;
@@ -191,16 +190,14 @@ public void setTwoPlayer(){
         return scoreRepository.findTop10ByOrderByScoreDesc();
      }
 
-    // Helper function to keep track of scores when game is being played - could be done another way probably
+    // Helper functions to keep track of scores when game is being played
     // Resets once round is over
     public int resetScore(){
         return score =0;
     }
-    // Helper function to keep track of scores when game is being played- could be done another way probably
     public int addScore(int points){
         return score+=points;
     }
-    // Helper function to keep track of scores when game is being played- could be done another way probably
     public int getScore(){
         return score;
     }
