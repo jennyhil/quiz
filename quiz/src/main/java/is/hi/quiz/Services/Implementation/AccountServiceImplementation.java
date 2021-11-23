@@ -3,7 +3,9 @@ package is.hi.quiz.Services.Implementation;
 import is.hi.quiz.Persistance.Entities.Account;
 import is.hi.quiz.Persistance.Entities.Category;
 import is.hi.quiz.Persistance.Entities.Question;
+import is.hi.quiz.Persistance.Entities.Statistics;
 import is.hi.quiz.Persistance.Repository.AccountRepository;
+import is.hi.quiz.Persistance.Repository.StatisticsRepository;
 import is.hi.quiz.Services.AccountService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -14,38 +16,25 @@ import java.util.List;
 @Service
 public class AccountServiceImplementation implements AccountService {
     private AccountRepository accountRepository;
-    /*// Here would be a Jpa link to AccountRepository
-    private List<Account> accountRepository= new ArrayList<>();
-    private int id_counter=0;*/
+    private StatisticsRepository statisticsRepository;
+    private int questionsAnswered;
+    private int answeredCorrectly;
+    private int gamesWon;
+    private int gamesPlayed;
 
     @Autowired
-    public AccountServiceImplementation(AccountRepository accountRepository){
+    public AccountServiceImplementation(AccountRepository accountRepository,StatisticsRepository statisticsRepository){
         this.accountRepository = accountRepository;
-        /*// Dummy data. To be removed when JPA added.
-        accountRepository.add(new Account("user","123","user@email.com","User",false));
-        accountRepository.add(new Account("admin","123","admin@email.com","Admin",true));
-        // jpa gives each question an ID but here we add manually.
-        for(Account a: accountRepository){
-        a.setID(id_counter);
-        id_counter++;
-        }*/
+        this.statisticsRepository=statisticsRepository;
+        //statisticsRepository.deleteAll();
+        //accountRepository.deleteAll();
+        //accountRepository.save(new Account("admin","1234","email@email.com","Admin Adminsson",true));
     }
 
     @Override
     public List<Account> findAll() {
         return accountRepository.findAll();
     }
-/*
-    @Override
-    public Account findById(long ID) {
-        for(Account a: accountRepository){
-            if(a.getID()==ID){
-                return a;
-            }
-        }
-        return null;
-    }*/
-
     @Override
     public Account save(Account account) {
         return accountRepository.save(account);
@@ -71,4 +60,39 @@ public class AccountServiceImplementation implements AccountService {
         }
         return null;
     }
+
+    // Statistics stuff
+    @Override
+    public Statistics saveStatistics(Statistics statistics) {
+        return statisticsRepository.save(statistics);
+    }
+
+    @Override
+    public Statistics findByAccountID(int id) {
+        return statisticsRepository.findByAccountID(id);
+    }
+
+    // Statistics stuff
+    public int addQuestionsAnswered(int q){
+        return questionsAnswered+=q;
+    }
+    public int getQuestionsAnswered(){
+        return questionsAnswered;
+    }
+
+    public int addAnsweredCorrectly(int q){return answeredCorrectly+=q;}
+    public int getAnsweredCorrectly(){return answeredCorrectly;}
+
+    public int addGamesWon(int q){return gamesWon+=q;}
+    public int getGamesWon(){return gamesWon;}
+
+    public int addGamesPlayed(int q){return gamesPlayed+=q; }
+    public int getGamesPlayed(){return gamesPlayed;}
+
+    @Override
+    public void updateStatistics(int questionsAnswered, int answeredCorrectly, int gamesPlayed, int accountID) {
+        statisticsRepository.updateStatistics(questionsAnswered,answeredCorrectly,gamesPlayed,accountID);
+    }
+
+
 }

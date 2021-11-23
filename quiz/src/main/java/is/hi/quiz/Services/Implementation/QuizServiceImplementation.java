@@ -1,8 +1,7 @@
 package is.hi.quiz.Services.Implementation;
-import is.hi.quiz.Persistance.Entities.Category;
-import is.hi.quiz.Persistance.Entities.Question;
-import is.hi.quiz.Persistance.Entities.Quiz;
+import is.hi.quiz.Persistance.Entities.*;
 import is.hi.quiz.Persistance.Repository.QuizRepository;
+import is.hi.quiz.Persistance.Repository.ScoreRepository;
 import is.hi.quiz.Services.QuizService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -12,18 +11,21 @@ import java.util.List;
 
 @Service
 public class QuizServiceImplementation implements QuizService {
-    // Here would be a Jpa link to QuizRepository
-    private List<Question> questionRepository= new ArrayList<>();
+
     private List<Category> categories = new ArrayList<>();
     private QuizRepository quizRepository;
-
+    private ScoreRepository scoreRepository;
     private Quiz quiz;
-    private int id_counter2=0;
-    private int noOfQuestions=0;
-
+    private int id_counter2 = 0;
+    private int noOfQuestions = 0;
+    private int score=0;
+    private List<String> answers = new ArrayList<>();
+    private List<String> correctAnswers= new ArrayList<>();
+    private Boolean twoPlayer = false;
     @Autowired
-    public QuizServiceImplementation(QuizRepository quizRepository) {
-        this.quizRepository=quizRepository;
+    public QuizServiceImplementation(QuizRepository quizRepository, ScoreRepository scoreRepository) {
+        this.quizRepository = quizRepository;
+        this.scoreRepository = scoreRepository;
         // Inserting questions into db.
         //0 = Entertainment
         //1 = General Knowledge
@@ -87,6 +89,7 @@ public class QuizServiceImplementation implements QuizService {
         quizRepository.save(new Question(3, "How many NBA championships did Michael Jordan win with the Chicago Bulls?", "6", "4", "5", "6", "7"));
         quizRepository.save(new Question(3, "How many medals did China win at the Beijing Olympics?", "100", "37", "51", "67", "100"));
 
+        //scoreRepository.deleteAll();
         //quizRepository.deleteAll();
         // Mögulega gera category repository til að adda categories ?
         categories.add(new Category(0, "Entertainment"));
@@ -98,28 +101,57 @@ public class QuizServiceImplementation implements QuizService {
             c.setID(id_counter2);
             id_counter2++;
         }
-        helper();
+        helper(id_counter2);
     }
-    /**************************
+
+    /****************************
      * Question number handling
-     ***************************/
+     ****************************/
 
     // When new quiz is played we reset number of questions that have been displayed/asked
     @Override
-    public int resetNoOfQuestions(){
-        return noOfQuestions=0;
+    public int resetNoOfQuestions() {
+        return noOfQuestions = 0;
     }
+
     // Gets how many questions have been displayed/asked
     @Override
-    public int getNoOfQuestions(){
+    public int getNoOfQuestions() {
         return noOfQuestions;
     }
+
     // We need to increment after each question to get to next question after answering question w. button click
     @Override
-    public int incrementNoOfQuestion(){
+    public int incrementNoOfQuestion() {
         return noOfQuestions++;
     }
 
+    public void resetAnswers() {
+        answers.clear();
+        correctAnswers.clear();
+    }
+    public void addAnswer(String answer, String correctAns) {
+        answers.add(answer);
+        correctAnswers.add(correctAns);
+    }
+
+    public List<String> getAnswers() {
+        return answers;
+    }
+    public List<String> getCorrectAnswers() {
+        return correctAnswers;
+    }
+
+public Boolean isTwoPlayer(){
+        return twoPlayer;
+}
+
+public void setTwoPlayer(){
+        twoPlayer=true;
+}
+    public void setOnePlayer(){
+        twoPlayer=false;
+    }
     /********************************************************************
      * Get questions handlers(save, delete, getby category, ID, etc...)
      ********************************************************************/
@@ -127,40 +159,46 @@ public class QuizServiceImplementation implements QuizService {
     // Gets all available categories to be displayed in view template
     // TODO: Needs to be implemented in a different way with a repository
     @Override
-    public List <Category> findAllCategories(){
+    public List<Category> findAllCategories() {
         return categories;
     }
+
     // Get questions by category
     @Override
-    public List <Question> findByCategory(int categoryID) {
+    public List<Question> findByCategory(int categoryID) {
         return quizRepository.findByCategoryID(categoryID);
     }
+
     // Returns all questions in database
     @Override
     public List<Question> findAll() {
         return quizRepository.findAll();
     }
+
     // Finds a question by it's ID
     @Override
     public Question findById(long ID) {
         return quizRepository.findById(ID);
     }
+
     // Admin required for this action
     @Override
     public Question save(Question question) {
         return quizRepository.save(question);
     }
+
     // Admin required for this action
     @Override
     public void delete(Question question) {
         quizRepository.delete(question);
     }
+
     // Returns quiz by categoryID according to chosen category in template
     // contains a category with a set of questions.
     @Override
-    public Quiz getQuiz(int categoryID,int noOfplayers) {
-        helper();
-        for(Category c: categories) {
+    public Quiz getQuiz(int categoryID, int noOfplayers) {
+        helper(categoryID);
+        for (Category c : categories) {
             if (categoryID == c.getID()) {
                 quiz = new Quiz(c, noOfplayers);
                 return quiz;
@@ -170,16 +208,46 @@ public class QuizServiceImplementation implements QuizService {
     }
     // Helper function
     // Add questions from dummy question db to relevant categories to make a "question package" for each category.
-    public void helper (){
+    public void helper(int categoryID) {
         for (int j = 0; j < categories.size(); j++) {
-            List <Question> allQuestions = quizRepository.findAll();
-            List<Question> questionList = new ArrayList<>();
+           List<Question> questionList = quizRepository.findByCategoryID(categoryID);
+         /*   List<Question> questionList = new ArrayList<>();
             for (int i = 0; i < allQuestions.size(); i++) {
                 if (categories.get(j).getCategoryID() == allQuestions.get(i).getCategoryID()) {
                     questionList.add(allQuestions.get(i));
                 }
-            }
+            }*/
             categories.get(j).setQuestions(questionList);
         }
     }
+    /**************************************************************
+     * Handle scores
+     ***************************************************************/
+    @Override
+    public List <Scores> findByAccountID(long accountID) {
+        return scoreRepository.findByAccountIDOrderByScoreDesc(accountID);
+    }
+
+    @Override
+    public Scores saveScores(Scores scores) {
+        return scoreRepository.save(scores);
+    }
+
+    @Override
+    public List<Scores> findAllScores() {
+        return scoreRepository.findTop10ByOrderByScoreDesc();
+     }
+
+    // Helper functions to keep track of scores when game is being played
+    // Resets once round is over
+    public int resetScore(){
+        return score =0;
+    }
+    public int addScore(int points){
+        return score+=points;
+    }
+    public int getScore(){
+        return score;
+    }
+
 }

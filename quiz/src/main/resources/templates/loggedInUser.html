@@ -2,15 +2,24 @@
 <html xmlns:th="https://thymeleaf.org">
 <head>
   <meta charset="UTF-8">
+  <link rel="stylesheet" type="text/css" href="/css/aesthetic.css"/>
   <title>What user is logged in?</title>
 </head>
 <body>
-<h2 th:text="'Hello ' + ${loggedInUser.username}"></h2>
-<p> Welcome to Think Fast, a super amazing quiz game, now lets play!</p>
-<p>Pick a one or two player game</p>
-<a href="/quiz"><button> One Player</button></a>
-<a href="/twoPlayer"><button> Two Player</button></a>
-<p><a href="/">Back</a></p>
-
+<header>
+  <a th:href="@{/user}" class="button">Home</a>
+  <a th:href="@{/accountPage}" class="button">Game statistics</a>
+  <a th:href="@{/topscores}" class="button">Top scores</a>
+</header>
+  <div class="mainContainer">
+    <h2 th:text="'Hello ' + ${loggedInUser.username}"></h2>
+    <p> Welcome to Think Fast, a super amazing quiz game, now lets play!</p>
+    <p>Pick a one or two player game</p>
+    <form th:action="@{/quiz}" method="post" class="form">
+      <input type="submit" class="button" th:name="players" th:field="OnePlayer" th:value="'One Player'"></input>
+      <input type="submit" class="button" th:name="players" th:field="TwoPlayer" th:value="'Two Player'" ></input>
+    </form>
+  </div>
+  <th:block th:insert="generalComponents :: footer"> </th:block>
 </body>
 </html>
