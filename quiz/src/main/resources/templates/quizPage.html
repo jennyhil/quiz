@@ -13,12 +13,12 @@
 
         <div class="container main">
             <div th:switch="${categories}" class="container second">
-                <h2 th:case="null" class="container pseudoRow">No questions yet!</h2>
-                <div th:case="*" class="container pseudoRow">
+                <h2 th:case="null" class="container row">No questions yet!</h2>
+                <div th:case="*" class="container col">
                     <h2>Pick a category!</h2>
-                    <div class="twoColForm">
+                    <div class="container col">
                         <form th:each="c:${categories}" th:action="@{'/category/'+${c.ID}}" method="get">
-                            <button th:text="${c.categoryName}" class="button"></button>
+                            <button th:text="${c.categoryName}"></button>
                         </form>
                     </div>
                 </div>

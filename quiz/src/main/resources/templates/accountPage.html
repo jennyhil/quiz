@@ -3,7 +3,6 @@
     <head>
         <meta charset="UTF-8">
         <link rel="stylesheet" type="text/css" th:href="@{/css/aesthetic.css}"/>
-        <link rel="stylesheet" type="text/css" th:href="@{/css/aesthetic.css}"/>
         <link rel="stylesheet" type="text/css" th:href="@{/css/scores.css}"/>
 
         <title>Top scores</title>
@@ -14,11 +13,11 @@
         </header>
         <div class="container main">
             <div th:switch="${statistics}" class="container second">
-                <div th:case="null" class="container pseudoRow">
+                <div th:case="null" class="col">
                     <h2> You haven't played any quizzes.</h2>
                 </div>
 
-                <div th:case="*" class="container pseudoCol">
+                <div th:case="*" class="container row">
                     <div class="mainContainerLeft">
                         <h2 class="border1">Since you signed up you have.....</h2>
                         <h2 class="border2" th:if="${statistics.getGamesPlayed()==1}" th:text="'...played ' + ${statistics.getGamesPlayed()}+' game!'"></h2>
@@ -26,7 +25,7 @@
                         <h2 class="border3" th:text="'...answered ' + ${statistics.getQuestionsAnswered()}+' questions in total!'"></h2>
                         <h2 class="border4" th:text="'...answered ' + ${statistics.getAnsweredCorrectly()}+' questions correctly!'"></h2>
                     </div>
-                    <table>
+                    <table class="accountTable">
                         <thead>
                             <tr class="tableItems">
                                 <th class="tableItem">Score</th>
@@ -37,7 +36,6 @@
                             <tr th:each="s : ${scores}" class="tableItems">
                                 <td th:text="${s.getScore}" class="tableItem"></td>
                                 <td th:text="${s.getAccount().getUsername()}" class="tableItem"></td>
-                                <td class="tableItem"></td>
                             </tr>
                         </tbody>
                     </table>
