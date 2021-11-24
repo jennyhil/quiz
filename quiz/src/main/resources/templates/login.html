@@ -9,14 +9,17 @@
         <header></header>
         <div class="mainContainer">
             <div class="secondContainer">
+
                 <h2>Login to your account</h2>
+
                 <span th:if="${incorrectInput}">
                       <span th:if="!${notRegistered}">
-                    <p th:text="'Username or password incorrect'"></p>
-                        </span>
+                            <p class="wrong" th:text="'Invalid username or password'"></p>
+                      </span>
                 </span>
+
                 <span th:if="${notRegistered}">
-                     <p th:text="'Username not found. Want to sign up ?'"></p>
+                     <p th:text="'Username not found. Want to sign up?'"></p>
                 </span>
 
                 <form action="#" th:action="@{/login}" th:object="${account}"  method="post">
@@ -25,11 +28,12 @@
                     <label for="password">Password</label>
                     <input type="password" name="password" id="password" th:value="*{password}"/>
                     <input type="submit" value="Login" class="button"/>
+                    <a th:href="@{/}" class="button">Back</a>
                 </form>
-                <a th:href="@{/}" class="button">Back</a>
+
             </div>
         </div>
-    <th:block th:insert="generalComponents :: footer"></th:block>
+        <th:block th:insert="generalComponents :: footer"></th:block>
     </body>
 </html>
 

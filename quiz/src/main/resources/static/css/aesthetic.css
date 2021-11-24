@@ -6,18 +6,19 @@
 }
 
 header, footer{
-    min-height: 10vh;
+    height: 10vh;
     width: 100%;
-    background-color: darkorange;
+    background-color: deepskyblue;
     display: flex;
     flex-direction: row;
     justify-content: flex-start;
     align-items: center;
     align-content: center;
+    padding: 0.25rem 0.5rem;
 }
 
 .mainContainer{
-    min-height: 100vh;
+    min-height: 80vh;
     width: 100%;
     background-image: url("images/background.jpg");
     background-repeat: no-repeat;
@@ -25,49 +26,71 @@ header, footer{
     background-size: cover;
     position: relative;
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
     justify-content: center;
+    justify-items: center;
+    align-content: center;
     align-items: center;
+}
+
+.left {
+    justify-content: left;
+}
+
+.center {
+    justify-content: center;
 }
 
 .secondContainer{
+    min-height: 80vh;
+    width: 50%;
+    background: rgba(255,140,0,0.60);
+    padding: 1rem;
     display: flex;
     flex-direction: column;
     justify-content: center;
+    justify-items: center;
     align-items: center;
-    background-color: darkorange;
-    border: 0.25rem solid #555;
-    border-radius: 1rem;
-    margin: 1rem;
-    padding: 3rem;
+    align-content: center;
 }
 
-h2, p{
-    padding: 1rem 1.5rem;
-    margin:  0.5rem 0;
+h1, h2, p{
+    padding: 0.5rem 1.5rem;
+    margin:  0.5rem 1.5rem;
+}
+
+h1 {
+    font-size: xx-large;
+}
+
+h2 {
+    font-size: large;
 }
 
 form, table{
+    width: 100%;
     display: flex;
     flex-direction: column;
     justify-content: center;
+    justify-items: center;
+    align-content: center;
     align-items: center;
     margin: 1rem;
     padding: 1rem;
 }
 
 form label, form span{
-    width: 100%;
-    padding: 1rem 1.5rem;
+    width: 10rem;
+    padding: 0.5rem 1.5rem;
     margin: 0.5rem 0;
 }
 
 form input{
-    width: 100%;
-    padding: 1rem 1.5rem;
+    width: 10rem;
+    padding: 0.5rem 1.5rem;
     margin: 0.5rem 0;
-    box-sizing: border-box;
     border: 0.25rem solid #ccc;
+    border-radius: 0.5rem;
     -webkit-transition: 0.5s;
     transition: 0.5s;
     outline: none;
@@ -80,30 +103,31 @@ form input[type=text]:focus{
 .tableItems{
     display: flex;
     justify-content: space-between;
+    justify-items: center;
+    align-content: center;
     align-items: center;
-    padding: 1rem 1.5rem;
-    margin: 0.5rem 0;
 }
 
 .tableItem{
-    padding: 1rem 1.5rem;
+    padding: 0.5rem 1.5rem;
     margin: 0.5rem 0;
 }
 
 button, .button {
+    width: 10rem;
+    padding: 0.5rem 1.5rem;
+    margin: 0.5rem 0;
     background-color: darkorange;
     border: 0.25rem solid white;
-    border-radius: 1rem;
+    border-radius: 0.5rem;
     color: white;
-    padding: 1rem 1.5rem;
-    margin: 0.5rem;
     text-align: center;
     text-decoration: none;
     cursor: pointer;
 }
 
 button:hover, .button:hover {
-    background-color: gray;
+    background-color: deepskyblue;
     color: black;
 }
 
