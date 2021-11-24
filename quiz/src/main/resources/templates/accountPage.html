@@ -1,65 +1,52 @@
-<!DOCTYPE html>
-<html xmlns:th="http://thymeleaf.org">
-<html lang="en">
-<head>
-<meta charset="UTF-8">
-<link rel="stylesheet" type="text/css" href="/css/aesthetic.css"/>
-    <title>Top scores</title>
-</head>
-<header>
-    <a href="/user" class="button">Home</a>
-    <a href="/accountPage" class="button">Game statistics</a>
-    <a href="/topscores" class="button">Top scores</a>
-    <a href="/logout" class="button">Log out</a>
-</header>
-<body>
-<div th:switch="${statistics}">
-<div class="mainContainer">
-        <div th:case="null">
-          <h2> You haven't played any quizzes.</h2>
-        </div>
-<html xmlns:th="http://thymeleaf.org" html lang="en">
+ <!DOCTYPE html>
+    <html xmlns:th="http://thymeleaf.org" html lang="en">
     <head>
         <meta charset="UTF-8">
-        <link rel="stylesheet" type="text/css" href="/css/aesthetic.css"/>
+        <link rel="stylesheet" type="text/css" th:href="@{/css/aesthetic.css}"/>
+        <link rel="stylesheet" type="text/css" th:href="@{/css/scores.css}"/>
+
         <title>Top scores</title>
     </head>
     <body>
-        <header>
-            <a href="/user" class="button">Home</a>
-            <a href="/accountPage" class="button">Game statistics</a>
-            <a href="/topscores" class="button">Top scores</a>
-        </header>
-        <div th:switch="${statistics}">
-            <div th:case="null" class="mainContainer">
-                <h2> You haven't played any quizzes.</h2>
-            </div>
+    <header>
+        <a href="/user" class="button">Home</a>
+        <a href="/accountPage" class="button">My Account</a>
+        <a href="/topscores" class="button">Top scores</a>
+        <a href="/logout" class="button">Log out</a>
+    </header>
+    <div th:switch="${statistics}">
+        <div th:case="null" class="mainContainer">
+            <h2> You haven't played any quizzes.</h2>
+        </div>
 
-            <div th:case="*" class="mainContainer">
-
-                <h2 th:text="'You have answered ' + ${statistics.getQuestionsAnswered()}+' questions!'"></h2>
-                <h2 th:text="'You have answered ' + ${statistics.getAnsweredCorrectly()}+' questions correct!'"></h2>
-                <h2 th:text="'You have played ' + ${statistics.getGamesPlayed()}+' games!'"></h2>
-
-                <table>
-                    <thead>
-                        <tr class="tableItems">
-                            <th class="tableItem">Score</th>
-                            <th class="tableItem">Player</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr th:each="s : ${scores}" class="tableItems">
-                            <td th:text="${s.getScore}" class="tableItem"></td>
-                            <td th:text="${s.getAccount().getUsername()}" class="tableItem"></td>
-                            <td class="tableItem"></td>
-                        </tr>
-                    </tbody>
-                </table>
+        <div th:case="*" class="mainContainerAccount">
+            <div class="mainContainerLeft">
+            <h2 class="border1">Since you signed up you have.....</h2>
+            <h2 class="border2"th:if="${statistics.getGamesPlayed()==1}"th:text="'...played ' + ${statistics.getGamesPlayed()}+' game!'"></h2>
+            <h2 class="border2" th:unless="${statistics.getGamesPlayed()==1}"th:text="'...played ' + ${statistics.getGamesPlayed()}+' games!'"></h2>
+            <h2 class="border3" th:text="'...answered ' + ${statistics.getQuestionsAnswered()}+' questions in total!'"></h2>
+            <h2 class="border4" th:text="'...answered ' + ${statistics.getAnsweredCorrectly()}+' questions correctly!'"></h2>
+           </div>
+           <div class="mainContainerRight">
+            <table class="accountTable">
+                <thead>
+                <tr class="tableItems">
+                    <th class="tableItem">Your top scores</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr th:each="s : ${scores}" class="tableItems">
+                    <td th:text="${s.getScore}" class="tableItem"></td>
+                    <td class="tableItem"></td>
+                </tr>
+                </tbody>
+            </table>
             </div>
         </div>
         <a th:href="@{/user}" class="button">Back</a>
         <a th:href="@{/}" class="button">Quit</a>
+    </div>
+
     </body>
 
-</html>
+    </html>

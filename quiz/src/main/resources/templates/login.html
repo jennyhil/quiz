@@ -1,34 +1,37 @@
 <!--suppress ALL -->
 <html xmlns:th="https://thymeleaf.org">
-    <head>
-        <meta charset="UTF-8">
-        <link rel="stylesheet" type="text/css" th:href="@{/css/aesthetic.css}"/>
-        <title>Login</title>
-    </head>
-    <body>
-    <th:block th:insert="generalComponents :: header-default"></th:block>
-        <div class="mainContainer">
-            <h2>Login to your account</h2>
-            <span th:if="${incorrectInput}">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" type="text/css" th:href="@{/css/aesthetic.css}"/>
+    <title>Login</title>
+</head>
+<body>
+<header>
+    <a th:href="@{/}" class="button">Home</a>
+    <a href="/accountPage" class="button">My Account</a>
+    <a th:href="@{/topscores}" class="button">Top scores</a>
+    <a th:href="@{/logout}" class="button">Log out</a>
+</header>
+<div class="mainContainer">
+    <h2>Login to your account</h2>
+    <span th:if="${incorrectInput}">
                   <span th:if="!${notRegistered}">
                 <p th:text="'Username or password incorrect'"></p>
                     </span>
             </span>
-            <span th:if="${notRegistered}">
+    <span th:if="${notRegistered}">
                  <p th:text="'Username not found. Want to sign up ?'"></p>
             </span>
 
-            <form action="#" th:action="@{/login}" th:object="${account}"  method="post">
-                <label for="username">Username</label>
-                <input type="text" name="username" id="username" th:field="*{username}"/>
-                <label for="password">Password</label>
-                <input type="password" name="password" id="password" th:value="*{password}"/>
-                <input type="submit" value="Login" class="button"/>
-            </form>
-            <a th:href="@{/}" class="button">Back</a>
-        </div>
-    <th:block th:insert="generalComponents :: footer"></th:block>
-    </body>
+    <form action="#" th:action="@{/login}" th:object="${account}"  method="post">
+        <label for="username">Username</label>
+        <input type="text" name="username" id="username" th:field="*{username}"/>
+        <label for="password">Password</label>
+        <input type="password" name="password" id="password" th:value="*{password}"/>
+        <input type="submit" value="Login" class="button"/>
+    </form>
+    <a th:href="@{/}" class="button">Back</a>
+</div>
+<th:block th:insert="generalComponents :: footer"></th:block>
+</body>
 </html>
-
-

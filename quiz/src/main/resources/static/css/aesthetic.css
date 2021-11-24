@@ -101,6 +101,7 @@ table{
 button, .button {
     background-color: darkorange;
     border: 1px solid white;
+    border-radius: 12px;
     color: white;
     padding: 15px 32px;
     margin: 5px;
@@ -137,3 +138,4 @@ button:hover, .button:hover {
     background-color: deepskyblue;
     color: deeppink;
 }
+

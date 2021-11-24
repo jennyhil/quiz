@@ -3,17 +3,19 @@
     <head>
         <meta charset="UTF-8">
         <link rel="stylesheet" type="text/css" th:href="@{/css/aesthetic.css}"/>
+        <link rel="stylesheet" type="text/css" th:href="@{/css/scores.css}"/>
         <title>Title</title>
     </head>
     <body>
         <header>
             <a href="/user" class="button">Home</a>
-            <a href="/accountPage" class="button">Game statistics</a>
+            <a href="/accountPage" class="button">My Account</a>
             <a href="/topscores" class="button">Top scores</a>
             <a href="/logout" class="button">Log out</a>
         </header>
-        <div class="mainContainer">
-            <table>
+        <div class="mainContainerTopScores">
+            <h2 class="leaderboard">Leaderboard</h2>
+            <table class="accountTable">
                 <thead>
                     <tr class="tableItems">
                         <th class="tableItem">Score</th>

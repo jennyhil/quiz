@@ -1,86 +1,87 @@
-<!DOCTYPE html>
-<html xmlns:th="http://thymeleaf.org">
-<head>
-    <meta charset="UTF-8">
-    <link rel="stylesheet" type="text/css" th:href="@{/css/aesthetic.css}"/>
-    <title>Quiz</title>
-</head>
-<body>
-<header>
-    <a href="/user" class="button">Home</a>
-    <a href="/accountPage" class="button">Game statistics</a>
-    <a href="/topscores" class="button">Top scores</a>
-    <a href="/logout" class="button">Log out</a>
-</header>
-<div th:switch="${questions}" >
-    <div th:case="null"  class="mainContainer">
-        <h2>Quiz over!</h2>
-        <h2 th:text="'You scored ' + ${scores}+' points!'"></h2>
-        <h2 th:if=${onePlayer} th:text="'Player 2 scored: ' + ${guestScore}+' points!'"></h2>
-        <div th:if="${!onePlayer}">
-        <div th:each="c:${correctanswers}">
-            <p th:text="${c}">
-            </p>
-       </div>
-            <h2>Your answers</h2>
-            <div th:each="a:${answers}">
-                <p th:text="${a}"></p>
+    <!DOCTYPE html>
+    <html xmlns:th="http://thymeleaf.org">
+    <head>
+        <meta charset="UTF-8">
+        <link rel="stylesheet" type="text/css" th:href="@{/css/aesthetic.css}"/>
+        <title>Quiz</title>
+    </head>
+    <body>
+    <header>
+        <a href="/user" class="button">Home</a>
+        <a href="/accountPage" class="button">My Account</a>
+        <a href="/topscores" class="button">Top scores</a>
+        <a href="/logout" class="button">Log out</a>
+    </header>
+    <div th:switch="${questions}" >
+        <div th:case="null"  class="mainContainer">
+            <h2>Quiz over!</h2>
+            <h2 th:text="'You scored ' + ${scores}+' points!'"></h2>
+            <h2 th:if=${onePlayer} th:text="'Player 2 scored: ' + ${guestScore}+' points!'"></h2>
+            <div th:if="${!onePlayer}">
+                <div th:each="c:${correctanswers}">
+                    <p th:text="${c}">
+                    </p>
+                </div>
+                <h2>Your answers</h2>
+                <div th:each="a:${answers}">
+                    <p th:text="${a}"></p>
+                </div>
             </div>
-        </div>
-        <div th:if="${onePlayer}">
-            <h2>Player one answers</h2>
-            <div th:each="c:${p1answers}">
-                <p th:text="${c}"></p>
-            </div>
-            <h2>Player two answers!</h2>
-            <div th:each="c:${p2answers}">
-                <p th:text="${c}"></p>
+            <div th:if="${onePlayer}">
+                <h2>Player one answers</h2>
+                <div th:each="c:${p1answers}">
+                    <p th:text="${c}"></p>
+                </div>
+                <h2>Player two answers!</h2>
+                <div th:each="c:${p2answers}">
+                    <p th:text="${c}"></p>
+                </div>
+
+                <h2>Correct answers for player one!</h2>
+                <div th:each="c:${p1corrAnswers}">
+                    <p th:text="${c}"></p>
+                </div>
+                <h2>Correct answers for player two!</h2>
+                <div th:each="c:${p2corrAnswers}">
+                    <p th:text="${c}"></p>
+                </div>
             </div>
 
-            <h2>Correct answers for player one!</h2>
-            <div th:each="c:${p1corrAnswers}">
-                <p th:text="${c}"></p>
+            <a th:href="@{/user}" class="button">Play a new game</a>
+            <a th:href="@{/}" class="button">Quit</a>
+        </div>
+        <div th:case="*"  class="mainContainer">
+            <div th:each="q:${questions}">
+                <div th:if="${!nextPlayer}">
+                    <h2 th:if="${counter!=0}" th:text="'Question ' + ${counter}"></h2>
+                    <form action="#" th:action="@{'/category/'+${q.categoryID}}" method="post">
+                        <h2 th:text="${q.questionText}"></h2>
+                        <input type="submit" class="button" th:name="option" th:field="${q.optionA}" th:value="${q.optionA}"/>
+                        <input type="submit" class="button" th:name="option" th:field="${q.optionB}" th:value="${q.optionB}"/>
+                        <input type="submit" class="button" th:name="option" th:field="${q.optionC}"th:value="${q.optionC}"/>
+                        <input type="submit" class="button" th:name="option" th:field="${q.optionD}"th:value="${q.optionD}"/>
+                        </select>
+                    </form>
+                </div>
             </div>
-            <h2>Correct answers for player two!</h2>
-            <div th:each="c:${p2corrAnswers}">
-                <p th:text="${c}"></p>
+            <div th:each="q:${questions}">
+                <div th:if="${nextPlayer}">
+                    <h2 th:if="${counterTwo==1}">Player 2 it's your turn now!</h2>
+                    <h2 th:text="'Question ' + ${counterTwo}"></h2>
+
+                    <form action="#" th:action="@{'/category/'+${q.categoryID}}" method="post">
+                        <h2 th:text="${q.questionText}"></h2>
+                        <input type="submit" class="button" th:name="option" th:field="${q.optionA}" th:value="${q.optionA}"/>
+                        <input type="submit" class="button" th:name="option" th:field="${q.optionB}" th:value="${q.optionB}"/>
+                        <input type="submit" class="button" th:name="option" th:field="${q.optionC}"th:value="${q.optionC}"/>
+                        <input type="submit" class="button" th:name="option" th:field="${q.optionD}"th:value="${q.optionD}"/>
+                        </select>
+                    </form>
+
+                </div>
             </div>
         </div>
 
-        <a th:href="@{/user}" class="button">Play a new game</a>
-        <a th:href="@{/}" class="button">Quit</a>
     </div>
-    <div th:case="*"  class="mainContainer">
-        <div th:each="q:${questions}">
-        <div th:if="${!nextPlayer}">
-        <h2> Questions </h2>
-            <form action="#" th:action="@{'/category/'+${q.categoryID}}" method="post">
-                <h2 th:text="${q.questionText}"></h2>
-                <input type="submit" class="button" th:name="option" th:field="${q.optionA}" th:value="${q.optionA}"/>
-                <input type="submit" class="button" th:name="option" th:field="${q.optionB}" th:value="${q.optionB}"/>
-                <input type="submit" class="button" th:name="option" th:field="${q.optionC}"th:value="${q.optionC}"/>
-                <input type="submit" class="button" th:name="option" th:field="${q.optionD}"th:value="${q.optionD}"/>
-                </select>
-            </form>
-        </div>
-        </div>
-        <div th:each="q:${questions}">
-        <div th:if="${nextPlayer}">
-            <h2>Player 2 it's your turn now!</h2>
-
-            <form action="#" th:action="@{'/category/'+${q.categoryID}}" method="post">
-                <h2 th:text="${q.questionText}"></h2>
-                <input type="submit" class="button" th:name="option" th:field="${q.optionA}" th:value="${q.optionA}"/>
-                <input type="submit" class="button" th:name="option" th:field="${q.optionB}" th:value="${q.optionB}"/>
-                <input type="submit" class="button" th:name="option" th:field="${q.optionC}"th:value="${q.optionC}"/>
-                <input type="submit" class="button" th:name="option" th:field="${q.optionD}"th:value="${q.optionD}"/>
-                </select>
-            </form>
-
-        </div>
-        </div>
-    </div>
-
-</div>
-</body>
-</html>
+    </body>
+    </html>

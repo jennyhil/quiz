@@ -17,18 +17,17 @@ import java.util.List;
 public class AccountServiceImplementation implements AccountService {
     private AccountRepository accountRepository;
     private StatisticsRepository statisticsRepository;
-    private int questionsAnswered;
-    private int answeredCorrectly;
-    private int gamesWon;
-    private int gamesPlayed;
+    private int questionsAnswered=0;
+    private int answeredCorrectly=0;
+    private int gamesPlayed=0;
 
     @Autowired
     public AccountServiceImplementation(AccountRepository accountRepository,StatisticsRepository statisticsRepository){
         this.accountRepository = accountRepository;
         this.statisticsRepository=statisticsRepository;
-        //statisticsRepository.deleteAll();
-        //accountRepository.deleteAll();
-        //accountRepository.save(new Account("admin","1234","email@email.com","Admin Adminsson",true));
+        statisticsRepository.deleteAll();
+        accountRepository.deleteAll();
+        accountRepository.save(new Account("admin","1234","email@email.com","Admin Adminsson",true));
     }
 
     @Override
@@ -87,23 +86,46 @@ public class AccountServiceImplementation implements AccountService {
     public int addQuestionsAnswered(int q){
         return questionsAnswered+=q;
     }
-    public int getQuestionsAnswered(){
+    public int getQuestionsAnswered(int id){
+        if(statisticsRepository.findByAccountID(id)==null) return questionsAnswered;
+        questionsAnswered+=statisticsRepository.findByAccountID(id).getQuestionsAnswered();
         return questionsAnswered;
     }
 
     public int addAnsweredCorrectly(int q){return answeredCorrectly+=q;}
-    public int getAnsweredCorrectly(){return answeredCorrectly;}
-
-    public int addGamesWon(int q){return gamesWon+=q;}
-    public int getGamesWon(){return gamesWon;}
-
-    public int addGamesPlayed(int q){return gamesPlayed+=q; }
-    public int getGamesPlayed(){return gamesPlayed;}
-
-    @Override
-    public void updateStatistics(int questionsAnswered, int answeredCorrectly, int gamesPlayed, int accountID) {
-        statisticsRepository.updateStatistics(questionsAnswered,answeredCorrectly,gamesPlayed,accountID);
+    public int getAnsweredCorrectly(int id){
+        if(statisticsRepository.findByAccountID(id)==null) return answeredCorrectly;
+        answeredCorrectly+= statisticsRepository.findByAccountID(id).getAnsweredCorrectly();
+        return answeredCorrectly;
     }
 
+    public int addGamesPlayed(int q){
+        return gamesPlayed+=q;
+    }
+    public int getGamesPlayed(int id){
+        if(statisticsRepository.findByAccountID(id)==null) return gamesPlayed;
+        gamesPlayed+=statisticsRepository.findByAccountID(id).getGamesPlayed();
+        return gamesPlayed;
+    }
 
+    @Override
+    public void updateStatistics(int questionsAnswered, int answeredCorrectly, int gamesPlayed, int id) {
+        statisticsRepository.updateStatistics(questionsAnswered,answeredCorrectly,gamesPlayed,id);
+    }
+    public int resetQA(){
+        return questionsAnswered=0;
+    }
+    public int resetAC(){
+        return  answeredCorrectly=0;
+    }
+    public int resetGP(){
+        return  gamesPlayed=0;
+    }
+
+    public void resetScore(){
+        gamesPlayed=0;
+        answeredCorrectly=0;
+        questionsAnswered=0;
+
+    }
 }

@@ -46,7 +46,7 @@ public class AccountController {
         //Don't let an account be saved without a username or password
         if(!Objects.equals(account.getPassword(), "") && !Objects.equals(account.getUsername(), "")) {
             //Check if it already exists
-           if(exists == null){
+            if(exists == null){
 
                 accountService.save(account);
                 return "home";
@@ -67,7 +67,7 @@ public class AccountController {
         }
         Account username =accountService.findByUsername(account.getUsername());
         if(username==null)  model.addAttribute("notRegistered",true);
-         exists = accountService.login(account);
+        exists = accountService.login(account);
 
         // Get all questions for admin delete and/or admin add question.
         if(exists != null){
