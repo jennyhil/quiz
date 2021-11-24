@@ -58,7 +58,7 @@ public class QuizController {
         model.addAttribute("correctanswers", correctAnswers);
         model.addAttribute("guestScore",guestScore);
         model.addAttribute("nextPlayer",nextPlayer);
-        model.addAttribute("onePlayer",quizService.isTwoPlayer());
+        model.addAttribute("twoPlayer",quizService.isTwoPlayer());
 
         model.addAttribute("p1corrAnswers",p1corrAnswers);
         model.addAttribute("p2corrAnswers",p2corrAnswers);

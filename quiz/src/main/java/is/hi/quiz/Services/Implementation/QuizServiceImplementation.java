@@ -32,7 +32,7 @@ public class QuizServiceImplementation implements QuizService {
         //2 = Geography
         //3 = Sports
 
-        quizRepository.deleteAll();
+       /* quizRepository.deleteAll();
         //Entertainment = 10
         quizRepository.save(new Question(0, "Who portrays the character 'Paul' in the film Dune(2021)?", "Timothée Chalamet", "Jason Momoa", "Timothée Chalamet", "Harry Styles", "Dave Bautista"));
         quizRepository.save(new Question(0, "Which member of the band 'One Direction' famously left the band on the 25th of March 2015?", "Zayn", "Harry", "Louis", "Neil", "Zayn"));
@@ -40,7 +40,7 @@ public class QuizServiceImplementation implements QuizService {
         quizRepository.save(new Question(0, "How many seasons are there of the show 'The Bold and the Beautiful'?", "35", "30", "120", "35", "45"));
         quizRepository.save(new Question(0, "What is the name of Wario‘s sidekick in the Super Mario franchise?","Waluigi", "Luigi", "Waluigi", "Bowser", "Toad"));
         quizRepository.save(new Question(0, "What spell in Harry potter can unlock doors? ", "Alohamora", "Alohamora", "Lumos", "Wingardium Leviosa", "Expelliarmus"));
-        quizRepository.save(new Question(0, "Which British actor will play Batman in the upcoming reboot?", "Robert Pattinson", " Robert Pattinson", "Ricky Gervais", "Martin Freeman", "James Buckley"));
+        quizRepository.save(new Question(0, "Which British actor will play Batman in the upcoming reboot?", "Robert Pattinson", "Robert Pattinson", "Ricky Gervais", "Martin Freeman", "James Buckley"));
         quizRepository.save(new Question(0, "Which Harry Potter book does not exsist? Harry Potter and.. ", "the Sparkling Wands", "the Philosopher's Stone", "the Order of the Phoenix", "the Half-Blood Prince", "the Sparkling Wands"));
         quizRepository.save(new Question(0, "Who wrote 'The Lord of the Rings'?", "J.R.R Tolkien", "Dan Brown", "J.K Rowling", "J.R.R Tolkien", "Milan Kundera"));
         quizRepository.save(new Question(0, "Who of the following has not been a judge on 'The Great British Bake Off'?", "Jenny Omars", "Jenny Omars", "Prue Leith", "Paul Hollywood", "Mary Berry"));
@@ -88,7 +88,7 @@ public class QuizServiceImplementation implements QuizService {
         quizRepository.save(new Question(3, "What is the national sport of Russia?", "Bandy", "Football", "Ice skating", "Gymnastics", "Bandy"));
         quizRepository.save(new Question(3, "How many NBA championships did Michael Jordan win with the Chicago Bulls?", "6", "4", "5", "6", "7"));
         quizRepository.save(new Question(3, "How many medals did China win at the Beijing Olympics?", "100", "37", "51", "67", "100"));
-
+*/
         //scoreRepository.deleteAll();
 
         // Mögulega gera category repository til að adda categories ?
@@ -225,7 +225,9 @@ public void setTwoPlayer(){
      ***************************************************************/
     @Override
     public List <Scores> findByAccountID(long accountID) {
-        return scoreRepository.findByAccountIDOrderByScoreDesc(accountID);
+        List<Scores> topTen =scoreRepository.findByAccountIDOrderByScoreDesc(accountID);
+        if(topTen.size()>10) topTen = topTen.subList(0,10);
+        return topTen;
     }
 
     @Override

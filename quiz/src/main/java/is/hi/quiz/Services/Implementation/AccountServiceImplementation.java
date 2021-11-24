@@ -25,9 +25,9 @@ public class AccountServiceImplementation implements AccountService {
     public AccountServiceImplementation(AccountRepository accountRepository,StatisticsRepository statisticsRepository){
         this.accountRepository = accountRepository;
         this.statisticsRepository=statisticsRepository;
-        statisticsRepository.deleteAll();
-        accountRepository.deleteAll();
-        accountRepository.save(new Account("admin","1234","email@email.com","Admin Adminsson",true));
+        //statisticsRepository.deleteAll();
+        //accountRepository.deleteAll();
+        //accountRepository.save(new Account("admin","1234","email@email.com","Admin Adminsson",true));
     }
 
     @Override
