@@ -40,7 +40,7 @@ public class QuizServiceImplementation implements QuizService {
         quizRepository.save(new Question(0, "How many seasons are there of the show 'The Bold and the Beautiful'?", "35", "30", "120", "35", "45"));
         quizRepository.save(new Question(0, "What is the name of Wario‘s sidekick in the Super Mario franchise?","Waluigi", "Luigi", "Waluigi", "Bowser", "Toad"));
         quizRepository.save(new Question(0, "What spell in Harry potter can unlock doors? ", "Alohamora", "Alohamora", "Lumos", "Wingardium Leviosa", "Expelliarmus"));
-        quizRepository.save(new Question(0, "Which British actor will play Batman in the upcoming reboot?", "Robert Pattinson", " Robert Pattinson", "Ricky Gervais", "Martin Freeman", "James Buckley"));
+        quizRepository.save(new Question(0, "Which British actor will play Batman in the upcoming reboot?", "Robert Pattinson", "Robert Pattinson", "Ricky Gervais", "Martin Freeman", "James Buckley"));
         quizRepository.save(new Question(0, "Which Harry Potter book does not exsist? Harry Potter and.. ", "the Sparkling Wands", "the Philosopher's Stone", "the Order of the Phoenix", "the Half-Blood Prince", "the Sparkling Wands"));
         quizRepository.save(new Question(0, "Who wrote 'The Lord of the Rings'?", "J.R.R Tolkien", "Dan Brown", "J.K Rowling", "J.R.R Tolkien", "Milan Kundera"));
         quizRepository.save(new Question(0, "Who of the following has not been a judge on 'The Great British Bake Off'?", "Jenny Omars", "Jenny Omars", "Prue Leith", "Paul Hollywood", "Mary Berry"));

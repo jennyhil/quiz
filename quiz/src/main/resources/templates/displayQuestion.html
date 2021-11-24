@@ -16,6 +16,7 @@
     <div th:switch="${questions}" >
         <div th:case="null"  class="mainContainer">
             <h2>Quiz over!</h2>
+
             <h2 th:text="'You scored ' + ${scores}+' points!'"></h2>
             <h2 th:if=${twoPlayer} th:text="'Player 2 scored: ' + ${guestScore}+' points!'"></h2>
             <div th:if="${!twoPlayer}">
@@ -33,6 +34,9 @@
                 </div>
             </div>
             <div th:if="${twoPlayer}">
+                <h2 th:if="${scores} > ${guestScore}"th:text="'You won!'"></h2>
+                <h2 th:if="${scores} < ${guestScore}"th:text="'Player 2 won!'"></h2>
+                <h2 th:if="${scores} == ${guestScore}"th:text="'Draw!'"></h2>
                 <h2>Player one answers</h2>
                 <div th:each="c:${p1answers}">
                     <p th:text="${c}"></p>
