@@ -27,7 +27,7 @@
                      <p th:text="'Username not found. Want to sign up?'"></p>
                 </span>
 
-            <form action="#" th:action="@{/login}" th:object="${account}"  method="post">
+            <form action="#" th:action="@{/login}" th:object="${account}"  method="post" class="form">
                 <label for="username">Username</label>
                 <input type="text" name="username" id="username" th:field="*{username}"/>
                 <label for="password">Password</label>
@@ -35,8 +35,9 @@
                 <input type="submit" value="Login" class="button"/>
             </form>
             <a th:href="@{/}" class="button">Back</a>
+            </div>
         </div>
-    <th:block th:insert="generalComponents :: footer"></th:block>
+        <th:block th:insert="generalComponents :: footer"></th:block>
     </body>
 </html>
 
