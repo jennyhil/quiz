@@ -16,11 +16,9 @@
                 <h2 th:case="null" class="container row">No questions yet!</h2>
                 <div th:case="*" class="container col">
                     <h2>Pick a category!</h2>
-                    <div class="container col">
-                        <form th:each="c:${categories}" th:action="@{'/category/'+${c.ID}}" method="get">
-                            <button th:text="${c.categoryName}"></button>
-                        </form>
-                    </div>
+                    <form th:each="c:${categories}" th:action="@{'/category/'+${c.ID}}" method="get" class="container col">
+                        <button th:text="${c.categoryName}"></button>
+                    </form>
                 </div>
                 <a th:href="@{/user}" class="button">Back</a>
                 <a th:href="@{/}" class="button">Quit</a>

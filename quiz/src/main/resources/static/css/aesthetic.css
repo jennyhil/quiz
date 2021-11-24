@@ -140,6 +140,10 @@ form, table {
     width: 100%;
 }
 
+.twoColForm>input, .twoColForm>form{
+    width: 48%;
+}
+
 .twoColForm>button{
 
 }

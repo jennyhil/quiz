@@ -17,13 +17,15 @@
             <h2 th:text="'You scored ' + ${scores}+' points!'"></h2>
             <h2 th:if=${onePlayer} th:text="'Player 2 scored: ' + ${guestScore}+' points!'"></h2>
             <div th:if="${!onePlayer}">
-                <div class="container row">
-                    <h2>Player answers</h2>
-                    <h2>Correct answers</h2>
-                </div>
-                <div th:each="c, stats:${answers}" th:classappend="${c}==${correctanswers[stats.index]}? right:wrong" class="container row">
-                        <span th:text="${c}"></span>
-                        <span th:if=${c}!=${correctanswers[stats.index]} th:text="${correctanswers[stats.index]}"></span>
+                <div class="container col roundedBorder bg">
+                    <div class="container row">
+                        <h2>Player answers</h2>
+                        <h2>Correct answers</h2>
+                    </div>
+                    <div th:each="c, stats:${answers}" class="container row">
+                        <span th:class="${c}==${correctanswers[stats.index]}? right:wrong" th:text="${c}"></span>
+                        <span th:text="${correctanswers[stats.index]}"></span>
+                    </div>
                 </div>
             </div>
             <div th:if="${onePlayer}" class="container col">
