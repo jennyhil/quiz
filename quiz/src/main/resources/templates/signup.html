@@ -6,15 +6,15 @@
     </head>
     <body>
         <header></header>
-        <div class="mainContainer center">
-            <div class="secondContainer">
+        <div class="container main">
+            <div class="container second">
                 <h2>Signup for an account</h2>
 
                 <span th:if="${alreadyExistsInput}">
                     <span th:text="'Username already exists'"></span>
                 </span>
 
-                <form action="#" th:action="@{/signup}" th:object="${account}"  method="post">
+                <form action="#" th:action="@{/signup}" th:object="${account}"  method="post" class="form">
                     <label for="username">Username</label>
                     <input type="text" name="username" id="username" th:field="*{username}"/>
                     <label for="password">Password</label>

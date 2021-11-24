@@ -2,13 +2,13 @@
 <html xmlns:th="http://thymeleaf.org" lang="en">
     <head>
         <meta charset="UTF-8">
-        <link rel="stylesheet" type="text/css" href="/css/aesthetic.css"/>
+        <link rel="stylesheet" type="text/css" th:href="@{/css/aesthetic.css}"/>
         <title>Home</title>
     </head>
     <body>
-    <header></header>
-        <div class="mainContainer">
-            <div class="secondContainer">
+        <header></header>
+        <div class="container main">
+            <div class="container second">
                 <h1>Welcome to Think Fast</h1>
                 <h2>Enter the game and best your friends!</h2>
                 <a th:href="@{/login}" class="button">Log in</a>

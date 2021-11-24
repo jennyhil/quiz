@@ -2,20 +2,20 @@
 <html xmlns:th="http://thymeleaf.org" html lang="en">
     <head>
         <meta charset="UTF-8">
-        <link rel="stylesheet" type="text/css" href="/css/aesthetic.css"/>
+        <link rel="stylesheet" type="text/css" th:href="@{/css/aesthetic.css}"/>
         <title>Top scores</title>
     </head>
     <body>
         <header>
             <div th:include="generalComponents :: headerContent"></div>
         </header>
-        <div class="mainContainer">
-            <div th:switch="${statistics}" class="secondContainer">
-                <div th:case="null">
+        <div class="container main">
+            <div th:switch="${statistics}" class="container second">
+                <div th:case="null" class="container third">
                     <h2> You haven't played any quizzes.</h2>
                 </div>
 
-                <div th:case="*">
+                <div th:case="*" class="container third">
                     <h2 th:text="'You have answered ' + ${statistics.getQuestionsAnswered()}+' questions!'"></h2>
                     <h2 th:text="'You have answered ' + ${statistics.getAnsweredCorrectly()}+' questions correct!'"></h2>
                     <h2 th:text="'You have played ' + ${statistics.getGamesPlayed()}+' games!'"></h2>

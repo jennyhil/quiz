@@ -9,17 +9,16 @@
         <header>
             <div th:include="generalComponents :: headerContent"></div>
         </header>
-        <div class="mainContainer">
-            <div th:switch="${questions}" class="secondContainer">
-                <div th:case="null">
+        <div class="container main">
+            <div th:switch="${questions}" class="container second">
+                <div th:case="null" class="container third">
                     <h2>Quiz over!</h2>
                     <h2 th:text="'You scored ' + ${scores}+' points!'"></h2>
                     <h2 th:if=${onePlayer} th:text="'Player 2 scored: ' + ${guestScore}+' points!'"></h2>
                     <div th:if="${!onePlayer}">
-                    <div th:each="c:${correctanswers}">
-                        <p th:text="${c}">
-                        </p>
-                   </div>
+                        <div th:each="c:${correctanswers}">
+                            <p th:text="${c}"></p>
+                       </div>
                         <h2>Your answers</h2>
                         <div th:each="a:${answers}">
                             <p th:text="${a}"></p>
@@ -50,28 +49,26 @@
                 </div>
                 <div th:case="*">
                     <div th:each="q:${questions}">
-                        <div th:if="${!nextPlayer}">
-                        <h2> Questions </h2>
-                            <form action="#" th:action="@{'/category/'+${q.categoryID}}" method="post">
+                        <div th:if="${!nextPlayer}" class="container third">
+                            <h2>Questions</h2>
+                            <form action="#" th:action="@{'/category/'+${q.categoryID}}" method="post" class="twoColForm">
                                 <h2 th:text="${q.questionText}"></h2>
                                 <input type="submit" class="button" th:name="option" th:field="${q.optionA}" th:value="${q.optionA}"/>
                                 <input type="submit" class="button" th:name="option" th:field="${q.optionB}" th:value="${q.optionB}"/>
                                 <input type="submit" class="button" th:name="option" th:field="${q.optionC}"th:value="${q.optionC}"/>
                                 <input type="submit" class="button" th:name="option" th:field="${q.optionD}"th:value="${q.optionD}"/>
-                                </select>
                             </form>
                         </div>
                     </div>
                     <div th:each="q:${questions}">
-                        <div th:if="${nextPlayer}">
+                        <div th:if="${nextPlayer}" class="container third">
                             <h2>Player 2 it's your turn now!</h2>
-                            <form action="#" th:action="@{'/category/'+${q.categoryID}}" method="post">
+                            <form action="#" th:action="@{'/category/'+${q.categoryID}}" method="post" class="twoColForm">
                                 <h2 th:text="${q.questionText}"></h2>
                                 <input type="submit" class="button" th:name="option" th:field="${q.optionA}" th:value="${q.optionA}"/>
                                 <input type="submit" class="button" th:name="option" th:field="${q.optionB}" th:value="${q.optionB}"/>
                                 <input type="submit" class="button" th:name="option" th:field="${q.optionC}"th:value="${q.optionC}"/>
                                 <input type="submit" class="button" th:name="option" th:field="${q.optionD}"th:value="${q.optionD}"/>
-                                </select>
                             </form>
                         </div>
                     </div>

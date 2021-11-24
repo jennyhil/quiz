@@ -7,10 +7,10 @@
 </head>
 <body>
     <header></header>
-    <div class="mainContainer">
-        <div th:switch="${questions}" class="secondContainer">
-            <h2 th:case="null">No questions yet!</h2>
-            <div th:case="*">
+    <div class="container main">
+        <div th:switch="${questions}" class="container second">
+            <h2 th:case="null" class="container third">No questions yet!</h2>
+            <div th:case="*" class="container third">
                 <h2>Questions</h2>
                 <a th:href="@{/addquestion}" class="button">Add a new question</a>
                 <table>
@@ -21,7 +21,7 @@
                         <tr th:each="q : ${questions}" class="tableItems">
                             <td th:text="${q.questionText}" class="tableItem"></td>
                             <td class="tableItem">
-                                <a th:href="@{/delete/{id}(id=${q.ID})}" class="button thinButton">Delete</a>
+                                <a th:href="@{/delete/{id}(id=${q.ID})}" class="button">Delete</a>
                             </td>
                         </tr>
                     </tbody>

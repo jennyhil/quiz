@@ -7,8 +7,8 @@
     </head>
     <body>
         <header></header>
-        <div class="mainContainer">
-            <div class="secondContainer">
+        <div class="container main">
+            <div class="container second">
 
                 <h2>Login to your account</h2>
 
@@ -22,7 +22,7 @@
                      <p th:text="'Username not found. Want to sign up?'"></p>
                 </span>
 
-                <form action="#" th:action="@{/login}" th:object="${account}"  method="post">
+                <form action="#" th:action="@{/login}" th:object="${account}"  method="post" class="form">
                     <label for="username">Username</label>
                     <input type="text" name="username" id="username" th:field="*{username}"/>
                     <label for="password">Password</label>

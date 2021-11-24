@@ -10,9 +10,9 @@
     <header>
         <div th:include="generalComponents :: headerContent"></div>
     </header>
-        <div class="mainContainer">
-                <div class="secondContainer">
-                <form action="#" th:action="@{/addquestion}" th:object="${question}" method="post">
+        <div class="container main">
+                <div class="container second">
+                <form action="#" th:action="@{/addquestion}" th:object="${question}" method="post" class="form">
                     <label for="categoryID">CategoryID</label>
                     <input type="text" th:field="*{categoryID}" id="categoryID" placeholder="categoryID">
                     <span th:if="${#fields.hasErrors('categoryID')}" th:errors="*{categoryID}"></span>

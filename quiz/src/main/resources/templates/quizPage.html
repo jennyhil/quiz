@@ -1,28 +1,28 @@
 <!DOCTYPE html>
 <html xmlns:th="http://thymeleaf.org" lang="">
-<head>
-    <meta charset="UTF-8">
-    <link rel="stylesheet" type="text/css" href="/css/aesthetic.css"/>
-    <title>Quiz</title>
-</head>
-<body>
+    <head>
+        <meta charset="UTF-8">
+        <link rel="stylesheet" type="text/css" th:href="@{/css/aesthetic.css}"/>
+        <title>Quiz</title>
+    </head>
+    <body>
 
-<header>
-    <div th:include="generalComponents :: headerContent"></div>
-</header>
-<div class="mainContainer">
-    <div th:switch="${categories}" class="secondContainer">
-        <h2 th:case="null">No questions yet!</h2>
-        <div th:case="*">
-            <h2> Pick a category! </h2>
-            <form th:each="c:${categories}" th:action="@{'/category/'+${c.ID}}" method="get" class="form">
-                <button th:text="${c.categoryName}" class="button"></button>
-            </form>
+        <header>
+            <div th:include="generalComponents :: headerContent"></div>
+        </header>
+        <div class="container main">
+            <div th:switch="${categories}" class="container second">
+                <h2 th:case="null" class="container third">No questions yet!</h2>
+                <div th:case="*" class="container third">
+                    <h2> Pick a category! </h2>
+                    <form th:each="c:${categories}" th:action="@{'/category/'+${c.ID}}" method="get" class="twoColForm">
+                        <button th:text="${c.categoryName}" class="button"></button>
+                    </form>
+                </div>
+                <a th:href="@{/user}" class="button">Back</a>
+                <a th:href="@{/}" class="button">Quit</a>
+            </div>
         </div>
-        <a th:href="@{/user}" class="button">Back</a>
-        <a th:href="@{/}" class="button">Quit</a>
-    </div>
-</div>
-    <th:block th:insert="generalComponents :: footer"></th:block>
-</body>
+        <th:block th:insert="generalComponents :: footer"></th:block>
+    </body>
 </html>
