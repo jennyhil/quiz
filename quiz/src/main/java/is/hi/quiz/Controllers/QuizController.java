@@ -22,9 +22,10 @@ public class QuizController {
     private Boolean nextPlayer=false;
     public int guestScore=0;
     private Scores score;
-    private Statistics statistic;
     private Account account;
     private boolean quizOver=false;
+    private int counter=0;
+    private int counterTwo=0;
 
     @Autowired
     public QuizController(QuizService quizService, AccountService as,AccountController ac){
@@ -32,7 +33,7 @@ public class QuizController {
         this.as=as;
         this.ac=ac;
     }
-     @GetMapping("/category/{id}")
+    @GetMapping("/category/{id}")
     public String getQuestions(@PathVariable("id")long id,Model model){
         if(!quizService.isTwoPlayer())nextPlayer=false;
         Question nextQuestion;
@@ -44,12 +45,13 @@ public class QuizController {
         List<String>answers =quizService.getAnswers();
 
         // Make answer lists for p1 and p2 to display at the end of game
-         List<String>p1Answers =answers.subList(0,answers.size()/2);
-         List<String>p2Answers =answers.subList(answers.size()/2,answers.size());
-         List<String>p1corrAnswers =correctAnswers.subList(0,correctAnswers.size()/2);
-         List<String>p2corrAnswers =correctAnswers.subList(correctAnswers.size()/2,correctAnswers.size());
-
+        List<String>p1Answers =answers.subList(0,answers.size()/2);
+        List<String>p2Answers =answers.subList(answers.size()/2,answers.size());
+        List<String>p1corrAnswers =correctAnswers.subList(0,correctAnswers.size()/2);
+        List<String>p2corrAnswers =correctAnswers.subList(correctAnswers.size()/2,correctAnswers.size());
         // Add models
+        model.addAttribute("counter",counter);
+        model.addAttribute("counterTwo",counterTwo);
         model.addAttribute("scores", scores);
         model.addAttribute("questions", nextQuestion);
         model.addAttribute("answers", answers);
@@ -63,7 +65,7 @@ public class QuizController {
         model.addAttribute("p1answers",p1Answers);
         model.addAttribute("p2answers",p2Answers);
 
-         return "displayQuestion";
+        return "displayQuestion";
     }
 
     @RequestMapping(value="/category/{id}",method=RequestMethod.POST)
@@ -109,27 +111,27 @@ public class QuizController {
             if(quizService.getNoOfQuestions()>limit && !nextPlayer){
                 if(quizService.isTwoPlayer())nextPlayer=true;
             }
+            counter=allQuestions.indexOf(question)+1;
+            counterTwo=allQuestions.indexOf(question)+1- allQuestions.size()/2;
             return question;
         }
         setStatisticAndScore();
         return null;
     }
 
-public boolean exists(){
-    Statistics exists = as.findByAccountID((int)account.getID());
+    public boolean exists(){
+        Statistics exists = as.findByAccountID((int)account.getID());
         if(exists!=null)return true;
         else return false;
-}
+    }
 
-public void setStatisticAndScore(){
-    as.addGamesPlayed(1);
-    statistic = new Statistics(account,(int)account.getID(),as.getQuestionsAnswered(),as.getAnsweredCorrectly(),as.getGamesPlayed());
-    quizService.saveScores(score);
-    if(exists()) as.updateStatistics(as.getQuestionsAnswered(),as.getAnsweredCorrectly(),as.getGamesPlayed(),(int)account.getID());
-    else as.saveStatistics(statistic);
-    nextPlayer=false;
-}
-
+    public void setStatisticAndScore(){
+        as.addGamesPlayed(1);
+        quizService.saveScores(score);
+        if(exists()) as.updateStatistics(as.getQuestionsAnswered((int)account.getID()),as.getAnsweredCorrectly((int)account.getID()),as.getGamesPlayed((int)account.getID()),(int)account.getID());
+        else as.saveStatistics(new Statistics(account,(int)account.getID(),as.getQuestionsAnswered((int)account.getID()),as.getAnsweredCorrectly((int)account.getID()),as.getGamesPlayed((int)account.getID())));
+        nextPlayer=false;
+    }
 
     public void onePlayerSetUp(){
         if(!nextPlayer) {

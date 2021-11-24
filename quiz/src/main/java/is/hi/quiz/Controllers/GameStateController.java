@@ -15,12 +15,14 @@ import java.util.List;
 
 @Controller
 public class GameStateController {
-    private final QuizService quizService;
-    private final QuizController qc;
+    private  QuizService quizService;
+    private  AccountService accountService;
+    private  QuizController qc;
 
     @Autowired
-    public GameStateController(QuizService quizService,QuizController qc){
+    public GameStateController(QuizService quizService,QuizController qc,AccountService accountService){
         this.quizService = quizService;
+        this.accountService=accountService;
         this.qc=qc;
     }
 
@@ -32,6 +34,10 @@ public class GameStateController {
         quizService.resetScore();
         quizService.resetAnswers();
         qc.guestScore=0;
+        accountService.resetScore();
+       /* accountService.resetAC();
+        accountService.resetQA();
+        accountService.resetGP();*/
         List<Category> allCategories = quizService.findAllCategories();
         model.addAttribute("categories" ,allCategories);
         return "quizPage";
@@ -43,11 +49,12 @@ public class GameStateController {
         quizService.resetNoOfQuestions();
         quizService.resetScore();
         quizService.resetAnswers();
+        accountService.resetAC();
+        accountService.resetQA();
+        accountService.resetGP();
         qc.guestScore=0;
-        System.out.println("No of players: "+players);
         if(players.equals("One Player"))quizService.setOnePlayer();
         if(players.equals("Two Player"))quizService.setTwoPlayer();
-        //else quizService.setQuestionListLength(2);
         System.out.println(quizService.isTwoPlayer());
         List<Category> allCategories = quizService.findAllCategories();
         model.addAttribute("categories" ,allCategories);

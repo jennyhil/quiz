@@ -3,30 +3,33 @@
     <head>
         <meta charset="UTF-8">
         <link rel="stylesheet" type="text/css" th:href="@{/css/aesthetic.css}"/>
+        <link rel="stylesheet" type="text/css" th:href="@{/css/scores.css}"/>
         <title>Title</title>
     </head>
     <body>
         <header>
-            <div th:include="generalComponents :: headerContent"></div>
+            <a th:href="@{/}" class="button">Home</a>
+            <a href="/accountPage" class="button">My Account</a>
+            <a th:href="@{/topscores}" class="button">Top scores</a>
+            <a th:href="@{/logout}" class="button">Log out</a>
         </header>
-        <div class="container main">
-            <div class="container second">
-                <table>
-                    <thead>
-                        <tr class="tableItems">
-                            <th class="tableItem">Score</th>
-                            <th class="tableItem">Player</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr th:each="s : ${scores}" class="tableItems">
-                            <td th:text="${s.getScore}" class="tableItem"></td>
-                            <td th:text="${s.getAccount().getUsername()}" class="tableItem"></td>
-                            <td class="tableItem"></td>
-                        </tr>
-                    </tbody>
-                </table>
-            </div>
+        <div class="mainContainerTopScores">
+            <h2 class="leaderboard">Leaderboard</h2>
+            <table class="accountTable">
+                <thead>
+                    <tr class="tableItems">
+                        <th class="tableItem">Score</th>
+                        <th class="tableItem">Player</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr th:each="s : ${scores}" class="tableItems">
+                        <td th:text="${s.getScore}" class="tableItem"></td>
+                        <td th:text="${s.getAccount().getUsername()}" class="tableItem"></td>
+                        <td class="tableItem"></td>
+                    </tr>
+                </tbody>
+            </table>
         </div>
 
         <th:block th:insert="generalComponents :: footer"></th:block>

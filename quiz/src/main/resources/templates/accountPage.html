@@ -3,11 +3,17 @@
     <head>
         <meta charset="UTF-8">
         <link rel="stylesheet" type="text/css" th:href="@{/css/aesthetic.css}"/>
+        <link rel="stylesheet" type="text/css" th:href="@{/css/aesthetic.css}"/>
+        <link rel="stylesheet" type="text/css" th:href="@{/css/scores.css}"/>
+
         <title>Top scores</title>
     </head>
     <body>
         <header>
-            <div th:include="generalComponents :: headerContent"></div>
+            <a href="/user" class="button">Home</a>
+            <a href="/accountPage" class="button">My Account</a>
+            <a href="/topscores" class="button">Top scores</a>
+            <a href="/logout" class="button">Log out</a>
         </header>
         <div class="container main">
             <div th:switch="${statistics}" class="container second">
@@ -15,10 +21,14 @@
                     <h2> You haven't played any quizzes.</h2>
                 </div>
 
-                <div th:case="*" class="container pseudoRow">
-                    <h2 th:text="'You have answered ' + ${statistics.getQuestionsAnswered()}+' questions!'"></h2>
-                    <h2 th:text="'You have answered ' + ${statistics.getAnsweredCorrectly()}+' questions correct!'"></h2>
-                    <h2 th:text="'You have played ' + ${statistics.getGamesPlayed()}+' games!'"></h2>
+                <div th:case="*" class="container pseudoCol">
+                    <div class="mainContainerLeft">
+                        <h2 class="border1">Since you signed up you have.....</h2>
+                        <h2 class="border2"th:if="${statistics.getGamesPlayed()==1}"th:text="'...played ' + ${statistics.getGamesPlayed()}+' game!'"></h2>
+                        <h2 class="border2" th:unless="${statistics.getGamesPlayed()==1}"th:text="'...played ' + ${statistics.getGamesPlayed()}+' games!'"></h2>
+                        <h2 class="border3" th:text="'...answered ' + ${statistics.getQuestionsAnswered()}+' questions in total!'"></h2>
+                        <h2 class="border4" th:text="'...answered ' + ${statistics.getAnsweredCorrectly()}+' questions correctly!'"></h2>
+                    </div>
                     <table>
                         <thead>
                             <tr class="tableItems">
@@ -43,4 +53,5 @@
         <th:block th:insert="generalComponents :: footer"></th:block>
 
     </body>
+
 </html>

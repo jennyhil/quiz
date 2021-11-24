@@ -1,14 +1,17 @@
 <!DOCTYPE html>
-<html xmlns:th="https://thymeleaf.org">
+<html xmlns:th="https://thymeleaf.org" lang="en">
   <head>
     <meta charset="UTF-8">
     <link rel="stylesheet" type="text/css" th:href="@{/css/aesthetic.css}"/>
-    <title>What user is logged in?</title>
+    <title>User Page</title>
   </head>
   <body>
-  <header>
-    <div th:include="generalComponents :: headerContent"></div>
-  </header>
+    <header>
+      <a th:href="@{/}" class="button">Home</a>
+      <a href="/accountPage" class="button">My Account</a>
+      <a th:href="@{/topscores}" class="button">Top scores</a>
+      <a th:href="@{/logout}" class="button">Log out</a>
+    </header>
     <div class="container main">
         <div class="container second">
           <h2 th:text="'Hello ' + ${loggedInUser.username}"></h2>

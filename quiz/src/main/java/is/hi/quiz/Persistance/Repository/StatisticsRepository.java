@@ -10,14 +10,14 @@ import javax.transaction.Transactional;
 
 public interface StatisticsRepository  extends JpaRepository<Statistics,Long> {
     Statistics save(Statistics statistics);
-    Statistics findByAccountID(int accountID);
+    Statistics findByAccountID(int id);
    // Statistics findByAccountUsername(String username);
    /* Statistics update(Statistics statistics);*/
 
     @Transactional
     @Modifying
     @Query("update Statistics s set s.questionsAnswered = ?1, s.answeredCorrectly = ?2, s.gamesPlayed=?3 where s.accountID = ?4")
-    void updateStatistics(int questionsAnswered, int answeredCorrectly,int gamesPlayed, int accountID);
+    void updateStatistics(int questionsAnswered, int answeredCorrectly,int gamesPlayed, int id);
 
 
 }

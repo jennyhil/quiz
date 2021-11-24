@@ -1,0 +1,84 @@
+.mainContainerAccount, .mainContainerTopScores {
+    min-height: 100vh;
+    width: 100%;
+    background-image: url("images/background.jpg");
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+    position: relative;
+    display: flex;
+    align-items: center;
+}
+
+.mainContainerAccount{
+    flex-direction: row;
+    justify-content: space-evenly;
+}
+.mainContainerTopScores{
+    flex-direction: column;
+    justify-content: center;
+    min-width: 50vh;
+}
+
+.mainContainerLeft{
+    min-height: 50vh;
+    min-width: 50vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+}
+.mainContainerRight,mainContainerTopScores{
+    min-height: 50vh;
+    min-width: 50vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    font-weight: bold;
+}
+.accountTable{
+    box-shadow: dimgray 2px 2px;
+    min-height:56vh;
+    text-transform: uppercase;
+    min-width: 45vh;
+    border-color: #cccccc;
+    border-style: solid;
+    border-radius: 16px;
+
+}
+.border1,.border2,.border3,.border4,.leaderboard {
+    min-height: 10vh;
+    min-width: 45vh;
+    justify-content: center;
+    align-items: center;
+    display: flex;
+    cursor: default;
+    box-shadow: dimgray 2px 2px;
+    text-transform: uppercase;
+    border-color: #cccccc;
+    border-style: solid;
+    border-radius: 16px;
+    animation-fill-mode: both;
+    animation-iteration-count: 2;
+
+    animation-name: pulse;
+    animation-duration: 1s;
+}
+.leaderboard{
+    background-color: darkorange;
+    color: whitesmoke;
+}
+.border1{
+    background-color: darkorange;
+    color: whitesmoke;
+}
+.border2,.border3,.border4,.accountTable{
+    background-color: whitesmoke;
+    color: darkorange;
+}
+@keyframes pulse {
+    0% {transform: scale(1);}
+    50% {transform: scale(1.1);}
+    100% {transform: scale(1);}
+}

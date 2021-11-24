@@ -14,16 +14,22 @@ public interface AccountService {
     void delete(Account account);
     Account findByUsername(String username);
     Account login(Account account);
+    Account logout(Account account);
 
     // Statistics stuff
     Statistics saveStatistics(Statistics statistics);
     Statistics findByAccountID(int accountID);
     int addQuestionsAnswered(int q);
-    int getQuestionsAnswered();
+    int getQuestionsAnswered(int i);
     int addAnsweredCorrectly(int q);
-    int getAnsweredCorrectly();
+    int getAnsweredCorrectly(int i);
     int addGamesPlayed(int q);
-    int getGamesPlayed();
+    int getGamesPlayed(int i);
+    void resetScore();
+    int resetQA();
+    int resetAC();
+    int resetGP();
 
-    void updateStatistics(int questionsAnswered, int answeredCorrectly, int gamesPlayed, int accountID);
+
+    void updateStatistics(int questionsAnswered, int answeredCorrectly, int gamesPlayed, int id);
 }
