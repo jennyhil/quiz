@@ -16,33 +16,32 @@
                     <h2 th:text="'You scored ' + ${scores}+' points!'"></h2>
                     <h2 th:if=${onePlayer} th:text="'Player 2 scored: ' + ${guestScore}+' points!'"></h2>
                     <div th:if="${!onePlayer}">
-                        <div th:each="c:${correctanswers}">
-                            <p th:text="${c}"></p>
-                       </div>
-                        <h2>Your answers</h2>
-                        <div th:each="a:${answers}">
-                            <p th:text="${a}"></p>
+                        <div th:each="c, stats:${answers}">
+                            <div th:class="${c}==${correctanswers[stats.index]}? right:wrong">
+                                <span th:text="${c}"></span>
+                                <span th:if=${c}!=${correctanswers[stats.index]} th:text="${correctanswers[stats.index]}"></span>
+                            </div>
                         </div>
                     </div>
                     <div th:if="${onePlayer}" class="container pseudoCol">
                         <div>
-                            <h2>Player one answers</h2>
-                            <div th:each="c:${p1answers}">
-                                <p th:text="${c}"></p>
-                            </div>
-                            <h2>Correct answers for player one</h2>
-                            <div th:each="c:${p1corrAnswers}">
-                                <p th:text="${c}"></p>
+                            <h2>Player 1</h2>
+                            <h2>Chosen answers and Correct answers</h2>
+                            <div th:each="c,stats:${p1answers}">
+                                <div th:class="${c}==${p1corrAnswers[stats.index]}? right:wrong">
+                                    <span th:text="${c}"></span>
+                                    <span th:if=${c}!=${p1corrAnswers[stats.index]} th:text="${p1corrAnswers[stats.index]}"></span>
+                                </div>
                             </div>
                         </div>
                         <div>
-                            <h2>Player two answers</h2>
-                            <div th:each="c:${p2answers}">
-                                <p th:text="${c}"></p>
-                            </div>
-                            <h2>Correct answers for player two</h2>
-                            <div th:each="c:${p2corrAnswers}">
-                                <p th:text="${c}"></p>
+                            <h2>Player 2</h2>
+                            <h2>Chosen answers and Correct answers</h2>
+                            <div th:each="c,stats:${p2answers}">
+                                <div th:class="${c}==${p2corrAnswers[stats.index]}? right:wrong">
+                                    <span th:text="${c}"></span>
+                                    <span th:if=${c}!=${p2corrAnswers[stats.index]} th:text="${p2corrAnswers[stats.index]}"></span>
+                                </div>
                             </div>
                         </div>
                     </div>

@@ -23,6 +23,10 @@ h2 {
     color: red;
 }
 
+.right {
+    color: green;
+}
+
 
 .test{/*check if changes show up*/
     background-color: deepskyblue;
