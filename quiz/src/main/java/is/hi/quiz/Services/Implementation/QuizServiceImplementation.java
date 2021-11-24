@@ -27,8 +27,13 @@ public class QuizServiceImplementation implements QuizService {
         this.quizRepository = quizRepository;
         this.scoreRepository = scoreRepository;
         // Inserting questions into db.
-        // TODO: Find a better way to insert into database.
-       /* quizRepository.deleteAll();
+        //0 = Entertainment
+        //1 = General Knowledge
+        //2 = Geography
+        //3 = Sports
+
+        quizRepository.deleteAll();
+        //Entertainment = 10
         quizRepository.save(new Question(0, "Who portrays the character 'Paul' in the film Dune(2021)?", "Timothée Chalamet", "Jason Momoa", "Timothée Chalamet", "Harry Styles", "Dave Bautista"));
         quizRepository.save(new Question(0, "Which member of the band 'One Direction' famously left the band on the 25th of March 2015?", "Zayn", "Harry", "Louis", "Neil", "Zayn"));
         quizRepository.save(new Question(0, "Who won 'Best Actor' at the Oscars in 2021?", "Anthony Hopkins", "Leonardo DiCaprio", "Anthony Hopkins", "Bob", "Adam Sandler"));
@@ -83,12 +88,12 @@ public class QuizServiceImplementation implements QuizService {
         quizRepository.save(new Question(3, "What is the national sport of Russia?", "Bandy", "Football", "Ice skating", "Gymnastics", "Bandy"));
         quizRepository.save(new Question(3, "How many NBA championships did Michael Jordan win with the Chicago Bulls?", "6", "4", "5", "6", "7"));
         quizRepository.save(new Question(3, "How many medals did China win at the Beijing Olympics?", "100", "37", "51", "67", "100"));
-*/
+
         //scoreRepository.deleteAll();
 
         // Mögulega gera category repository til að adda categories ?
         categories.add(new Category(0, "Entertainment"));
-        categories.add(new Category(1, "General knowledge"));
+        categories.add(new Category(1, "General Knowledge"));
         categories.add(new Category(2, "Geography"));
         categories.add(new Category(3, "Sports"));
 
