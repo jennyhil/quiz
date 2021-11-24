@@ -8,17 +8,14 @@
     <body>
 
         <header>
-            <a th:href="@{/}" class="button">Home</a>
-            <a href="/accountPage" class="button">My Account</a>
-            <a th:href="@{/topscores}" class="button">Top scores</a>
-            <a th:href="@{/logout}" class="button">Log out</a>
+            <span th:include="generalComponents :: headerContent"></span>
         </header>
 
         <div class="container main">
             <div th:switch="${categories}" class="container second">
                 <h2 th:case="null" class="container pseudoRow">No questions yet!</h2>
                 <div th:case="*" class="container pseudoRow">
-                    <h2> Pick a category! </h2>
+                    <h2>Pick a category!</h2>
                     <div class="twoColForm">
                         <form th:each="c:${categories}" th:action="@{'/category/'+${c.ID}}" method="get">
                             <button th:text="${c.categoryName}" class="button"></button>
@@ -29,7 +26,6 @@
                 <a th:href="@{/}" class="button">Quit</a>
             </div>
         </div>
-
         <th:block th:insert="generalComponents :: footer"></th:block>
     </body>
 </html>

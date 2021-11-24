@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html xmlns:th="http://thymeleaf.org" html lang="en">
+<html xmlns:th="http://thymeleaf.org" lang="en">
     <head>
         <meta charset="UTF-8">
         <link rel="stylesheet" type="text/css" th:href="@{/css/aesthetic.css}"/>
@@ -10,10 +10,7 @@
     </head>
     <body>
         <header>
-            <a href="/user" class="button">Home</a>
-            <a href="/accountPage" class="button">My Account</a>
-            <a href="/topscores" class="button">Top scores</a>
-            <a href="/logout" class="button">Log out</a>
+            <span th:include="generalComponents :: headerContent"></span>
         </header>
         <div class="container main">
             <div th:switch="${statistics}" class="container second">
@@ -24,8 +21,8 @@
                 <div th:case="*" class="container pseudoCol">
                     <div class="mainContainerLeft">
                         <h2 class="border1">Since you signed up you have.....</h2>
-                        <h2 class="border2"th:if="${statistics.getGamesPlayed()==1}"th:text="'...played ' + ${statistics.getGamesPlayed()}+' game!'"></h2>
-                        <h2 class="border2" th:unless="${statistics.getGamesPlayed()==1}"th:text="'...played ' + ${statistics.getGamesPlayed()}+' games!'"></h2>
+                        <h2 class="border2" th:if="${statistics.getGamesPlayed()==1}" th:text="'...played ' + ${statistics.getGamesPlayed()}+' game!'"></h2>
+                        <h2 class="border2" th:unless="${statistics.getGamesPlayed()==1}" th:text="'...played ' + ${statistics.getGamesPlayed()}+' games!'"></h2>
                         <h2 class="border3" th:text="'...answered ' + ${statistics.getQuestionsAnswered()}+' questions in total!'"></h2>
                         <h2 class="border4" th:text="'...answered ' + ${statistics.getAnsweredCorrectly()}+' questions correctly!'"></h2>
                     </div>

@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!---<!DOCTYPE html>
 <html xmlns:th="http://thymeleaf.org" lang="">
     <head>
         <meta charset="UTF-8">
@@ -82,4 +82,92 @@
         </div>
         <th:block th:insert="generalComponents :: footer"></th:block>
     </body>
-    </html>
+</html>
+--->
+<!DOCTYPE html>
+<html xmlns:th="http://thymeleaf.org" lang="">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" type="text/css" th:href="@{/css/aesthetic.css}"/>
+    <link rel="stylesheet" type="text/css" th:href="@{/css/scores.css}"/>
+    <title>Quiz</title>
+</head>
+<body>
+<header>
+    <span th:include="generalComponents :: headerContent"></span>
+</header>
+<div class="container main">
+    <div th:switch="${questions}" class="container second">
+        <div th:case="null" class="container pseudoRow">
+            <h2>Quiz over!</h2>
+            <h2 th:text="'You scored ' + ${scores}+' points!'"></h2>
+            <h2 th:if=${onePlayer} th:text="'Player 2 scored: ' + ${guestScore}+' points!'"></h2>
+            <div th:if="${!onePlayer}">
+                <div th:each="c, stats:${answers}">
+                    <div th:class="${c}==${correctanswers[stats.index]}? right:wrong">
+                        <span th:text="${c}"></span>
+                        <span th:if=${c}!=${correctanswers[stats.index]} th:text="${correctanswers[stats.index]}"></span>
+                    </div>
+                </div>
+            </div>
+            <div th:if="${onePlayer}" class="container pseudoCol">
+                <div>
+                    <h2 th:if="${scores} > ${guestScore}"th:text="'You won!'"></h2>
+                    <h2 th:if="${scores} < ${guestScore}"th:text="'Player 2 won!'"></h2>
+                    <h2 th:if="${scores} == ${guestScore}"th:text="'Draw!'"></h2>
+                    <h2>Player 1</h2>
+                    <h2>Chosen answers and Correct answers</h2>
+                    <div th:each="c,stats:${p1answers}">
+                        <div th:class="${c}==${p1corrAnswers[stats.index]}? right:wrong">
+                            <span th:text="${c}"></span>
+                            <span th:if=${c}!=${p1corrAnswers[stats.index]} th:text="${p1corrAnswers[stats.index]}"></span>
+                        </div>
+                    </div>
+                </div>
+                <div>
+                    <h2>Player 2</h2>
+                    <h2>Chosen answers and Correct answers</h2>
+                    <div th:each="c,stats:${p2answers}">
+                        <div th:class="${c}==${p2corrAnswers[stats.index]}? right:wrong">
+                            <span th:text="${c}"></span>
+                            <span th:if=${c}!=${p2corrAnswers[stats.index]} th:text="${p2corrAnswers[stats.index]}"></span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <a th:href="@{/user}" class="button">Play a new game</a>
+            <a th:href="@{/}" class="button">Quit</a>
+        </div>
+        <div th:case="*">
+            <div th:each="q:${questions}">
+                <div th:if="${!nextPlayer}" class="container pseudoRow">
+                    <h2 th:if="${counter!=0}" th:text="'Question ' + ${counter}"></h2>
+                    <form action="#" th:action="@{'/category/'+${q.categoryID}}" method="post" class="twoColForm">
+                        <h2 th:text="${q.questionText}"></h2>
+                        <input type="submit" class="button" th:name="option" th:field="${q.optionA}" th:value="${q.optionA}"/>
+                        <input type="submit" class="button" th:name="option" th:field="${q.optionB}" th:value="${q.optionB}"/>
+                        <input type="submit" class="button" th:name="option" th:field="${q.optionC}" th:value="${q.optionC}"/>
+                        <input type="submit" class="button" th:name="option" th:field="${q.optionD}" th:value="${q.optionD}"/>
+                    </form>
+                </div>
+            </div>
+            <div th:each="q:${questions}">
+                <div th:if="${nextPlayer}" class="container pseudoRow">
+                    <h2 th:if="${counterTwo==1}">Player 2 it's your turn now!</h2>
+                    <h2 th:text="'Question ' + ${counterTwo}"></h2>
+                    <form action="#" th:action="@{'/category/'+${q.categoryID}}" method="post" class="twoColForm">
+                        <h2 th:text="${q.questionText}"></h2>
+                        <input type="submit" class="button" th:name="option" th:field="${q.optionA}" th:value="${q.optionA}"/>
+                        <input type="submit" class="button" th:name="option" th:field="${q.optionB}" th:value="${q.optionB}"/>
+                        <input type="submit" class="button" th:name="option" th:field="${q.optionC}" th:value="${q.optionC}"/>
+                        <input type="submit" class="button" th:name="option" th:field="${q.optionD}" th:value="${q.optionD}"/>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<th:block th:insert="generalComponents :: footer"></th:block>
+</body>
+</html>

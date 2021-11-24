@@ -8,10 +8,7 @@
     <body>
 
     <header>
-        <a th:href="@{/}" class="button">Home</a>
-        <a href="/accountPage" class="button">My Account</a>
-        <a th:href="@{/topscores}" class="button">Top scores</a>
-        <a th:href="@{/logout}" class="button">Log out</a>
+        <span th:include="generalComponents :: headerContent"></span>
     </header>
         <div class="container main">
                 <div class="container second">
