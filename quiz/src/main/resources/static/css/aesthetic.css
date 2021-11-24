@@ -1,51 +1,9 @@
+/*general*/
 *{
     padding: 0;
     margin: 0;
     font-family: "Arial", Helvetica, sans-serif;
     font-size: 16px;
-}
-
-header, footer{
-    height: 8vh;
-    width: 100%;
-    background-color: darkorange;
-    display: flex;
-    flex-direction: row;
-    justify-content: flex-start;
-    align-items: center;
-    align-content: center;
-    padding: 0.25rem 0.5rem;
-}
-
-.container{
-    min-height: 84vh;
-    display: flex;
-    justify-content: center;
-    justify-items: center;
-    align-items: center;
-    align-content: center;
-}
-
-.main{
-    width: 100%;
-    background-image: url("images/background.jpg");
-    background-repeat: no-repeat;
-    background-position: center;
-    background-size: cover;
-    position: relative;
-    flex-direction: row;
-}
-
-.second{
-    width: 50%;
-    background: rgba(255,140,0,0.60);
-    flex-direction: column;
-    padding: 1rem;
-}
-
-.third{
-    width: 100%;
-    flex-direction: column;
 }
 
 h1, h2, p{
@@ -59,6 +17,72 @@ h1 {
 
 h2 {
     font-size: large;
+}
+
+.wrong {
+    color: red;
+}
+
+
+.test{/*check if changes show up*/
+    background-color: deepskyblue;
+    color: deeppink;
+}
+
+/*header and footer*/
+header, footer{
+    height: 8vh;
+    width: 100%;
+    background-color: darkorange;
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: center;
+    align-content: center;
+    padding: 0.25rem 0.5rem;
+}
+
+/*body*/
+.container{
+    min-height: 84vh;
+    display: flex;
+    justify-items: center;
+    align-items: center;
+    align-content: center;
+}
+
+.main{
+    width: 100%;
+    background-image: url("images/background.jpg");
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+    position: relative;
+    flex-direction: row;
+    justify-content: center;
+}
+
+.second{
+    width: 50%;
+    background: rgba(255,140,0,0.60);
+    flex-direction: column;
+    justify-content: center;
+    padding: 1rem;
+}
+
+.pseudoRow{
+    width: 100%;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.pseudoCol{
+    flex-direction: row;
+    justify-content: space-around;
+}
+
+.pseudoCol>*{
+    width: 48%;
 }
 
 .form, table{
@@ -86,12 +110,17 @@ h2 {
     padding: 1rem;
 }
 
+.twoColForm>*{
+    padding: 0.5rem 1.5rem;
+    margin: 0.5rem 0;
+}
+
 .twoColForm>h2{
     width: 100%;
     text-align: center;
 }
 
-.twoColForm>input{
+.twoColForm>.button, .twoColForm>button, .twoColForm>form{
     width: 45%;
 }
 
@@ -142,14 +171,4 @@ button, .button {
 button:hover, .button:hover {
     background-color: deepskyblue;
     color: black;
-}
-
-.wrong {
-    color: red;
-}
-
-
-.test{/*check if changed show up*/
-    background-color: deepskyblue;
-    color: deeppink;
 }
