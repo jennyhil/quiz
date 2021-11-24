@@ -3,6 +3,7 @@
     <head>
         <meta charset="UTF-8">
         <link rel="stylesheet" type="text/css" th:href="@{/css/aesthetic.css}"/>
+        <link rel="stylesheet" type="text/css" th:href="@{/css/scores.css}"/>
         <title>Quiz</title>
     </head>
     <body>
@@ -16,18 +17,22 @@
         <div th:case="null"  class="mainContainer">
             <h2>Quiz over!</h2>
             <h2 th:text="'You scored ' + ${scores}+' points!'"></h2>
-            <h2 th:if=${onePlayer} th:text="'Player 2 scored: ' + ${guestScore}+' points!'"></h2>
-            <div th:if="${!onePlayer}">
+            <h2 th:if=${twoPlayer} th:text="'Player 2 scored: ' + ${guestScore}+' points!'"></h2>
+            <div th:if="${!twoPlayer}">
                 <div th:each="c:${correctanswers}">
-                    <p th:text="${c}">
-                    </p>
-                </div>
-                <h2>Your answers</h2>
+                    <p th:text="${c}"></p>
+
+                <!---<h2>Your answers</h2>--->
                 <div th:each="a:${answers}">
-                    <p th:text="${a}"></p>
+                    <div th:if="${c}==${a}">
+                        <p th:class="green" th:text="${a}"></p>
+                    </div>
+                    <div th:unless="${c}!=${a}"><p th:class="red" th:text="${a}"></p></div>
+                    <!---<p th:text="${a}"></p>-->
+                </div>
                 </div>
             </div>
-            <div th:if="${onePlayer}">
+            <div th:if="${twoPlayer}">
                 <h2>Player one answers</h2>
                 <div th:each="c:${p1answers}">
                     <p th:text="${c}"></p>
