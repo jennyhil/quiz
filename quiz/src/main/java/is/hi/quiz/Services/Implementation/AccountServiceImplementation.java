@@ -112,15 +112,6 @@ public class AccountServiceImplementation implements AccountService {
     public void updateStatistics(int questionsAnswered, int answeredCorrectly, int gamesPlayed, int id) {
         statisticsRepository.updateStatistics(questionsAnswered,answeredCorrectly,gamesPlayed,id);
     }
-    public int resetQA(){
-        return questionsAnswered=0;
-    }
-    public int resetAC(){
-        return  answeredCorrectly=0;
-    }
-    public int resetGP(){
-        return  gamesPlayed=0;
-    }
 
     public void resetScore(){
         gamesPlayed=0;

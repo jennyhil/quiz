@@ -25,9 +25,6 @@ public interface AccountService {
     int addGamesPlayed(int q);
     int getGamesPlayed(int i);
     void resetScore();
-    int resetQA();
-    int resetAC();
-    int resetGP();
 
     void updateStatistics(int questionsAnswered, int answeredCorrectly, int gamesPlayed, int id);
 }

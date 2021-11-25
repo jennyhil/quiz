@@ -48,9 +48,6 @@ public class GameStateController {
         quizService.resetNoOfQuestions();
         quizService.resetScore();
         quizService.resetAnswers();
-        accountService.resetAC();
-        accountService.resetQA();
-        accountService.resetGP();
         qc.guestScore=0;
         if(players.equals("One Player"))quizService.setOnePlayer();
         if(players.equals("Two Player"))quizService.setTwoPlayer();
