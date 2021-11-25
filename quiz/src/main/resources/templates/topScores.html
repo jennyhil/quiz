@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html xmlns:th="http://thymeleaf.org" lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <link rel="stylesheet" type="text/css" th:href="@{/css/aesthetic.css}"/>
+        <link rel="stylesheet" type="text/css" th:href="@{/css/scores.css}"/>
+        <title>Title</title>
+    </head>
+    <body>
+        <header>
+            <span th:include="generalComponents :: headerContent"></span>
+        </header>
+        <div class="container main">
+            <div class="mainContainerTopScores">
+                <h2 class="leaderboard">Leaderboard</h2>
+                <table class="accountTableScores">
+                    <thead>
+                        <tr class="tableItems">
+                            <th class="tableItem">Score</th>
+                            <th class="tableItem">Player</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr th:each="s : ${scores}" class="tableItems">
+                            <td th:text="${s.getScore}" class="tableItem"></td>
+                            <td th:text="${s.getAccount().getUsername()}" class="tableItem"></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        <th:block th:insert="generalComponents :: footer"></th:block>
+
+    </body>
+</html>

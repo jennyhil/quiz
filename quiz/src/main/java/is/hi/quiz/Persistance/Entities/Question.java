@@ -1,6 +1,14 @@
 package is.hi.quiz.Persistance.Entities;
 
+import javax.persistence.*;
+import java.util.ArrayList;
+import java.util.List;
+
+@Entity
+@Table(name="questions")
 public class Question {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long ID;
     private int categoryID;
     public String questionText;
@@ -10,7 +18,6 @@ public class Question {
     private String optionC;
     private String optionD;
 
-    // Private List<Question> question=new ArrayList<>():
     // constructor
     public Question(){
     }

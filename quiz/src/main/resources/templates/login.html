@@ -1,15 +1,41 @@
-<html xmlns:th="https://thymeleaf.org">
-<head>
-    <meta charset="UTF-8">
-    <title>Login</title>
-</head>
-<body>
-<h2>Login to your account</h2>
-<form action="#" th:action="@{/login}" th:object="${account}"  method="post">
-    <input type="text" name="username" id="username" th:field="*{username}"/>
-    <input type="text" name="password" id="password" th:value="*{password}"/>
-    <input type="submit" value="Login"/>
-</form>
-<p><a href="/">Back</a></p>
-</body>
+<!--suppress ALL -->
+<html xmlns:th="https://thymeleaf.org" lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <link rel="stylesheet" type="text/css" th:href="@{/css/aesthetic.css}"/>
+        <title>Login</title>
+    </head>
+    <body>
+        <header>
+            <span th:include="generalComponents :: headerContent"></span>
+        </header>
+        <div class="container main">
+            <div class="container second">
+
+                <h2>Login to your account</h2>
+
+                <span th:if="${incorrectInput}">
+                      <span th:if="!${notRegistered}">
+                            <p class="wrong" th:text="'Invalid username or password'"></p>
+                      </span>
+                </span>
+
+                <span th:if="${notRegistered}">
+                     <p th:text="'Username not found. Want to sign up?'"></p>
+                </span>
+
+            <form action="#" th:action="@{/login}" th:object="${account}"  method="post" class="form">
+                <label for="username">Username</label>
+                <input type="text" name="username" id="username" th:field="*{username}"/>
+                <label for="password">Password</label>
+                <input type="password" name="password" id="password" th:value="*{password}"/>
+                <input type="submit" value="Login" class="button"/>
+            </form>
+            <a th:href="@{/}" class="button">Back</a>
+            </div>
+        </div>
+        <th:block th:insert="generalComponents :: footer"></th:block>
+    </body>
 </html>
+
+

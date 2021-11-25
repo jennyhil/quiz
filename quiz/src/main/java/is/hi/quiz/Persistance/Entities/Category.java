@@ -1,20 +1,28 @@
 package is.hi.quiz.Persistance.Entities;
 
+import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.List;
 //import javax.persistence.*;
 
-//@Entity
+@Entity
+@Table(name = "categories")
 public class Category {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long ID;
     private String categoryName;
     private int categoryID;
-    private List<Question> questions;
+    @OneToMany(mappedBy = "categoryID",cascade = CascadeType.ALL,orphanRemoval = true)
+    private List<Question> questions= new ArrayList<>();
 
-    public Category(int categoryID, String categoryName, List<Question> questions) {
+    public Category(int categoryID, String categoryName) {
         this.categoryName = categoryName;
         this.categoryID = categoryID;
-        this.questions = questions;
+    }
+
+    public Category() {
+
     }
 
     public List<Question> getQuestions() {

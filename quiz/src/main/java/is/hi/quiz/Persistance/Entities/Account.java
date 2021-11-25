@@ -1,22 +1,43 @@
 package is.hi.quiz.Persistance.Entities;
 
+import javax.persistence.*;
 import java.util.ArrayList;
+import java.util.List;
 
+@Entity
+@Table(name = "accounts")
 public class Account {
-    private long ID;
-    public String username;
-    public String password;
-    public String email;
-    public String name;
-    //private List<Scores> scores = new ArrayList<>();
-    public Boolean isAdmin;
 
-    public Account(String username, String password, String email, String name, Boolean isAdmin) {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private long ID;
+
+    private String username;
+    private String password;
+    private String email;
+    private String name;
+    private Boolean isAdmin;
+
+    @OneToMany(mappedBy = "account", cascade = CascadeType.ALL, orphanRemoval = true)
+    List<Scores> scores = new ArrayList<>();
+
+    @OneToOne(mappedBy = "account", cascade = CascadeType.ALL, orphanRemoval = true)
+    Statistics statistics;
+
+    public Account(String username, String password, String email, String name,boolean isAdmin) {
         this.username = username;
         this.password = password;
         this.email = email;
         this.name = name;
         this.isAdmin = isAdmin;
+    }
+    public Account() {
+
+    }
+
+
+    public void setScores(List<Scores> scores) {
+        this.scores = scores;
     }
 
     public long getID() {
@@ -66,4 +87,6 @@ public class Account {
     public void setAdmin(boolean admin) {
         isAdmin = isAdmin;
     }
+
+
 }

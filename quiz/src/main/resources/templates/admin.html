@@ -1,33 +1,37 @@
 <!DOCTYPE html>
-<html xmlns:th="http://thymeleaf.org">
+<html xmlns:th="http://thymeleaf.org" lang="en">
 <head>
     <meta charset="UTF-8">
+    <link rel="stylesheet" type="text/css" th:href="@{/css/aesthetic.css}"/>
     <title>Admin page</title>
 </head>
 <body>
-<p> Yay you're an admin!</p>
-<p><a href="/addquestion">Add a new question</a></p>
-<div th:switch="${questions}">
-    <h2 th:case="null">No questions yet!</h2>
-    <div th:case="*">
-        <h2>Questions</h2>
-        <table>
-            <thead>
-            <tr>
-                <th>Question</th>
-                <th>Category</th>
-            </tr>
-            </thead>
-            <tbody>
-            <tr th:each="q : ${questions}">
-                <td th:text="${q.questionText}"></td>
-                <td th:text="${q.ID}"></td>
-                <td><a th:href="@{/delete/{id}(id=${q.ID})}">Delete</a></td>
-            </tr>
-            </tbody>
-        </table>
+    <header>
+        <span th:include="generalComponents :: headerContent"></span>
+    </header>
+    <div class="container main">
+        <div th:switch="${questions}" class="container second">
+            <h2 th:case="null" class="container col">No questions yet!</h2>
+            <div th:case="*" class="container col">
+                <h2>Questions</h2>
+                <a th:href="@{/addquestion}" class="button">Add a new question</a>
+                <table>
+                    <thead>
+
+                    </thead>
+                    <tbody>
+                        <tr th:each="q : ${questions}" class="tableItems">
+                            <td th:text="${q.questionText}" class="tableItem"></td>
+                            <td class="tableItem">
+                                <a th:href="@{/delete/{id}(id=${q.ID})}" class="button">Delete</a>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <a th:href="@{/}" class="button">Back</a>
+        </div>
     </div>
-</div>
-<p><a href="/">Back</a></p>
+    <th:block th:insert="generalComponents :: footer"></th:block>
 </body>
 </html>

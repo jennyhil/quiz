@@ -1,29 +1,94 @@
 <!DOCTYPE html>
-<html xmlns:th="http://thymeleaf.org">
+<html xmlns:th="http://thymeleaf.org" lang="en">
 <head>
     <meta charset="UTF-8">
+    <link rel="stylesheet" type="text/css" th:href="@{/css/aesthetic.css}"/>
+    <link rel="stylesheet" type="text/css" th:href="@{/css/scores.css}"/>
     <title>Quiz</title>
 </head>
 <body>
-
-<div th:switch="${questions}">
-    <div th:case="null">
-    <h2>Quiz over!</h2>
-    <p><a href="/quiz">Play a new game</a></p>
-        <p><a href="/">Quit</a></p>
-
-    </div>
-    <div th:case="*">
-        <h2> Questions </h2>
-        <div th:each="q:${questions}">
-        <h2 th:text="${q.questionText}"></h2>
-        <button th:onclick="|window.location.href='/category/${q.categoryID}'|" th:text="${q.optionA}"></button>
-        <button th:onclick="|window.location.href='/category/${q.categoryID}'|" th:text="${q.optionB}"></button>
-        <button th:onclick="|window.location.href='/category/${q.categoryID}'|" th:text="${q.optionC}"></button>
-        <button th:onclick="|window.location.href='/category/${q.categoryID}'|" th:text="${q.optionD}"></button>
+<header>
+    <span th:include="generalComponents :: headerContent"></span>
+</header>
+<div class="container main">
+    <div th:switch="${questions}" class="container second">
+        <div th:case="null" class="container col">
+            <h2>Quiz over</h2>
+            <h2 th:text="${username}+' scored ' + ${scores}+' points!'"></h2>
+            <h2 th:if=${onePlayer} th:text="'Player 2 scored: ' + ${guestScore}+' points!'"></h2>
+            <div th:if="${!onePlayer}">
+                <div class="container col roundedBorder bg">
+                    <div class="container row">
+                        <h2>Player answers</h2>
+                        <h2>Correct answers</h2>
+                    </div>
+                    <div th:each="c, stats:${answers}" class="container row">
+                        <span th:class="${c}==${correctanswers[stats.index]}? right:wrong" th:text="${c}"></span>
+                        <span th:text="${correctanswers[stats.index]}"></span>
+                    </div>
+                </div>
+            </div>
+            <div th:if="${onePlayer}" class="container col">
+                <h2 th:if="${scores} > ${guestScore}"th:text="${username}+' won!'"></h2>
+                <h2 th:if="${scores} < ${guestScore}"th:text="'Player 2 won!'"></h2>
+                <h2 th:if="${scores} == ${guestScore}"th:text="${'It''s a Draw!'}"></h2>
+                <div class="container row roundedBorder bg">
+                    <div class="container col ">
+                        <h2>Player 1</h2>
+                        <div class="container row">
+                            <h2>Chosen answers</h2>
+                            <h2>Correct answers</h2>
+                        </div>
+                        <div th:each="c,stats:${p1answers}" class="container row">
+                            <span th:class="${c}==${p1corrAnswers[stats.index]}? right:wrong" th:text="${c}"></span>
+                            <span th:text="${p1corrAnswers[stats.index]}"></span>
+                        </div>
+                    </div>
+                    <div class="container col">
+                        <h2>Player 2</h2>
+                        <div class="container row">
+                            <h2>Chosen answers</h2>
+                            <h2>Correct answers</h2>
+                        </div>
+                        <div th:each="c,stats:${p2answers}" class="container row">
+                            <span th:class="${c}==${p2corrAnswers[stats.index]}? right:wrong" th:text="${c}"></span>
+                            <span th:text="${p2corrAnswers[stats.index]}"></span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <a th:href="@{/user}" class="button">Play a new game</a>
+            <a th:href="@{/}" class="button">Quit</a>
+        </div>
+        <div th:case="*">
+            <div th:each="q:${questions}">
+                <div th:if="${!nextPlayer}" class="container col">
+                    <h2 th:if="${counter!=0}" th:text="'Question ' + ${counter}"></h2>
+                    <form action="#" th:action="@{'/category/'+${q.categoryID}}" method="post" class="twoColForm">
+                        <h2 class="border" th:text="${q.questionText}"></h2>
+                        <input type="submit" class="button" th:name="option" th:field="${q.optionA}" th:value="${q.optionA}"/>
+                        <input type="submit" class="button" th:name="option" th:field="${q.optionB}" th:value="${q.optionB}"/>
+                        <input type="submit" class="button" th:name="option" th:field="${q.optionC}" th:value="${q.optionC}"/>
+                        <input type="submit" class="button" th:name="option" th:field="${q.optionD}" th:value="${q.optionD}"/>
+                    </form>
+                </div>
+            </div>
+            <div th:each="q:${questions}">
+                <div th:if="${nextPlayer}" class="container col">
+                    <h2 th:if="${counterTwo==1}">Player 2 it's your turn now!</h2>
+                    <h2 th:text="'Question ' + ${counterTwo}"></h2>
+                    <form action="#" th:action="@{'/category/'+${q.categoryID}}" method="post" class="twoColForm">
+                        <h2 class="border"th:text="${q.questionText}"></h2>
+                        <input type="submit" class="button" th:name="option" th:field="${q.optionA}" th:value="${q.optionA}"/>
+                        <input type="submit" class="button" th:name="option" th:field="${q.optionB}" th:value="${q.optionB}"/>
+                        <input type="submit" class="button" th:name="option" th:field="${q.optionC}" th:value="${q.optionC}"/>
+                        <input type="submit" class="button" th:name="option" th:field="${q.optionD}" th:value="${q.optionD}"/>
+                    </form>
+                </div>
+            </div>
         </div>
     </div>
-
 </div>
+<th:block th:insert="generalComponents :: footer"></th:block>
 </body>
 </html>

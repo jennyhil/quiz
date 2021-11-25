@@ -1,17 +1,22 @@
 <!DOCTYPE html>
-<html xmlns:th="http://thymeleaf.org">
-
-<head>
-    <meta charset="UTF-8">
-    <link rel="stylesheet" type="text/css" href="/css/home.css"/>
-    <title>Title</title>
-</head>
-<body>
-    <div class="header"></div>
-    <div class="mainContainer">
-        <a href="/login" class="button rounded">Log in</a>
-        <a href="/signup" class="button rounded">Sign up</a>
-    </div>
-    <div class="footer"></div>
-</body>
+<html xmlns:th="http://thymeleaf.org" lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <link rel="stylesheet" type="text/css" th:href="@{/css/aesthetic.css}"/>
+        <title>Home</title>
+    </head>
+    <body>
+        <header>
+            <span th:include="generalComponents :: headerContent"></span>
+        </header>
+        <div class="container main">
+            <div class="container second">
+                <h1>Welcome to Think About Things</h1>
+                <h2>Sign up and let's play!</h2>
+                <a th:href="@{/login}" class="button">Log in</a>
+                <a th:href="@{/signup}" class="button">Sign up</a>
+            </div>
+        </div>
+        <th:block th:insert="generalComponents :: footer"> </th:block>
+    </body>
 </html>
