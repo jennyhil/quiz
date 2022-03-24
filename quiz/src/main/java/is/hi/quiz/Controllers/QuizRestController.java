@@ -1,5 +1,6 @@
 package is.hi.quiz.Controllers;
 
+import is.hi.quiz.Persistance.Entities.Category;
 import is.hi.quiz.Persistance.Entities.Question;
 import is.hi.quiz.Services.QuizService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -30,5 +31,12 @@ public class QuizRestController {
         List<Question> questionsByCat = quizService.findByCategory(id);
         return questionsByCat;
 
+    }
+
+    @RequestMapping("/categories")
+    public List<Category> getCategories() {
+        List<Category> categories = quizService.findAllCategories();
+
+        return categories;
     }
 }
