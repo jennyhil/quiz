@@ -34,15 +34,15 @@ public class QuizServiceImplementation implements QuizService {
         //scoreRepository.deleteAll();
 /*
         quizRepository.deleteAll();
-        //Entertainment = 10
-        quizRepository.save(new Question(0, "Who portrays the character 'Paul' in the film Dune(2021)?", "Timothée Chalamet", "Jason Momoa", "Timothée Chalamet", "Harry Styles", "Dave Bautista"));
+        Entertainment = 10
+        quizRepository.save(new Question(0, "Who portrays the character 'Paul' in the film Dune(2021)?", "Timothee Chalamet", "Jason Momoa", "Timothee Chalamet", "Harry Styles", "Dave Bautista"));
         quizRepository.save(new Question(0, "Which member of the band 'One Direction' famously left the band on the 25th of March 2015?", "Zayn", "Harry", "Louis", "Neil", "Zayn"));
         quizRepository.save(new Question(0, "Who won 'Best Actor' at the Oscars in 2021?", "Anthony Hopkins", "Leonardo DiCaprio", "Anthony Hopkins", "Bob", "Adam Sandler"));
         quizRepository.save(new Question(0, "How many seasons are there of the show 'The Bold and the Beautiful'?", "35", "30", "120", "35", "45"));
         quizRepository.save(new Question(0, "What is the name of Wario‘s sidekick in the Super Mario franchise?","Waluigi", "Luigi", "Waluigi", "Bowser", "Toad"));
         quizRepository.save(new Question(0, "What spell in Harry potter can unlock doors? ", "Alohamora", "Alohamora", "Lumos", "Wingardium Leviosa", "Expelliarmus"));
         quizRepository.save(new Question(0, "Which British actor will play Batman in the upcoming reboot?", "Robert Pattinson", "Robert Pattinson", "Ricky Gervais", "Martin Freeman", "James Buckley"));
-        quizRepository.save(new Question(0, "Which Harry Potter book does not exsist? Harry Potter and.. ", "the Sparkling Wands", "the Philosopher's Stone", "the Order of the Phoenix", "the Half-Blood Prince", "the Sparkling Wands"));
+        quizRepository.save(new Question(0, "Which Harry Potter book does not exist? Harry Potter and.. ", "the Sparkling Wands", "the Philosopher's Stone", "the Order of the Phoenix", "the Half-Blood Prince", "the Sparkling Wands"));
         quizRepository.save(new Question(0, "Who wrote 'The Lord of the Rings'?", "J.R.R Tolkien", "Dan Brown", "J.K Rowling", "J.R.R Tolkien", "Milan Kundera"));
         quizRepository.save(new Question(0, "Who of the following has not been a judge on 'The Great British Bake Off'?", "Jenny Omars", "Jenny Omars", "Prue Leith", "Paul Hollywood", "Mary Berry"));
         //General Knowledge = 10
@@ -59,10 +59,10 @@ public class QuizServiceImplementation implements QuizService {
         quizRepository.save(new Question(1, "What is the name of the green pigment in plants that allows the photosynthesis?", "Chlorophyl", "Chlorophyl", "Anylin", "Greentini", "Seiva"));
         //Geography = 10
         quizRepository.save(new Question(2, "What is the smallest continent on the Earth?", "Oceania", "Oceania", "Europe", "Asia", "Antarctica"));
-        quizRepository.save(new Question(2, "What is the most populous city in the world?", "Tokyo", "Reykjavík", "Delhi", "Beijing", "Tokyo"));
+        quizRepository.save(new Question(2, "What is the most populous city in the world?", "Tokyo", "Reykjavik", "Delhi", "Beijing", "Tokyo"));
         quizRepository.save(new Question(2, "What is the capital city of Afghanistan?", "Kabul", "Shanghai", "Kandahar", "Kabul", "Jalalabad"));
         quizRepository.save(new Question(2, "What is the most populous country in the world?", "China", "India", "Iceland", "Nigeria", "China"));
-        quizRepository.save(new Question(2, "In what fjord in Iceland is Ísafjörður?", "Skutulsfirði", "Álftafirði", "Fáskrúðsfirði", "Ísafirði", "Skutulsfirði"));
+        quizRepository.save(new Question(2, "In what fjord in Iceland is Isafjordur?", "Skutulsfirdi", "Alftafirdi", "Faskrudsfirdi", "Isafirdi", "Skutulsfirdi"));
         quizRepository.save(new Question(2, "What is the capital city of New York State?", "Albany", "Yonkers", "Albany", "New York", "Buffalo"));
         quizRepository.save(new Question(2, "What is the southernmost capital in Europe?", "Valetta (Malta)", "Copenhagen (Denmark)", "Nicosia (Cyprus)", "Valetta (Malta)", "Rome (Italy)"));
         quizRepository.save(new Question(2, "Which of the following islands is the smallest in size?", "Malta", "Isle of Man", "Cyprus", "Malta", "Tenerife"));
@@ -71,7 +71,7 @@ public class QuizServiceImplementation implements QuizService {
         //Sports = 20
         quizRepository.save(new Question(3, "How many chukkers are there in a polo match?", "6", "4", "1", "2", "6"));
         quizRepository.save(new Question(3, "What is the beginner belt in karate?", "White", "Orange", "White", "Green", "Yellow"));
-        quizRepository.save(new Question(3, "Who is the most successful F1 driver of all time?", "Lewis Hamilton", "Lewis Hamilton", "Max Verstappen", "Kimi Raikkönen", "Valtteri Bottas"));
+        quizRepository.save(new Question(3, "Who is the most successful F1 driver of all time?", "Lewis Hamilton", "Lewis Hamilton", "Max Verstappen", "Kimi Raikkonen", "Valtteri Bottas"));
         quizRepository.save(new Question(3, "What sport does not require its players to carry a stick of some sort?", "Rugby", "Lacrosse", "Rugby", "Hockey", "Golf"));
         quizRepository.save(new Question(3, "What is the maximum score you can achieve in 10-pin bowling?", "300", "200", "100", "300", "1000"));
         quizRepository.save(new Question(3, "Which country won the FIFA Women's World Cup in 2019?", "The United States", "France", "Germany", " The United States", "Azerbaijan"));
@@ -89,6 +89,7 @@ public class QuizServiceImplementation implements QuizService {
         quizRepository.save(new Question(3, "What is the national sport of Russia?", "Bandy", "Football", "Ice skating", "Gymnastics", "Bandy"));
         quizRepository.save(new Question(3, "How many NBA championships did Michael Jordan win with the Chicago Bulls?", "6", "4", "5", "6", "7"));
         quizRepository.save(new Question(3, "How many medals did China win at the Beijing Olympics?", "100", "37", "51", "67", "100"));
+
 */
 
 
