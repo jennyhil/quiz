@@ -1,15 +1,13 @@
 package is.hi.quiz.Controllers;
 
-import is.hi.quiz.Persistance.Entities.Account;
-import is.hi.quiz.Persistance.Entities.Category;
-import is.hi.quiz.Persistance.Entities.Question;
-import is.hi.quiz.Persistance.Entities.Scores;
+import is.hi.quiz.Persistance.Entities.*;
 import is.hi.quiz.Services.AccountService;
 import is.hi.quiz.Services.QuizService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @RestController
@@ -52,11 +50,16 @@ public class QuizRestController {
     }
 
     // Returns top scores for all time high scorers
-    @RequestMapping(value = "/topscoresAPI", method = RequestMethod.GET)
-    public List<Scores> getTopScores() {
+    @RequestMapping("/topscoresAPI")
+    public List<String> getTopScores() {
         List <Scores> scores = quizService.findAllScores();
-        return scores;
+        List <String> topScores = new ArrayList<>();
+        for(int i=0;i<scores.size();i++){
+            topScores.add(scores.get(i).getAccount().getUsername()+" "+scores.get(i).getScore());
+        }
+        return topScores;
     }
+
     @RequestMapping(value="/getScores", method = RequestMethod.GET)
     public List<Scores> getScores() throws InterruptedException {
         List<Scores> scores = quizService.findAllScores();
@@ -67,9 +70,17 @@ public class QuizRestController {
     //
     @PostMapping( "saveScore")
     Scores score(@RequestBody String params, String score, String username) {
-        // findaccout by username
-        Account account = accountService.findByUsername("user");
+        // find account by username
+        Account account = accountService.findByUsername(username);
         Scores userScore = new Scores(account, Integer.parseInt(score));
         return quizService.saveScores(userScore);
+    }
+
+    @PostMapping( "statisticsPOST")
+    Statistics statistics(@RequestBody String params,String username, String questionsAnswered, String answeredCorrectly, String gamesPlayed) {
+        // findaccout by username
+        Account account = accountService.findByUsername(username);
+        Statistics statistics = new Statistics(account,(int)account.getID(),Integer.parseInt(questionsAnswered),Integer.parseInt(answeredCorrectly),Integer.parseInt(gamesPlayed));
+        return accountService.saveStatistics(statistics);
     }
 }

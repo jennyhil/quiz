@@ -32,7 +32,7 @@ public class AccountController {
         this.quizService = quizService;
 
     }
-
+/*
     // Return sign up page
     @RequestMapping(value = "/signup", method = RequestMethod.GET)
     public String signupGET(Account account){
@@ -58,7 +58,7 @@ public class AccountController {
         model.addAttribute("alreadyExistsInput", true);
         return "signup";
     }
-
+*/
     // Returns log in page
     @RequestMapping(value = "/login", method = RequestMethod.GET)
     public String loginGET(Account account){
