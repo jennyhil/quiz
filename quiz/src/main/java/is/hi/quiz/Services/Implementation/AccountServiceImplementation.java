@@ -28,6 +28,8 @@ public class AccountServiceImplementation implements AccountService {
         //statisticsRepository.deleteAll();
         //accountRepository.deleteAll();
         //accountRepository.save(new Account("admin","1234","email@email.com","Admin Adminsson",true));
+       // accountRepository.save(new Account("user","123","user@email.com","User Usersson",false));
+
     }
 
     @Override
@@ -46,6 +48,7 @@ public class AccountServiceImplementation implements AccountService {
 
     @Override
     public Account findByUsername(String username) {
+        System.out.println("THIS IS USERNAME"+username);
         return accountRepository.findByUsername(username);
     }
 
