@@ -54,6 +54,7 @@ public class QuizRestController {
     public List<String> getTopScores() {
         List <Scores> scores = quizService.findAllScores();
         List <String> topScores = new ArrayList<>();
+        System.out.println("SCORELIST: "+scores.get(0).getScore());
         for(int i=0;i<scores.size();i++){
             topScores.add(scores.get(i).getAccount().getUsername()+" "+scores.get(i).getScore());
         }
