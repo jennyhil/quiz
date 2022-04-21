@@ -33,7 +33,7 @@ public class AccountController {
 
     }
 
-    // Return sign up page
+    /*// Return sign up page
     @RequestMapping(value = "/signup", method = RequestMethod.GET)
     public String signupGET(Account account){
         account.setAdmin(false);
@@ -63,7 +63,7 @@ public class AccountController {
     @RequestMapping(value = "/login", method = RequestMethod.GET)
     public String loginGET(Account account){
         return "login";
-    }
+    }*/
 
     // Logs user in
     @RequestMapping(value = "/login", method = RequestMethod.POST)

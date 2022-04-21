@@ -10,6 +10,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @RestController
@@ -52,11 +53,17 @@ public class QuizRestController {
     }
 
     // Returns top scores for all time high scorers
-    @RequestMapping(value = "/topscoresAPI", method = RequestMethod.GET)
-    public List<Scores> getTopScores() {
+    @RequestMapping("/topscoresAPI")
+    public List<String> getTopScores() {
         List <Scores> scores = quizService.findAllScores();
-        return scores;
+        List <String> topScores = new ArrayList<>();
+        System.out.println("SCORELIST: "+scores.get(0).getScore());
+        for(int i=0;i<scores.size();i++){
+            topScores.add(scores.get(i).getAccount().getUsername()+" "+scores.get(i).getScore());
+        }
+        return topScores;
     }
+
     @RequestMapping(value="/getScores", method = RequestMethod.GET)
     public List<Scores> getScores() throws InterruptedException {
         List<Scores> scores = quizService.findAllScores();
